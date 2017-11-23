@@ -1,0 +1,13 @@
+<!--pages/binding-account/binding-account.wxml-->
+<scroll-view class="container container1">
+  <view class="header">
+    <view class="header-title">
+      <view class="text-wrapper">
+        <icon size="25" type="info"></icon>
+        <text>请选择您的账号类型</text>
+      </view>
+    </view>
+  </view>
+  <view class="main-content">
+  </view>
+</scroll-view>

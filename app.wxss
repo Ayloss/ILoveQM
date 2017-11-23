@@ -1,0 +1,39 @@
+/**app.wxss**/
+page {
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+} 
+
+.container1 {
+  background-color:rgb(148,220,255);
+}
+
+.header {
+  height: 384rpx;
+  background-color:azure;
+}
+.header-title {
+  padding-left:40rpx;
+  padding-top:60rpx;
+}
+.header-title .text-wrapper {
+  font-size: 14px;
+  font-weight: 800;
+  display: inline-block;
+  border-bottom: 5rpx solid rgb(102,102,102);
+  padding-bottom:20rpx;
+  min-width: 15em;
+}
+.header-title .icon {
+  font-size: 30px;
+}
+.header-title .title {
+
+}
+
+.main-content {
+  height: calc(100%-192rpx);
+}
