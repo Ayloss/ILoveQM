@@ -2,7 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/binding-account/binding-account"
+    "pages/binding-account/binding-account",
+    "pages/bind/choose-character/choose-character",
+    "pages/bind/bind-teacher/bind-teacher",
+    "pages/bind/bind-student/bind-student"
   ],
   "window": {
     "backgroundTextStyle": "light",
