@@ -1,4 +1,4 @@
-// pages/bind/choose-character/choose-character.js
+// pages/roll-call-list/roll-call-list.js
 Page({
 
   /**
@@ -7,22 +7,7 @@ Page({
   data: {
   
   },
-  /**
-   * 跳转到老师
-   */
-  navigateToTeacher:function() {
-    wx.navigateTo({
-      url:"../bind-teacher/bind-teacher"
-    });
-  },
-  /**
-   * 跳转到学生
-   */
-  navigateToStudent:function() {
-    wx.navigateTo({
-      url:"../bind-student/bind-student"
-    });
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

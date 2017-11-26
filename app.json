@@ -4,8 +4,11 @@
     "pages/logs/logs",
     "pages/binding-account/binding-account",
     "pages/bind/choose-character/choose-character",
-    "pages/bind/bind-teacher/bind-teacher",
-    "pages/bind/bind-student/bind-student"
+    "pages/class-manage/class-manage",
+    "pages/fixed-roll-start-call/fixed-roll-start-call",
+    "pages/group-info/group-info",
+    "pages/roll-call-list/roll-call-list",
+    "pages/student-roll-call/student-roll-call"
   ],
   "window": {
     "backgroundTextStyle": "light",

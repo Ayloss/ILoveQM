@@ -1,4 +1,4 @@
-// pages/bind/bind-teacher/bind-teacher.js
+// pages/student-roll-call/student-roll-call.js
 Page({
 
   /**

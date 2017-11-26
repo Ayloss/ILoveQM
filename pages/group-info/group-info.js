@@ -1,4 +1,4 @@
-// pages/binding-account/binding-account.js
+// pages/group-info/group-info.js
 Page({
 
   /**

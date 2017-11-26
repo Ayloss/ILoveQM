@@ -1,0 +1,105 @@
+/* pages/roll-call-list/roll-call-list.wxss */
+/* 背景色 */
+
+page {
+  background: rgba(102, 204, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* 左上角的蓝色板的容器*/
+
+.blueBoardView {
+  width: 250rpx;
+  height: 250rpx;
+  float: left;
+  padding-top: 50rpx;
+  padding-left: 50rpx;
+}
+
+/* 左上角的蓝色板图标大小*/
+
+.blueBoardIcon {
+  width: 100%;
+  height: 100%;
+}
+
+/* 班级名的位置、字体等样式 */
+
+.classNameView {
+  margin-top: 90rpx;
+  margin-left: 5rpx;
+  margin-right: 30rpx;
+  width: 300rpx;
+  height: 100rpx;
+  font-size: 80rpx;
+  float: right;
+  padding-left: 40rpx;
+}
+
+/* 签到人数的位置、字体等样式*/
+
+.studentSumView {
+  font-size: 48rpx;
+  width: 350rpx;
+  height: 80rpx;
+  float: right;
+  margin-right: 50rpx;
+  padding-top: 20rpx;
+}
+
+/*学生名单上面蓝色的bar*/
+
+.studentListBarView {
+  background-color: #6cf;
+  float: right;
+  width: 90%;
+  height: 60rpx;
+  border-radius: 12rpx;
+  font-size: 28;
+  color: black;
+  margin-right: 5%;
+  margin-top: 10%;
+  padding-bottom: 1%;
+}
+
+/*左边的学生块*/
+
+.studentLeftBlock {
+  background-color: #fff;
+  width: 45%;
+  float: left;
+  border-radius: 12rpx;
+  color: black;
+  height: 100rpx;
+  margin-left: 5%;
+}
+
+/*右边的学生块*/
+
+.studentRightBlock {
+  background-color: #fff;
+  width: 45%;
+  float: right;
+  border-radius: 12rpx;
+  color: black;
+  height: 100rpx;
+  margin-right: 5%;
+}
+
+/*学生前面的icon*/
+
+.userIcon {
+  width: 25%;
+  height: 100%;
+}
+
+/*学生名字的文本*/
+
+.studentName {
+  float: right;
+  margin-right: 30%;
+  margin-top: 6%;
+}

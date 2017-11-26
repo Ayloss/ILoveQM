@@ -1,3 +1,0 @@
-<!--pages/bind/choose-character/choose-character.wxml-->
-<button type='default' bindtap='navigateToTeacher'>老师</button>
-<button type='default' bindtap='navigateToStudent'>学生</button>

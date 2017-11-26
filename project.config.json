@@ -21,12 +21,36 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
-					"name": "1",
-					"pathName": "pages/bind/bind-student/bind-student",
+					"name": "class-manage",
+					"pathName": "pages/class-manage/class-manage",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "fixed-roll-start-call",
+					"pathName": "pages/fixed-roll-start-call/fixed-roll-start-call",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "roll-call-list",
+					"pathName": "pages/roll-call-list/roll-call-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "student-roll-call",
+					"pathName": "pages/student-roll-call/student-roll-call",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "group-info",
+					"pathName": "pages/group-info/group-info",
 					"query": ""
 				}
 			]

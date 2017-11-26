@@ -1,4 +1,4 @@
-// pages/bind/bind-student/bind-student.js
+// pages/fixed-roll-start-call/fixed-roll-start-call.js
 Page({
 
   /**
