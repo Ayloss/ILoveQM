@@ -1,0 +1,48 @@
+<!--pages/Teacher/RandomGrouping/GroupInfo/GroupInfo.wxml-->
+<!-- -->
+<view class='container'>
+  <view>
+    <image src='manyUsers.png'></image>
+    <text>队伍信息</text>
+  </view>
+  <hr/>
+  <view>
+    <!--这里是总的容器-->
+    <view>
+      <text>队伍1</text>
+      <text>选题：未完成</text>
+      <!--这里是单个学生的容器,这里还没做删除和增加的操作-->
+      <image src='manyUsers.png'></image>
+      <text>周xx</text>
+    </view>
+    <view>
+      <image src='manyUsers.png'></image>
+      <text>郑xx</text>
+    </view>
+  </view>
+  <view>
+    <text>队伍2</text>
+    <text>选题：XXX</text>
+  </view>
+  <view>
+    <text>队伍3</text>
+    <text>选题：未完成</text>
+  </view>
+  <view>
+    <text>队伍4</text>
+    <text>选题：XXX</text>
+  </view>
+  <view>
+    <!--这里是总的容器-->
+    <view>
+      <text>未签到的学生</text>
+      <!--这里是单个学生的容器,这里还没做删除和增加的操作-->
+      <image src='manyUsers.png'></image>
+      <text>周xx</text>
+    </view>
+    <view>
+      <image src='manyUsers.png'></image>
+      <text>郑xx</text>
+    </view>
+  </view>
+</view>

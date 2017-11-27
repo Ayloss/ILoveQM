@@ -1,0 +1,27 @@
+<!--pages/Teacher/RandomGrouping/RandomRollStartCall/RollCallList.wxml-->
+<view class='container'>
+  <view>
+    <image src='icon.png'></image>
+    <view>
+      <text>班级1</text>
+    </view>
+    <view>
+      <text>签到学生：9/40</text>
+    </view>
+  </view>
+  <view>
+    <text>已签到学生</text>
+  </view>
+  <view>
+    <!--这里是下方总的容器-->
+    <view>
+      <!--这里是单个学生的容器-->
+      <image src='users.png'></image>
+      <text>周xx</text>
+    </view>
+    <view>
+      <image src='users.png'></image>
+      <text>郑xx</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+<!--pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall.wxml-->
+<view class='container'>
+  <view>
+    <image src='icon.png'></image>
+    <view>
+      <text>班级1</text>
+    </view>
+    <view>
+      <text>学生总数：40</text>
+    </view>
+  </view>
+  <hr/>
+  <view wx:if="{{CallInRollCondition==0}}">
+    <view>
+      <image src='users.png'></image>
+      <text>已签到学生：0/40</text>
+    </view>
+    <view>
+      <button bindtap='onStartCall'>开始签到</button>
+      <button disabled='true'>查看分组</button>
+      <text>随机分组还未开始，不能查看分组</text>
+    </view>
+  </view>
+  <view wx:if="{{CallInRollCondition==1}}">
+    <view>
+      <image src='users.png'></image>
+      <text>已签到学生：9/40</text>
+      <button bindtap='onRollCallList'>签到名单</button>
+    </view>
+    <view>
+      <button bindtap='onEndCall'>结束签到</button>
+      <button disabled='true'>查看分组</button>
+      <text>随机分组还未开始，不能查看分组</text>
+    </view>
+  </view>
+  <view wx:if="{{CallInRollCondition==2}}">
+    <view>
+      <image src='users.png'></image>
+      <text>已签到学生：37/40</text>
+    </view>
+    <view>
+      <button>查看分组</button>
+    </view>
+  </view>
+</view>

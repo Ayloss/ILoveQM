@@ -8,7 +8,11 @@
     "pages/fixed-roll-start-call/fixed-roll-start-call",
     "pages/group-info/group-info",
     "pages/roll-call-list/roll-call-list",
-    "pages/student-roll-call/student-roll-call"
+    "pages/student-roll-call/student-roll-call"，
+    "pages/Teacher/index/TeacherClass",
+    "pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall",
+    "pages/Teacher/RandomGrouping/RandomRollStartCall/RollCallList",
+    "pages/Teacher/RandomGrouping/GroupInfo/GroupInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
