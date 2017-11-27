@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -51,6 +51,18 @@
 					"id": -1,
 					"name": "group-info",
 					"pathName": "pages/group-info/group-info",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "老师随机签到",
+					"pathName": "pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "老师固定签到",
+					"pathName": "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedRollStartCall",
 					"query": ""
 				}
 			]

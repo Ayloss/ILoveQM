@@ -28,12 +28,9 @@
       <button class="blueBigBtn" bindtap='onStartCall'>开始签到</button>
     </view>
     <view>
-      <button type="button" class="greyBigBtn">
+      <button type="button" class="greenBigBtn" bindtap='onCheckList'>
         查看分组
       </button>
-      <text class="noGroup">
-      随机分组还未开始，不能查看分组
-      </text>
     </view>
   </view>
   <view wx:if="{{CallInRollCondition==1}}">
@@ -46,8 +43,7 @@
     </view>
     <view>
       <button bindtap='onEndCall' class='redBigBtn'>结束签到</button>
-      <button disabled='true' class="greyBigBtn">查看分组</button>
-      <text class="noGroup">随机分组还未开始，不能查看分组</text>
+      <button class="greenBigBtn bindtap='onCheckList">查看分组</button>
     </view>
   </view>
   <view wx:if="{{CallInRollCondition==2}}">
@@ -56,7 +52,7 @@
       <span>已签到学生: 37/40</span>
     </view>
     <view>
-      <button class="blueBigBtn" bindtap='onCheckList'>查看分组</button>
+      <button class="greenBigBtn" bindtap='onCheckList'>查看分组</button>
     </view>
   </view>
 </page>

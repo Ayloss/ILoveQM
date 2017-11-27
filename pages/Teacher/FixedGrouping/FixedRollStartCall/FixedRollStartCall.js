@@ -94,7 +94,7 @@ Page({
 
   onCheckList:function(){
     wx.navigateTo({
-      url: '../GroupInfo/GroupInfo',
+      url: './FixedGroupInfo',
     })
   }
 })

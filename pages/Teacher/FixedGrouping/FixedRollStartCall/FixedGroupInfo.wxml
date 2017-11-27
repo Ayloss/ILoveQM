@@ -40,18 +40,11 @@
   <view class='studentRightBlock'>
     <image src="../../../../resources/img/user.png" class='userIcon' />
     <span class="studentName">王xx</span>
-    <image src="红叉.png" class='redCancelIcon' />
   </view>
 
   <view class='studentLeftBlock'>
     <image src="../../../../resources/img/user.png" class='userIcon' />
     <span class="studentName">李xx</span>
-    <image src="红叉.png" class='redCancelIcon' />
-  </view>
-
-  <!--空白添加学生的块-->
-  <view class='studentRightBlock'>
-    <image src="加号.png" class='addIcon' />
   </view>
 
 
@@ -69,26 +62,5 @@
     <span class="groupTopics">选题：</span>
   </view>
 
-
-  <!--迟到学生上面那个蓝色的bar-->
-  <view class='studentNoCallBarView'>
-    <span>未签到学生</span>
-  </view>
-
-  <!--未签到学生，要增加新学生复制一个view，修改名字-->
-  <view class='studentLeftBlock'>
-    <image src="../../../../resources/img/user.png" class='userIcon' />
-    <span class="studentName">杨xx</span>
-  </view>
-
-  <view class='studentRightBlock'>
-    <image src="../../../../resources/img/user.png" class='userIcon' />
-    <span class="studentName">周xx</span>
-  </view>
-
-  <view class='studentLeftBlock'>
-    <image src="../../../../resources/img/user.png" class='userIcon' />
-    <span class="studentName">李xx</span>
-  </view>
 
 </page>
