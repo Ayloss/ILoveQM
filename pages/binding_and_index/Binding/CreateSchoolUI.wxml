@@ -1,0 +1,14 @@
+<!--pages/binding & index/Binding/CreateSchoolUI.wxml-->
+<page>
+  <image src='../../../resources/img/灯.png' class='topLight'></image>
+  <text class='topTips'>创建学校</text>
+  <image src='../../../resources/img/线.png' class='topLine'></image>
+  <image src='../../../resources/img/背景.png' class='topBoardView'></image>
+  <view class='mainView'>
+    <text class='schoolName'>学校名：</text>
+    <input class='inputSchool'></input>
+    <image src='../../../resources/img/提示.png' class='tipIcon'></image>
+    <text class='tipFont'>提交后不能修改</text>
+    <button class='confirmButton'>创建</button>
+  </view>
+</page>

@@ -21,12 +21,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
 					"name": "class-manage",
-					"pathName": "pages/class-manage/class-manage",
+					"pathName": "pages/Teacher/class-manage/class-manage",
 					"query": ""
 				},
 				{
@@ -54,15 +54,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "老师随机签到",
-					"pathName": "pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "老师固定签到",
-					"pathName": "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedRollStartCall",
+					"id": 5,
+					"name": "绑定",
+					"pathName": "pages/binding_and_index/Binding/ChooseCharacter",
 					"query": ""
 				}
 			]

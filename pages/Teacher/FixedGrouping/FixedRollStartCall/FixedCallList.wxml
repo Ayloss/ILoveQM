@@ -30,12 +30,12 @@
   </view>
 
   <view class='studentRightBlock'>
-    <image src="../../resources/img/user.png" class='userIcon' />
+    <image src="../../../../resources/img/user.png" class='userIcon' />
     <span class="studentName">周xx</span>
   </view>
 
   <view class='studentLeftBlock'>
-    <image src="../../resources/img/user.png" class='userIcon' />
+    <image src="../../../../resources/img/user.png" class='userIcon' />
     <span class="studentName">孙xx</span>
   </view>
 

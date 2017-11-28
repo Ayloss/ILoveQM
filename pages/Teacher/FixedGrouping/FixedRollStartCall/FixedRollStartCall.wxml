@@ -43,7 +43,7 @@
     </view>
     <view>
       <button bindtap='onEndCall' class='redBigBtn'>结束签到</button>
-      <button class="greenBigBtn bindtap='onCheckList">查看分组</button>
+      <button class="greenBigBtn" bindtap='onCheckList'>查看分组</button>
     </view>
   </view>
   <view wx:if="{{CallInRollCondition==2}}">

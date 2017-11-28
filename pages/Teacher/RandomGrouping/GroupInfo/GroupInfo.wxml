@@ -40,18 +40,18 @@
   <view class='studentRightBlock'>
     <image src="../../../../resources/img/user.png" class='userIcon' />
     <span class="studentName">王xx</span>
-    <image src="红叉.png" class='redCancelIcon' />
+    <image src="../../../../resources/img/红叉.png" class='redCancelIcon' />
   </view>
 
   <view class='studentLeftBlock'>
     <image src="../../../../resources/img/user.png" class='userIcon' />
     <span class="studentName">李xx</span>
-    <image src="红叉.png" class='redCancelIcon' />
+    <image src="../../../../resources/img/红叉.png" class='redCancelIcon' />
   </view>
 
   <!--空白添加学生的块-->
   <view class='studentRightBlock'>
-    <image src="加号.png" class='addIcon' />
+    <image src="../../../../resources/img/加号.png" class='addIcon' />
   </view>
 
 

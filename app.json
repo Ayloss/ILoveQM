@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/class-manage/class-manage",
+    "pages/Teacher/class-manage/class-manage",
     "pages/fixed-roll-start-call/fixed-roll-start-call",
     "pages/group-info/group-info",
     "pages/roll-call-list/roll-call-list",
@@ -11,7 +11,15 @@
     "pages/Teacher/RandomGrouping/GroupInfo/GroupInfo",
     "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedRollStartCall",
     "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedCallList",
-    "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedGroupInfo"
+    "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedGroupInfo",
+    "pages/binding_and_index/Teacher_MainUI/CheckTeacherInfoUI",
+    "pages/binding_and_index/Teacher_MainUI/Teacher_MainUI",
+    "pages/binding_and_index/Student_MainUI/Student_MainUI",
+    "pages/binding_and_index/Student_MainUI/CheckStudentInfoUI",
+    "pages/binding_and_index/Binding/ChooseCharacter",
+    "pages/binding_and_index/Binding/CreateSchoolUI",
+    "pages/binding_and_index/Binding/TeacherBindingUI",
+    "pages/binding_and_index/Binding/StudentBindingUI"
   ],
   "window": {
     "backgroundTextStyle": "light",

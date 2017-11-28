@@ -1,4 +1,4 @@
-// pages/class-management/class-manage.js
+// pages/binding & index/Binding/TeacherBindingUI.js
 Page({
 
   /**
