@@ -1,0 +1,50 @@
+<import class="score.wxss"/>
+
+<view class="seminarblock">	
+  <span class="column0"><image class="seminarimg" src="../../../../resources/img/users.png" /></span>
+  <label class='greyword'>请为别的小组展示打分</label>
+</view>
+
+<view class="middlediv scoremargin">
+<view>
+    <label class='la'>A1</label>
+    <image src="../../../../resources/img/heart_chosen.png" />
+      <image src="../../../../resources/img/heart_chosen.png" />
+      <image src="../../../../resources/img/heart_chosen.png" />
+      <image src="../../../../resources/img/heart_chosen.png" />
+      <image src="../../../../resources/img/heart_chosen.png" />     
+</view>
+<view>
+  <label>A2</label>
+  <image src="../../../../resources/img/heart_chosen.png" />
+    <image src="../../../../resources/img/heart_chosen.png" />
+    <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />     
+</view>
+<view>
+  <label>A3</label>
+  <image src="../../../../resources/img/heart_chosen.png" />
+    <image src="../../../../resources/img/heart_chosen.png" />
+    <image src="../../../../resources/img/heart_chosen.png" />
+    <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />     
+</view>     
+<view>
+  <label>B1</label>
+  <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />     
+</view>
+<view>
+  <label>B2</label>
+  <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />
+    <image src="../../../../resources/img/heart_empty.png" />     
+</view>
+<button class="btnsubmit">提交</button>
+ </view>

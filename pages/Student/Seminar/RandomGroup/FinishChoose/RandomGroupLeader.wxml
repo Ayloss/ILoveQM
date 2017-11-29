@@ -1,0 +1,38 @@
+<import class="grouplist.wxss"/>
+
+<view>
+
+<view class="seminarblock">  	
+		<span class="column0"><image src="../../../../../resources/img/users.png"></image></span>
+    <label>
+    <label class="seminarword">讨论课</label>
+    <label class="seminarword">随机分组</label>    
+    </label> 
+</view>
+    
+<view class="whiteword">  
+    <span class="column4">分组信息：</span>
+    <span class="column3"><button class="btnquit">辞职</button></span>    
+</view>
+
+<view class='block'>	
+    <span class="column1"><image src="../../../../../resources/img/user.png"></image></span>
+    <view class="column2">
+      <span class="seminarword">name</span>
+      <span class='seminarword'>number</span>
+    </view>
+    <span class="column3 rightblueword">队长</span>  
+</view>
+<view class='block'>	
+    <span class="column1"><image src="../../../../../resources/img/user.png"></image></span>
+    <view class="column2">
+      <span class="seminarword">name</span>
+      <span class='seminarword'>number</span>
+    </view>
+</view>
+
+
+<view class="middlediv">
+  <button class="btnleader">选题</button>
+</view>
+</view>

@@ -19,7 +19,17 @@
     "pages/binding_and_index/Binding/ChooseCharacter",
     "pages/binding_and_index/Binding/CreateSchoolUI",
     "pages/binding_and_index/Binding/TeacherBindingUI",
-    "pages/binding_and_index/Binding/StudentBindingUI"
+    "pages/binding_and_index/Binding/StudentBindingUI",
+    "pages/Student/CourseUI",
+    "pages/Student/Seminar/Scoring/Score",
+    "pages/Student/Seminar/CallRoll/RollCall",
+    "pages/Student/Seminar/RandomGroup/FinishChoose/RandomGroupNoLeader",
+    "pages/Student/Seminar/RandomGroup/FinishChoose/RandomGroupLeader",
+    "pages/Student/Seminar/RandomGroup/FinishChoose/RandomGroupMember",
+    "pages/Student/Seminar/RandomGroup/UnFinishChoose/RandomGroupNoLeader",
+    "pages/Student/Seminar/RandomGroup/UnFinishChoose/RandomGroupLeader",
+    "pages/Student/Seminar/RandomGroup/UnFinishChoose/RandomGroupMember",
+    "pages/Student/Seminar/RandomGroup/ChooseTopic"
   ],
   "window": {
     "backgroundTextStyle": "light",
