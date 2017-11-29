@@ -1,0 +1,21 @@
+	
+<page style="background=#000000">
+	<image src='../../../../resources/img/灯.png' class='topLight'></image>
+  <text class='topTips'>请选择您的账户类型</text>
+  <image src='../../../../resources/img/线.png' class='topLine'></image>
+  <image src='../../../../resources/img/背景.png' class='topBoardView'></image>
+	<view class="box6" style="background-color: =#66CCFF;">
+	<button class="button1" >省份</button>
+	<button class="button1" >州市</button>
+	<button class="button1" >学校</button>
+	</view>
+	<view class="box7" >
+     <view class="box8"><button class="button2" style="">北京</button></view>
+	<view class="box8"><button class="button2" style="">天津</button></view>
+		<view class="box8"><button class="button2" style="">北京</button></view>
+	<view class="box8"><button class="button2" style="">天津</button></view>
+		<view class="box8"><button class="button2" style="">北京</button></view>
+	<view class="box8"><button class="button2" style="">天津</button></view>
+	</view>
+</page>
+	
