@@ -1,4 +1,4 @@
-// pages/Student/Seminar/RandomGroup/FinishChoose/RandomGroupLeader.js
+// pages/binding_and_index/Binding/ChooseSchool/ChooseSchool.js
 Page({
 
   /**
@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  onChooseTopic:function(){
-    wx.navigateTo({
-      url: '../ChooseTopic',
-    })
   }
 })

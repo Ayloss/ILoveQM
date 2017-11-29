@@ -1,4 +1,4 @@
-// pages/roll-call-list/roll-call-list.js
+// pages/Student/Seminar/RandomGroup/FinishChoose/RandomGroupMember.js
 Page({
 
   /**

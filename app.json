@@ -1,10 +1,6 @@
 {
   "pages": [
     "pages/Teacher/class-manage/class-manage",
-    "pages/fixed-roll-start-call/fixed-roll-start-call",
-    "pages/group-info/group-info",
-    "pages/roll-call-list/roll-call-list",
-    "pages/student-roll-call/student-roll-call",
     "pages/Teacher/index/TeacherClass",
     "pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall",
     "pages/Teacher/RandomGrouping/RandomRollStartCall/RollCallList",
@@ -29,7 +25,17 @@
     "pages/Student/Seminar/RandomGroup/UnFinishChoose/RandomGroupNoLeader",
     "pages/Student/Seminar/RandomGroup/UnFinishChoose/RandomGroupLeader",
     "pages/Student/Seminar/RandomGroup/UnFinishChoose/RandomGroupMember",
-    "pages/Student/Seminar/RandomGroup/ChooseTopic"
+    "pages/Student/Seminar/RandomGroup/ChooseTopic",
+    "pages/Student/Seminar/FixedGroup/FinishChoose/FixedGroupNoLeader",
+    "pages/Student/Seminar/FixedGroup/FinishChoose/FixedGroupLeader",
+    "pages/Student/Seminar/FixedGroup/FinishChoose/FixedGroupMember",
+    "pages/Student/Seminar/FixedGroup/UnFinishChoose/FixedGroupNoLeader",
+    "pages/Student/Seminar/FixedGroup/UnFinishChoose/FixedGroupLeader",
+    "pages/Student/Seminar/FixedGroup/UnFinishChoose/FixedGroupMember",
+    "pages/Student/Seminar/FixedGroup/ChooseTopic",
+    "pages/binding_and_index/Binding/ChooseSchool/ChooseSchool",
+    "pages/Student/Seminar/Seminar",
+    "pages/Student/Seminar/CourseInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

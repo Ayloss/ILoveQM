@@ -1,4 +1,4 @@
-// pages/group-info/group-info.js
+// pages/Student/Seminar/RandomGroup/FinishChoose/RandomGroupMember.js
 Page({
 
   /**

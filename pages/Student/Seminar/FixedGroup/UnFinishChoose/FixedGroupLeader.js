@@ -1,4 +1,4 @@
-// pages/fixed-roll-start-call/fixed-roll-start-call.js
+// pages/Student/Seminar/RandomGroup/FinishChoose/RandomGroupLeader.js
 Page({
 
   /**
@@ -62,5 +62,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  onChooseTopic:function(){
+    wx.navigateTo({
+      url: '../ChooseTopic',
+    })
   }
 })

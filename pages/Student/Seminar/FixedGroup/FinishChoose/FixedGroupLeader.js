@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  onChooseTopic:function(){
-    wx.navigateTo({
-      url: '../ChooseTopic',
-    })
   }
 })

@@ -6,7 +6,7 @@
 		<span class="column0"><image src="../../../../../resources/img/users.png"></image></span>
     <label>
     <label class="seminarword">讨论课</label>
-    <label class="seminarword">随机分组</label>    
+    <label class="seminarword">固定分组</label>    
     </label> 
 </view>
     
@@ -33,6 +33,6 @@
 
 
 <view class="middlediv">
-  <button class="btnleader" bindtap='onChooseTopic'>选题</button>
+  <button class="btnleader">选题</button>
 </view>
 </view>
