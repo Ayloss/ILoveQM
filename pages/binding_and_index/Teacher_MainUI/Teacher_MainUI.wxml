@@ -1,2 +1,30 @@
-<!--pages/binding & index/Teacher_MainUI/Teacher_MainUI.wxml-->
-<text>pages/binding & index/Teacher_MainUI/Teacher_MainUI.wxml</text>
+<page>
+  <image src='../../../resources/img/users.png' class='topHead'></image>
+  <text class='topName'>姓名：{{userName}}</text>
+  <text class='topID'>教工号：{{teacherID}}</text>
+  <image src='../../../resources/img/背景.png' class='topBoardView'></image>
+
+  <view class="blueButton">
+
+    <text class="Text1"> J2EE</text>
+    
+  </view>
+
+  <view class="blueButton">
+  
+    <text class="Text1"> 操作系统</text>
+
+  </view>
+
+  <view class="blueButton">
+  
+    <text class="Text1"> OOAD</text>
+
+  </view>
+
+  <view class="blueButton">
+  
+    <text class="Text1"> 数据仓库</text>
+
+  </view>
+</page>

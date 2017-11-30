@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    userName:"韦小宝",
+    studentID:"24320152202991",
+    phoneNum:"18159215924",
+    school:"厦门大学"
   },
 
   /**

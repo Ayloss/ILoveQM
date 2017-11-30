@@ -1,2 +1,15 @@
-<!--pages/binding & index/Teacher_MainUI/CheckTeacherInfoUI.wxml-->
-<text>pages/binding & index/Teacher_MainUI/CheckTeacherInfoUI.wxml</text>
+<!--pages/binding & index/Student_MainUI/CheckStudentInfoUI.wxml-->
+<page>
+  <image src='../../../resources/img/users.png' class='topHead'></image>
+  <text class='topClickHead'>点击头像修改</text>
+  <text class='topName'>姓名：{{userName}}</text>
+  <text class='topID'>教工号：{{teacherID}}</text>
+  <image src='../../../resources/img/背景.png' class='topBoardView'></image>
+  <view class='mainView'>
+    <text class='phone'>手机号：{{phoneNum}}</text>
+    <text class='ID'>教工号：{{teacherID}}</text>
+    <text class='school'>学校：{{school}}</text>
+    <text class='name'>姓名：{{userName}}</text>
+    <button class='confirmButton'>解绑</button>
+  </view>
+</page>
