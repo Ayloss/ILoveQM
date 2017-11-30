@@ -1,0 +1,100 @@
+/* pages/index/StudentMainUI.wxss */
+/*上方的风景模块*/
+.topBoardView
+{
+    width: 100%;
+    height: 300rpx;
+}
+.topIcon
+{
+  position:absolute;
+  width:100%;
+  height:300rpx;
+  z-index:1;
+}
+/*上面的头像*/
+.topHead
+{
+  position: absolute;
+  height: 12%;
+  width: 20%;
+  margin-left: 5%;
+  margin-top:5%;
+  z-index: 3;
+}
+/*上面的姓名*/
+.topName
+{
+  position:absolute;
+  font-size: 30rpx;
+  margin-left: 30%;
+  margin-top:10%;
+  z-index: 2;
+}
+/*上面的ID*/
+.topID
+{
+  position:absolute;
+  position:absolute;
+  font-size: 30rpx;
+  margin-left: 30%;
+  margin-top:18%;
+  z-index: 2;
+}
+/*  StudentMainUI 的人物头像icon */
+.UserPicture{
+  position:absolute;
+  width:80rpx;height:80rpx;
+  margin-left: 12%;
+  margin-top: 10%;
+}
+/* StudentMainUI 的背景图 */
+.BackGroundPicture{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+/* 主标题蓝色顶条的view */
+.topView
+{
+	width:100%;
+	height:150px;
+	position:relative;
+	background-color: #66CCFF;
+}
+/* button左侧文字 */
+.Text1
+{
+	font-size: 6vw;
+	position: absolute;
+	color: #FFFFFF;
+	height: 10px;
+	margin-left: 10%;
+	margin-top: 60rpx;
+}
+/* 标题文字 */
+.topText{
+	margin-left: 30%;
+	color: #000000;
+	margin-top: 8%;
+	font-size: 2vw;
+}
+/* 老师名字 */
+.Text2{
+	font-size: 4vw;
+	position: absolute;
+	color: #666666;
+	margin-left: 60%;
+	margin-top: 11%;
+}
+/*box3 蓝色选择框*/
+.blueButton{
+	position:relative;
+	margin-left: 5%;
+	width: 90%;
+	background-color:#66CCFF;
+	margin-top: 5%;
+	padding-bottom: 25%;
+    border-radius: 15px;
+}

@@ -1,0 +1,30 @@
+<!--TeacherCourse.wxml-->
+<view class="container">
+  <view class="container1">
+    <view class='header'>
+      <text class="title">OOAD</text>
+      <text>讨论课4</text>
+    </view>
+  </view>
+  <view class='main-content'>
+    <icon type='waiting'></icon>
+    <text>11月6日-11月12日</text>
+    <icon type='info'></icon>
+    <text>随机分组</text>
+    <view>
+      <image src='test.png' bindtap='bindClassTap'>
+      </image>
+      <text>班级1</text>
+    </view>
+    <view>
+      <image src='test.png' bindtap='bindClassTap'>
+      </image>
+      <text>班级2</text>
+    </view>
+    <view>
+      <image src='test.png' bindtap='bindClassTap'>
+      </image>
+      <text>班级3</text>
+    </view>
+  </view>
+</view>

@@ -21,12 +21,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
 					"name": "class-manage",
-					"pathName": "pages/class-manage/class-manage",
+					"pathName": "pages/Teacher/class-manage/class-manage",
 					"query": ""
 				},
 				{
@@ -51,6 +51,18 @@
 					"id": -1,
 					"name": "group-info",
 					"pathName": "pages/group-info/group-info",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "绑定",
+					"pathName": "pages/binding_and_index/Teacher_MainUI/Teacher_MainUI",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "学生",
+					"pathName": "pages/Student/Seminar/CourseInfo",
 					"query": ""
 				}
 			]

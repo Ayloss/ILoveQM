@@ -1,0 +1,66 @@
+<!--pages/group-info/group-info.wxml-->
+<page>
+  <!--设置左上角的usersIcon-->
+  <view class="blueUsersView">
+    <image src="../../../../resources/img/users.png" class='blueUsersIcon' />
+    <strong>队伍信息</strong>
+  </view>
+
+
+  <!--细线，hr不好设置css，用一个高度很小的view来代替-->
+  <view class="hrView">
+  </view>
+
+
+  <!--学生名单上面那个蓝色的bar-->
+  <view class='studentListBarView'>
+    <span>队伍1</span>
+    <span class="groupTopics">选题：</span>
+  </view>
+
+  <!--学生块，分为左边的和右边的，增加学生的时候选择好左边或者
+右边后直接复制就好，之后在span下面修改学生名字-->
+  <view class='studentLeftBlock'>
+    <image src="../../../../resources/img/user.png" class='userIcon' />
+    <span class="studentName">杨xx</span>
+  </view>
+
+  <view class='studentRightBlock'>
+    <image src="../../../../resources/img/user.png" class='userIcon' />
+    <span class="studentName">周xx</span>
+  </view>
+
+  <view class='studentLeftBlock'>
+    <image src="../../../../resources/img/user.png" class='userIcon' />
+    <span class="studentName">孙xx</span>
+  </view>
+
+
+  <!--加入红叉的学生块-->
+  <view class='studentRightBlock'>
+    <image src="../../../../resources/img/user.png" class='userIcon' />
+    <span class="studentName">王xx</span>
+  </view>
+
+  <view class='studentLeftBlock'>
+    <image src="../../../../resources/img/user.png" class='userIcon' />
+    <span class="studentName">李xx</span>
+  </view>
+
+
+  <!--学生名单上面那个蓝色的bar-->
+  <view class='studentListBarView'>
+    <span>队伍2</span>
+    <span class="groupTopics">选题：</span>
+  </view>
+  <view class='studentListBarView'>
+    <span>队伍3</span>
+    <span class="groupTopics">选题：</span>
+  </view>
+  <view class='studentListBarView'>
+    <span>队伍4</span>
+    <span class="groupTopics">选题：</span>
+  </view>
+
+
+</page>

@@ -1,0 +1,156 @@
+/* StudentBindingUI.wxss */
+/*上方的风景模块*/
+.topBoardView
+{
+    width: 100%;
+    height: 300rpx;
+}
+.topIcon
+{
+  position:absolute;
+  width:100%;
+  height:300rpx;
+  z-index:1;
+}
+/*上面的灯*/
+.topLight
+{
+  position: absolute;
+  height: 8%;
+  width: 12%;
+  margin-left: 5%;
+  margin-top:5%;
+  z-index: 2;
+}
+/*上面的线*/
+.topLine
+{
+  position:absolute;
+  width:60%;
+  height: 1%;
+  left: 8%;
+  top:12%;
+  z-index: 2;
+}
+/*上面的提示框*/
+.topTips
+{
+  position:absolute;
+  font-size: 30rpx;
+  margin-left: 20%;
+  margin-top:10%;
+  z-index: 2;
+}
+/*下方的主要选择页面*/
+.mainView
+{
+  background-color: #8cd7ff;
+  width:100%;
+  height: 1000rpx;
+}
+/*教工号的标签*/
+.studentID
+{
+  position:absolute;
+  font-size: 40rpx;
+  left:20%;
+  top:40%;
+  z-index: 2;
+}
+/*姓名的标签*/
+.name
+{
+  position:absolute;
+  font-size: 40rpx;
+  left:20%;
+  top:52%;
+  z-index: 2;
+}
+/*学校的标签*/
+.school
+{
+  position:absolute;
+  font-size: 40rpx;
+  left:20%;
+  top:62%;
+  z-index: 2;
+}
+/*教工号输入框*/
+.inputStudentID
+{
+  position:absolute;
+  background: #fff;
+  width: 300rpx;
+  height: 90rpx;
+  font-size:40rpx;
+  left:39%;
+  top:38%;
+  z-index:2;
+  border-radius: 20rpx;
+}
+/*姓名输入框*/
+.inputName
+{
+  position:absolute;
+  background: #fff;
+  width: 300rpx;
+  height: 90rpx;
+  font-size:40rpx;
+  left:39%;
+  top:52%;
+  z-index:2;
+  border-radius: 20rpx;
+}
+/*学校输入框*/
+.inputSchool
+{
+  position:absolute;
+  background: #fff;
+  width: 300rpx;
+  height: 90rpx;
+  font-size:40rpx;
+  left:39%;
+  top:62%;
+  z-index:2;
+  border-radius: 20rpx;
+}
+/*确定按钮*/
+.confirmButton
+{
+  width:280rpx;
+  height:120rpx;
+  font-size: 50rpx;
+  border-radius: 40rpx;
+  top:62%;
+}
+/*提示图标*/
+.tipIcon
+{
+  position: absolute;
+  width: 5%;
+  height: 3%;
+  left: 40%;
+  top:47%;
+  z-index: 2;
+}
+/*提示文字自体*/
+.tipFont
+{
+  position: absolute;
+  font-size: 28rpx;
+  color: red;
+  left: 48%;
+  top:47%;
+  z-index: 2;
+}
+/*选择学校按钮*/
+.selectSchoolIcon
+{
+  position:absolute;
+  background: #fff;
+  width: 90rpx;
+  height: 90rpx;
+  left:64%;
+  top:62%;
+  z-index:2;
+}
