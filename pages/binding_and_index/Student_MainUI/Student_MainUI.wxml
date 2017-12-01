@@ -1,34 +1,12 @@
 <page>
-  <view class="box5" style="position:relative;">
-    <!-- 背景图的view -->
-    <image class="img2" src="../../../../resources/img/背景.png"  />
-    <image class="img1" src="../../../../resources/img/人物头像【三元素 为设计而生 3png.com】.png"  />
-    <view class="FONT4" style="position:absolute; z-index:2; top:10px">姓名：韦小宝</view>
+  <image src='../../../resources/img/users.png' class='topHead' bindtap='onCheckInfo'></image>
+  <text class='topName' bindtap='onCheckInfo'>姓名：{{userName}}</text>
+  <text class='topID' bindtap='onCheckInfo'>学号：{{studentID}}</text>
+  <image src='../../../resources/img/背景.png' class='topBoardView'></image>
 
-    <view class="FONT4" style="position:absolute; z-index:2; top:40px">学号：243201522xxxxx</view>
+  <view wx:for="{{courseInfo}}" class="blueButton" data-course-obj="{{item}}" bindtap='onClickCourse'>
+    <text class="FONT11"> {{item.courseName}}</text>
+    <text class="FONT51"> 老师：{{item.teacherName}}</text>
   </view>
 
-  <view class="box3">
-
-    <text class="FONT11"> J2EE</text>
-    <text class="FONT51"> 老师：邱明</text>
-  </view>
-
-  <view class="box3">
-  
-    <text class="FONT11"> 操作系统</text>
-    <text class="FONT51"> 老师：吴清强</text>
-  </view>
-
-  <view class="box3">
-  
-    <text class="FONT11"> OOAD</text>
-    <text class="FONT51"> 老师：邱明</text>
-  </view>
-
-  <view class="box3">
-  
-    <text class="FONT11"> 软件工程导论</text>
-    <text class="FONT51"> 老师：王美红</text>
-  </view>
 </page>

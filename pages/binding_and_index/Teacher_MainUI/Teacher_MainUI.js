@@ -8,7 +8,8 @@ Page({
     userName: "邱明",
     teacherID: "2312312423",
     phoneNum: "18159215924",
-    school: "厦门大学"
+    school: "厦门大学",
+    courseList: ["J2EE", "操作系统", "OOAD","数据仓库"]
   },
 
   /**
@@ -65,5 +66,18 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  onClickClass:function(e){
+    console.log(e.currentTarget.dataset.courseObj);
+    wx.navigateTo({
+      url: '../../Teacher/class-manage/class-manage?courseName=' + JSON.stringify(e.currentTarget.dataset.courseObj),
+    })
+  },
+
+  onCheckInfo:function(){
+    wx.navigateTo({
+      url: './CheckTeacherInfoUI',
+    })
   }
 })

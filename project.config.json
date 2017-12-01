@@ -9,7 +9,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.0",
-	"appid": "touristappid",
+	"appid": "wx16e28a7d888b1961",
 	"projectname": "%E8%AF%BE%E5%A0%82%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%AB%AF",
 	"condition": {
 		"search": {
@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -62,7 +62,13 @@
 				{
 					"id": 6,
 					"name": "学生",
-					"pathName": "pages/Student/Seminar/CourseInfo",
+					"pathName": "pages/binding_and_index/Student_MainUI/Student_MainUI",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "老师",
+					"pathName": "pages/binding_and_index/Teacher_MainUI/Teacher_MainUI",
 					"query": ""
 				}
 			]

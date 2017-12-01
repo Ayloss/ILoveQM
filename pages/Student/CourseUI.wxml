@@ -1,6 +1,6 @@
 <page class="page">
 <view class="head20">
-	<text class="FONT1"> OOAD</text>
+	<text class="FONT1"> {{courseName}}</text>
 	</view>
 <view class="box3">
 	<text class="FONT12" > 讨论课4</text><!--蓝色选择框-->
