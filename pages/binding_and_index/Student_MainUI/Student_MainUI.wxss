@@ -1,62 +1,105 @@
 /* pages/index/StudentMainUI.wxss */
 
+/* pages/index/StudentMainUI.wxss */
+/*上方的风景模块*/
+.topBoardView
+{
+    width: 100%;
+    height: 300rpx;
+}
+.topIcon
+{
+  position:absolute;
+  width:100%;
+  height:300rpx;
+  z-index:1;
+}
+/*上面的头像*/
+.topHead
+{
+  position: absolute;
+  height: 12%;
+  width: 20%;
+  margin-left: 5%;
+  margin-top:5%;
+  z-index: 3;
+}
+/*上面的姓名*/
+.topName
+{
+  position:absolute;
+  font-size: 30rpx;
+  margin-left: 30%;
+  margin-top:10%;
+  z-index: 2;
+}
+/*上面的ID*/
+.topID
+{
+  position:absolute;
+  position:absolute;
+  font-size: 30rpx;
+  margin-left: 30%;
+  margin-top:18%;
+  z-index: 2;
+}
 /*  StudentMainUI 的人物头像icon */
-.img1{
+.UserPicture{
   position:absolute;
   width:80rpx;height:80rpx;
   margin-left: 12%;
   margin-top: 10%;
 }
 /* StudentMainUI 的背景图 */
-.img2{
+.BackGroundPicture{
   position:absolute;
   width:100%;
   height:100%;
 }
-/* 人物头像icon */
-.img3{
-  float: left;margin-left: 16%;margin-top: 1%;
-  width:34rpx ;
-  height: 34rpx;
-}
-/* 邮件icon */
-.img4{
-  float: left;margin-left: 15%;margin-top: 2%;
-  width:42rpx ;
-  height:34rpx;
-}
-/* 房子icon */
-.img5{
-  width:34rpx;
-  height:34rpx;
-  float: left;margin-left: 16%;margin-top: 2%;
-}
-.img6{
-  width:34rpx;
-   height:34rpx;
-   float: left;margin-left: 16%;margin-top: 2%;
-}
 
-/* img7 灯泡 */
-.img7{
-  position:absolute;margin-left: 15%;margin-top: 8%;
-  width:9%;
-  height:19%;
-}
-/* img8 背景 */
-.img8{
-  width:100%;
-  height:100%;
-}
-/*page的 基本*/
-.body{
-	height: 100%
-}
-.fullbackground
+/* 主标题蓝色顶条的view */
+.topView
 {
-	background-color: #66CCFF
+	width:100%;
+	height:150px;
+	position:relative;
+	background-color: #66CCFF;
 }
-
+/* button左侧文字 */
+.Text1
+{
+	font-size: 6vw;
+	position: absolute;
+	color: #FFFFFF;
+	height: 10px;
+	margin-left: 10%;
+	margin-top: 60rpx;
+}
+/* 标题文字 */
+.topText{
+	margin-left: 30%;
+	color: #000000;
+	margin-top: 8%;
+	font-size: 2vw;
+}
+/* 老师名字 */
+.Text2{
+	font-size: 4vw;
+	position: absolute;
+	color: #666666;
+	margin-left: 60%;
+	margin-top: 11%;
+}
+/*box3 蓝色选择框*/
+.blueButton{
+	position:relative;
+	margin-left: 5%;
+	width: 90%;
+	background-color:#66CCFF;
+	margin-top: 5%;
+	padding-bottom: 25%;
+    border-radius: 15px;
+}
 /* 主标题蓝色顶条的view */
 .head20
 {
@@ -171,89 +214,3 @@
 	
 }
 
-.box2
-{
-	position:relative;
-	float: right;
-	margin-right: 5%;
-	background-color:#66CCFF;
-	margin-top: 5%;
-	width: 40%;
-	padding-bottom: 85%;
-	border-radius: 15px;
-}
-/*box3 蓝色选择框*/
-.box3{
-	position:relative;
-	margin-left: 5%;
-	width: 90%;
-	background-color:#66CCFF;
-	margin-top: 5%;
-	padding-bottom: 25%;
-    border-radius: 15px;
-}
-/*box4 灰色选择框*/
-.box4{
-	position:relative;
-	margin-left: 5%;
-	width: 90%;
-	background-color:#CCCCCC;
-	margin-top: 5%;
-	padding-bottom: 25%;
-    border-radius: 15px;
-	
-}
-/* box5 背景图的view*/
-.box5{
-	left: 0rpx;
-	position:absolute;
-	width: 100%;
-	height: 300rpx;
-}
-/* box6 省份、州市、学校 标题蓝条*/
-.box6{
-	position:absolute;
-	left: 0px;
-	width: 100%;
-	height: 11%;
-	background-color: #66CCFF;
-}
-/* box7 省份、州市、学校的选择view*/
-.box7{
-	position:absolute;
-	background-color: #ffffff;
-	left: 0px;
-	width: 100%;
-	height: 50%;
-	margin-top: 15%;
-}
-/* button1 省份、州市、学校 的按钮*/
-.button1{
-	background-color: #66CCFF;
-	font-size: 3vw;
-	position: relative;
-	border:none;
-	text-align: center;
-	display: inline-block;
-	padding: 15px 32px;
-	height: 100%;
-	width: 32%;
-	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.1);
-}
-.box8{
-	left: 0px;
-	width: 100%;
-	height: 50px;
-}
-/* button2 选择某个城市、学校 的按钮*/
-.button2{
-	background-color: #ffffff;
-	color:#000000;
-	font-size: 3vw;
-	border:none;
-	display: inline-block;
-	padding: 13px;
-	margin-top: 1%;
-	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.1);
-	width:100%;
-}

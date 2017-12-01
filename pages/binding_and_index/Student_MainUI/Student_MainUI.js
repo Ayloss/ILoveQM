@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    userName:"韦小宝",
+    studentID:"24320152202890",
+    courseInfo: [{courseName:"J2EE",teacherName:"邱明"},
+      { courseName: "操作系统", teacherName: "吴清强" },
+      { courseName: "OOAD", teacherName: "邱明" },
+      { courseName: "软件工程导论", teacherName: "王美红" },
+    ]
   },
 
   /**
@@ -62,5 +68,17 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  onCheckInfo:function(){
+    wx.navigateTo({
+      url: './CheckStudentInfoUI',
+    })
+  },
+
+  onClickCourse:function(e){
+    wx.navigateTo({
+      url: '../../Student/CourseUI?courseName='+JSON.stringify(e.currentTarget.dataset.courseObj.courseName),
+    })
   }
 })

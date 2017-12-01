@@ -1,30 +1,10 @@
 <page>
-  <image src='../../../resources/img/users.png' class='topHead'></image>
-  <text class='topName'>姓名：{{userName}}</text>
-  <text class='topID'>教工号：{{teacherID}}</text>
+  <image src='../../../resources/img/users.png' class='topHead' bindtap='onCheckInfo'></image>
+  <text class='topName' bindtap='onCheckInfo'>姓名：{{userName}}</text>
+  <text class='topID' bindtap='onCheckInfo'>教工号：{{teacherID}}</text>
   <image src='../../../resources/img/背景.png' class='topBoardView'></image>
 
-  <view class="blueButton">
-
-    <text class="Text1"> J2EE</text>
-    
-  </view>
-
-  <view class="blueButton">
-  
-    <text class="Text1"> 操作系统</text>
-
-  </view>
-
-  <view class="blueButton">
-  
-    <text class="Text1"> OOAD</text>
-
-  </view>
-
-  <view class="blueButton">
-  
-    <text class="Text1"> 数据仓库</text>
-
+  <view wx:for="{{courseList}}" class="blueButton" data-course-obj="{{item}}" bindtap='onClickClass'>
+    <text class="Text1"> {{item}}</text>
   </view>
 </page>
