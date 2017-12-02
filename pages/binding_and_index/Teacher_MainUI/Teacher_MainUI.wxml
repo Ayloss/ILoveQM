@@ -1,10 +1,10 @@
 <page>
-  <image src='../../../resources/img/users.png' class='topHead' bindtap='onCheckInfo'></image>
+  <image src='/resources/img/users.png' class='topHead' bindtap='onCheckInfo'></image>
   <text class='topName' bindtap='onCheckInfo'>姓名：{{userName}}</text>
   <text class='topID' bindtap='onCheckInfo'>教工号：{{teacherID}}</text>
-  <image src='../../../resources/img/背景.png' class='topBoardView'></image>
+  <image src='/resources/img/background.png' class='topBoardView'></image>
 
   <view wx:for="{{courseList}}" class="blueButton" data-course-obj="{{item}}" bindtap='onClickClass'>
-    <text class="Text1"> {{item}}</text>
+    <text class="Text1"> {{item.name}}</text>
   </view>
 </page>

@@ -5,15 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    courseID:0,
     courseName:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  //这里问题很大，还不清楚此页面的url
   onLoad: function (options) {
     this.setData({
-      courseName: JSON.parse(options.courseName)
+      courseID: JSON.parse(options.courseID)
     })
   },
 

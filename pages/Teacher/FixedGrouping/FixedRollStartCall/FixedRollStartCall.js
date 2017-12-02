@@ -1,17 +1,33 @@
 // pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall.js
+var app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    CallInRollCondition:0
+    CallInRollCondition:0,
+    studentNum:0,
+    classID:1,
+    className:"",
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var self = this;
+    var getIPPort = app.globalData.IPPort;
+    wx.request({
+      url: getIPPort + '/class' + '/' + self.data.classID,
+      method: 'GET',
+      success: function (res) {
+        console.log(res)
+        self.setData({
+          className: res.data.name,
+          studentNum: res.data.numStudent
+        })
+      }
+    })
   },
 
   /**
@@ -39,7 +55,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
   },
 
   /**
@@ -64,6 +79,18 @@ Page({
   },
 
   onStartCall:function(){
+    var self = this;
+    var getIPPort = app.globalData.IPPort;
+    wx.request({
+      url: getIPPort + '/class' + '/' + self.data.classID,
+      method:'PUT',
+      data:{
+        calling:"false"
+      },
+      success:function(res){
+        console.log(res)
+      }
+    })
     this.setData({
       CallInRollCondition: 1
     })
@@ -92,9 +119,9 @@ Page({
     })
   },
 
-  onCheckList:function(){
+  onCheckList:function(e){
     wx.navigateTo({
-      url: './FixedGroupInfo',
+      url: './FixedGroupInfo' + '?' + this.data.classID,
     })
   }
 })

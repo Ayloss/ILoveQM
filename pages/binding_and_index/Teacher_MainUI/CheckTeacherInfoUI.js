@@ -1,13 +1,14 @@
 // pages/binding & index/Teacher_MainUI/CheckTeacherInfoUI.js
+var app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userName: "邱明",
-    teacherID: "2312312423",
-    phoneNum: "18159215924",
+    userName: "",
+    teacherID: "",
+    phoneNum: "",   //这里的手机号码url还有问题
     school: "厦门大学"
   },
 
@@ -15,7 +16,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var getIPPort = app.globalData.IPPort;
+    var self = this;
+    wx.request({
+      url: getIPPort+'/me',
+      //header: { 'Content-Type': wx.getStorage('jwt') },
+      method: 'GET',
+      success:function(result){
+        //console.log(result)
+        self.setData({
+          userName:result.data.name,
+          teacherID: result.data.number,
+          phoneNum: result.data.number,
+        })
+      }
+    })
   },
 
   /**
