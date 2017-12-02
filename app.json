@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/Teacher/class-manage/class-manage",
-    "pages/Teacher/index/TeacherClass",
     "pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall",
     "pages/Teacher/RandomGrouping/RandomRollStartCall/RollCallList",
     "pages/Teacher/RandomGrouping/GroupInfo/GroupInfo",
@@ -17,6 +16,7 @@
     "pages/binding_and_index/Binding/TeacherBindingUI",
     "pages/binding_and_index/Binding/StudentBindingUI",
     "pages/Student/CourseUI",
+    "pages/Teacher/CourseUI",
     "pages/Student/Seminar/Scoring/Score",
     "pages/Student/Seminar/CallRoll/RollCall",
     "pages/Student/Seminar/RandomGroup/FinishChoose/RandomGroupNoLeader",

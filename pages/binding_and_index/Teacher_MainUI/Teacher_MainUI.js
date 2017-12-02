@@ -1,22 +1,44 @@
 // pages/binding & index/Teacher_MainUI/Teacher_MainUI.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userName: "邱明",
-    teacherID: "2312312423",
-    phoneNum: "18159215924",
-    school: "厦门大学",
-    courseList: ["J2EE", "操作系统", "OOAD","数据仓库"]
+    userName: "",
+    teacherID: "",
+    courseList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var getIPPort = app.globalData.IPPort;
+    var self = this;
+    wx.request({
+      url: getIPPort + '/me',
+      //header: { 'Content-Type': wx.getStorage('jwt') },
+      method:'GET',
+      success: function (result) {
+        //console.log(result)
+        self.setData({
+          userName: result.data.name,
+          teacherID: result.data.number,
+        })
+      }
+    });
+    wx.request({
+      url: getIPPort+'/course',
+      method:'GET',
+      success:function(res){
+        //console.log(res)
+        self.setData({
+          courseList:res.data
+        })
+      }
+    })
   },
 
   /**
@@ -69,9 +91,9 @@ Page({
   },
 
   onClickClass:function(e){
-    console.log(e.currentTarget.dataset.courseObj);
-    wx.navigateTo({
-      url: '../../Teacher/class-manage/class-manage?courseName=' + JSON.stringify(e.currentTarget.dataset.courseObj),
+    //console.log(e.currentTarget.dataset.courseObj.id);
+    wx.navigateTo({//这个传参还不确定
+      url: '../../Teacher/CourseUI?courseID=' + JSON.stringify(e.currentTarget.dataset.courseObj.id),
     })
   },
 

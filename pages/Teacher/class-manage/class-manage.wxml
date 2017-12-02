@@ -2,7 +2,7 @@
 <page>
   <!--设置蓝色上方-->
   <view class='blueHeader'>
-    <span>{{className}}</span>
+    <span>{{courseName}}</span>
     <span class="seminarText">讨论课4</span>
   </view>
   <!--讨论课的时间和分组方式-->

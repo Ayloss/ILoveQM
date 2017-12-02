@@ -1,11 +1,18 @@
 // pages/class-management/class-manage.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    className:"OOAD"
+    courseID:0,
+    courseName:"",
+    seminarID:0,
+    seminarName:"",
+    groupingMethod:"",
+    startTime: "2017-09-25",
+    endTime: "2017-10-09"
   },
 
   /**
@@ -13,7 +20,22 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      className: JSON.parse(options.courseName)
+      courseID: JSON.parse(options.courseID)
+    })
+    var getIPPort = app.globalData.IPPort;
+    var courseID = this.data.courseID;
+    var self = this;
+    //console.log(courseID);
+    //course信息
+    wx.request({
+      url: getIPPort + '/course' + '/' + courseID,
+      method:'GET',
+      success:function(res){
+        console.log(res.data.name)
+        self.setData({
+          courseName: res.data.name
+        })
+      }
     })
   },
 

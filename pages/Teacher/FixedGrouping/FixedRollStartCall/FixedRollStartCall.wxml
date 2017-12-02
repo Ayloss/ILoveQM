@@ -8,12 +8,12 @@
 
   <!--班级1 的字样-->
   <view class='classNameView'>
-    班级1
+    {{className}}
   </view>
 
   <!--学生总数：40 的字样-->
   <view class='studentSumView'>
-    学生总数: 40
+    学生总数: {{studentNum}}
   </view>
 
   <!--细线，hr不好设置css，用一个高度很小的view来代替-->
@@ -28,7 +28,7 @@
       <button class="blueBigBtn" bindtap='onStartCall'>开始签到</button>
     </view>
     <view>
-      <button type="button" class="greenBigBtn" bindtap='onCheckList'>
+      <button type="button" data-classID-obj="{{classID}}"class="greenBigBtn" bindtap='onCheckList'>
         查看分组
       </button>
     </view>

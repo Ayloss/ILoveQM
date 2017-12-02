@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -21,36 +21,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
 					"name": "class-manage",
 					"pathName": "pages/Teacher/class-manage/class-manage",
-					"query": ""
-				},
-				{
-					"id": 1,
-					"name": "fixed-roll-start-call",
-					"pathName": "pages/fixed-roll-start-call/fixed-roll-start-call",
-					"query": ""
-				},
-				{
-					"id": 2,
-					"name": "roll-call-list",
-					"pathName": "pages/roll-call-list/roll-call-list",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "student-roll-call",
-					"pathName": "pages/student-roll-call/student-roll-call",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "group-info",
-					"pathName": "pages/group-info/group-info",
 					"query": ""
 				},
 				{
@@ -60,15 +36,15 @@
 					"query": ""
 				},
 				{
-					"id": 6,
+					"id": 2,
 					"name": "学生",
-					"pathName": "pages/binding_and_index/Student_MainUI/Student_MainUI",
+					"pathName": "pages/Student/CourseUI",
 					"query": ""
 				},
 				{
-					"id": 7,
+					"id": 3,
 					"name": "老师",
-					"pathName": "pages/binding_and_index/Teacher_MainUI/Teacher_MainUI",
+					"pathName": "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedRollStartCall",
 					"query": ""
 				}
 			]
