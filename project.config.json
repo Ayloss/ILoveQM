@@ -21,12 +21,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "class-manage",
-					"pathName": "pages/Teacher/class-manage/class-manage",
+					"pathName": "pages/Student/Seminar/CallRoll/RollCall",
 					"query": ""
 				},
 				{
@@ -69,6 +69,12 @@
 					"id": 7,
 					"name": "老师",
 					"pathName": "pages/binding_and_index/Teacher_MainUI/Teacher_MainUI",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "学生",
+					"pathName": "pages/Student/Seminar/RandomGroup/FinishChoose/RandomGroupNoLeader",
 					"query": ""
 				}
 			]

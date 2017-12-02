@@ -4,10 +4,10 @@
 		<span class="FONT2"> 讨论课4</span>
 	</view>
 	<view class="box2">
-<span class="FONT21" style="margin-top: 100%">打分</span></view>
+<span class="FONT21" style="margin-top: 100%" bindtap="score">打分</span></view>
 <view class="box1">
-  <span class="FONT21">签到</span>
+  <span class="FONT21" bindtap="sign">签到</span>
 </view>
 	<view class="box1" style="float: ">
-	<span class="FONT21">组队和选题</span></view>
+	<span class="FONT21" bindtap="group">组队和选题</span></view>
 </page>

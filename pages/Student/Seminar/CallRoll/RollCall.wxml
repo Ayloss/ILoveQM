@@ -12,24 +12,24 @@
   <!--课堂信息，由一个icon和一行文字组成-->
   <view class="courseInfoView">
     <image src="../../../../resources/img/老师.png" class='courseInfoIcon' />
-    <strong>邱明</strong>
+    <strong>{{teacher}}</strong>
   </view>
   <view class="courseInfoView">
     <image src="../../../../resources/img/邮箱.png" class='courseInfoIcon' />
-    <strong>mingqiu@gmail.com</strong>
+    <strong>{{email}}</strong>
   </view>
   <view class="courseInfoView">
     <image src="../../../../resources/img/日期.png" class='courseInfoIcon' />
-    <strong>2017-11-11</strong>
+    <strong>{{startTime}}至{{endTime}}</strong>
   </view>
   <view class="courseInfoView">
     <image src="../../../../resources/img/地点.png" class='courseInfoIcon' />
-    <strong>海韵教学楼201</strong>
+    <strong>{{site}}</strong>
   </view>
 
   <!--签到按钮-->
   <view wx:if="{{callCondition==0}}">
-    <button type="button" class="blueBigBtn">
+    <button type="button" class="blueBigBtn" bindtap="call" >
       签到
     </button>
   </view>

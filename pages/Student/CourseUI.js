@@ -6,7 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    courseList:[]
+    studentID:1,
+    classID:1,            
+    courseID:1,
+    courseName: 'OOAD',           //这四个靠前面传过来
+    seminarList:[]
   },
 
   /**
@@ -20,23 +24,33 @@ Page({
   onLoad: function () {
     var self = this;
     wx.request({
-      url: app.globalData.IPPort + '/course/1/seminar',
+      url: app.globalData.IPPort + '/course/' + this.data.courseID+'/seminar',
       method: 'get',
       success: function (res) {
-        console.log(res.data)
         self.setData({
-          courseList: res.data
+          seminarList: res.data
         })
       },
+      fail: function () {
+        wx.showToast({
+          title: '页面加载失败',
+          icon: 'fail',
+          duration: 1000,
+          mask: true
+        })
+      }
     })  
 
-
   },
-
+//跳到讨论课主页，传入讨论课id
   enterSeminar:function(event)
   {
+    var data = {
+      'studentID': this.data.studentID, 'classID':this.data.classID,   
+      'courseID': this.data.courseID,'courseName': this.data.courseName, 'seminarID': 
+        event.target.id }
     wx.navigateTo({
-      url: 'Seminar/Seminar?str=' + JSON.stringify(event.target.id),
+      url: 'Seminar/Seminar?str=' + JSON.stringify(data),
     })
   },
   /**

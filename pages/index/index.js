@@ -1,4 +1,4 @@
-// pages/index/index.js
+                        ///sadsadsadasdsadasdas///// pages/index/index.js
 Page({
 
   /**
