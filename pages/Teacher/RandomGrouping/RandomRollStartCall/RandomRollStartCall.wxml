@@ -2,7 +2,7 @@
 <page>
   <!--设置左上角的蓝色板-->
   <view class="blueBoardView">
-    <image src="../../../../resources/img/蓝色板.png" class='blueBoardIcon' />
+    <image src="resources/img/blueboard.png" class='blueBoardIcon' />
   </view>
 
 
@@ -21,7 +21,7 @@
   </view>
   <view wx:if="{{CallInRollCondition==0}}">
     <view class="studentNum">
-      <image src="../../../../resources/img/users.png" class="usersIcon" />
+      <image src="/resources/img/users.png" class="usersIcon" />
       <span>已签到学生: 0/40</span>
     </view>
     <view>
@@ -39,7 +39,7 @@
   <view wx:if="{{CallInRollCondition==1}}">
     <view>
       <view class="studentNum2">
-        <image src="../../../../resources/img/users.png" class="usersIcon2" />
+        <image src="/resources/img/users.png" class="usersIcon2" />
         <span>已签到学生: 9/40</span>
       </view>
       <button class="blueSmallBtn" bindtap='onRollCallList'>签到名单</button>
@@ -52,7 +52,7 @@
   </view>
   <view wx:if="{{CallInRollCondition==2}}">
     <view class="studentNum">
-      <image src="../../../../resources/img/users.png" class="usersIcon" />
+      <image src="/resources/img/users.png" class="usersIcon" />
       <span>已签到学生: 37/40</span>
     </view>
     <view>

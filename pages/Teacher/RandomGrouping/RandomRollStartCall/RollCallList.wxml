@@ -2,7 +2,7 @@
 <page>
   <!--设置左上角的蓝色板-->
   <view class="blueBoardView">
-    <image src="../../../../resources/img/蓝色板.png" class='blueBoardIcon' />
+    <image src="../../../../resources/img/blueboard.png" class='blueBoardIcon' />
   </view>
 
 
@@ -25,17 +25,17 @@
   <!--学生块，分为左边的和右边的，增加学生的时候选择好左边或者
 右边后直接复制就好，之后在span下面修改学生名字-->
   <view class='studentLeftBlock'>
-    <image src="../../../../resources/img/user.png" class='userIcon' />
+    <image src="/resources/img/user.png" class='userIcon' />
     <span class="studentName">杨xx</span>
   </view>
 
   <view class='studentRightBlock'>
-    <image src="../../resources/img/user.png" class='userIcon' />
+    <image src="/resources/img/user.png" class='userIcon' />
     <span class="studentName">周xx</span>
   </view>
 
   <view class='studentLeftBlock'>
-    <image src="../../resources/img/user.png" class='userIcon' />
+    <image src="/resources/img/user.png" class='userIcon' />
     <span class="studentName">孙xx</span>
   </view>
 

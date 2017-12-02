@@ -3,16 +3,16 @@
     <text class="FONT1"> OOAD</text>
   </view>
   <view style="margin-top: 15%;">
-    <image class="img3" src="../../../resources/img/人物头像【三元素 为设计而生 3png.com】.png" alt="" />
+    <image class="img3" src="/resources/img/userpic.png" alt="" />
     <text class="FONT3">老师：邱明</text>
   </view>
   <view style="margin-top: 4%;">
-    <image class="img4" src="../../../resources/img/邮箱.png" alt="" />
+    <image class="img4" src="/resources/img/mailpic.png" alt="" />
     <text class="FONT3">邮箱：qiuming@gmail.com</text>
   </view>
   <!--
   <view style="margin-top: 4%;">
-    <image class="img5" src="../../../resources/img/房间图标【三元素 为设计而生 3png.com】.png" alt="" />
+    <image class="img5" src="/resources/img/房间图标【三元素 为设计而生 3png.com】.png" alt="" />
     <text class="FONT3">班级：</text>
   </view>
   <view class="row-wrap" style="margin-top: 1rpx;width=100%;">
@@ -29,7 +29,7 @@
     <span class="FONT6" style="margin-left: 41%;">班级人数:31人 </span>
   </view>-->
   <view style="margin-top: 4%;">
-    <image class="img6" src="../../../resources/img/文件资料【三元素 为设计而生 3png.com】.png" alt="" />
+    <image class="img6" src="/resources/img/docpic.png" alt="" />
     <text class="FONT3">简介：</text>
   </view>
 </page>

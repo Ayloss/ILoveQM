@@ -1,7 +1,7 @@
 <page>
   <!--设置左上角的blueBoardIcon-->
   <view class="blueUsersView">
-    <image src="../../../../resources/img/蓝色板.png" class='blueUsersIcon' />
+    <image src="/resources/img/blueboard.png" class='blueUsersIcon' />
     <strong>讨论课信息</strong>
   </view>
 
@@ -11,19 +11,19 @@
 
   <!--课堂信息，由一个icon和一行文字组成-->
   <view class="courseInfoView">
-    <image src="../../../../resources/img/老师.png" class='courseInfoIcon' />
+    <image src="/resources/img/teacher.png" class='courseInfoIcon' />
     <strong>邱明</strong>
   </view>
   <view class="courseInfoView">
-    <image src="../../../../resources/img/邮箱.png" class='courseInfoIcon' />
+    <image src="/resources/img/mailpic.png" class='courseInfoIcon' />
     <strong>mingqiu@gmail.com</strong>
   </view>
   <view class="courseInfoView">
-    <image src="../../../../resources/img/日期.png" class='courseInfoIcon' />
+    <image src="/resources/img/date.png" class='courseInfoIcon' />
     <strong>2017-11-11</strong>
   </view>
   <view class="courseInfoView">
-    <image src="../../../../resources/img/地点.png" class='courseInfoIcon' />
+    <image src="/resources/img/location.png" class='courseInfoIcon' />
     <strong>海韵教学楼201</strong>
   </view>
 
@@ -36,13 +36,13 @@
 
   <!--签到成功-->
   <view wx:if="{{callCondition==1}}" class="successCall">
-        <image src="../../../../闹钟.png" class='courseInfoIcon'/>
+        <image src="/闹钟.png" class='courseInfoIcon'/>
         <strong>签到成功</strong>
    </view>
 
   <!--迟到签到成功-->
   <view wx:if="{{callCondition==2}}" class="lateCall">
-        <image src="../../../../闹钟.png" class='courseInfoIcon'/>
+        <image src="/闹钟.png" class='courseInfoIcon'/>
         <strong>迟到签到成功</strong>
    </view>
 

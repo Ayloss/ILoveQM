@@ -8,26 +8,26 @@
   <!--讨论课的时间和分组方式-->
 
   <view class="clockAndGroupView">
-    <image src="../../../../resources/img/闹钟.png" class='clockAndGroupIcon' />
+    <image src="../../../../resources/img/clock.png" class='clockAndGroupIcon' />
     <span>11月6日-11月12日</span>
   </view>
 
   <view class="clockAndGroupView">
-    <image src="../../../../resources/img/曲别针.png" class="clockAndGroupIcon"></image>
+    <image src="../../../../resources/img/pin.png" class="clockAndGroupIcon"></image>
     <span>随机分组</span>
   </view>
 
   <!--讨论课的班级，要增加新班级就复制一个view，然后修改班级名称-->
   <view class="classView">
-    <image src="../../../../resources/img/班级.png" class="classIcon" bindtap='onGroupingPage'/>
+    <image src="../../../../resources/img/class.png" class="classIcon" bindtap='onGroupingPage'/>
     <p class="className" bindtap='onGroupingPage'>班级1</p>
   </view>
   <view class="classView">
-    <image src="../../../../resources/img/班级.png" class="classIcon" bindtap='onGroupingPage'/>
+    <image src="../../../../resources/img/class.png" class="classIcon" bindtap='onGroupingPage'/>
     <p class="className" bindtap='onGroupingPage'>班级2</p>
   </view>
   <view class="classView">
-    <image src="../../../../resources/img/班级.png" class="classIcon" bindtap='onGroupingPage'/>
+    <image src="../../../../resources/img/class.png" class="classIcon" bindtap='onGroupingPage'/>
     <p class="className" bindtap='onGroupingPage'>班级3</p>
   </view>
 

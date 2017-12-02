@@ -120,9 +120,8 @@ Page({
   },
 
   onCheckList:function(e){
-    console.log(JSON.stringify(e.currentTarget.dataset.classIDObj))
     wx.navigateTo({
-      url: './FixedGroupInfo' + JSON.stringify(e.currentTarget.dataset.classIDObj),
+      url: './FixedGroupInfo' + '?' + this.data.classID,
     })
   }
 })
