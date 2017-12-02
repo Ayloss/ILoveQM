@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -62,7 +62,7 @@
 				{
 					"id": 6,
 					"name": "学生",
-					"pathName": "pages/binding_and_index/Student_MainUI/Student_MainUI",
+					"pathName": "pages/Student/CourseUI",
 					"query": ""
 				},
 				{

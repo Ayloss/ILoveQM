@@ -1,44 +1,20 @@
-// pages/Student/CourseUI.js
-var app=getApp();
+// pages/binding-account/binding-account.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    courseList:[]
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  /*
   onLoad: function (options) {
-    this.setData({
-      courseName: JSON.parse(options.courseList)
-    })*/
-  onLoad: function () {
-    var self = this;
-    wx.request({
-      url: app.globalData.IPPort + '/course/1/seminar',
-      method: 'get',
-      success: function (res) {
-        console.log(res.data)
-        self.setData({
-          courseList: res.data
-        })
-      },
-    })  
-
-
+  
   },
 
-  enterSeminar:function(event)
-  {
-    wx.navigateTo({
-      url: 'Seminar/Seminar?str=' + JSON.stringify(event.target.id),
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

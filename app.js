@@ -35,6 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    IPPort:"localhost:8080"
+    IPPort:"http://localhost:8080"
   }
 })
