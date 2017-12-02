@@ -5,14 +5,63 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    studentID: 1,
+    classID: 1,
+    courseID: 1,
+    courseName: 'OOAD',
+    seminarID: "",
+    group:[],
+    presentationGrade:[]
+  },
+  onLoad: function (options) {
+    var temp = JSON.parse(options.str)
+    console.log(temp)
+    this.setData({
+      seminarID: temp.seminarID,
+      studentID: temp.studentID,
+      classID: temp.classID,
+      courseID: temp.courseID,
+      courseName: temp.courseName,
+    })
+
+    wx.request({                    //请求小组
+      url: app.globalData.IPPort +'/seminar/'+this.data.seminarID+'/group?gradeable={true}',
+      method: 'get',
+      success: function (res) {
+        self.setData({
+          group: res.data
+        })
+      },
+      fail: function () {
+        wx.showToast({
+          title: '页面加载失败',
+          icon: 'fail',
+          duration: 1000,
+          mask: true
+        })
+      }
+    }) 
+
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  submit:function()
+  {
+    wx.request({                    
+      url: app.globalData.IPPort + '/group/' + this.data.groupID + '/grade/'+this.data.studentID,
+      method: 'put',
+      data: JSON.stringify(presentationGrade),
+      success: function (res) {
+       
+      },
+      fail: function () {
+        wx.showToast({
+          title: '提交失败',
+          icon: 'fail',
+          duration: 1000,
+          mask: true
+        })
+      }
+    }) 
   },
 
   /**

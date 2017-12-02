@@ -46,5 +46,5 @@
     <image src="../../../../resources/img/heart_empty.png" />
     <image src="../../../../resources/img/heart_empty.png" />     
 </view>
-<button class="btnsubmit">提交</button>
+<button class="btnsubmit" bindtap="submit">提交</button>
  </view>
