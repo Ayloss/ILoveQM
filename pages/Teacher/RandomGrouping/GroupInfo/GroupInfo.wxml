@@ -1,0 +1,54 @@
+<!--pages/group-info/group-info.wxml-->
+<page>
+  <!--设置左上角的usersIcon-->
+  <view class="blueUsersView">
+    <image src="/resources/img/users.png" class='blueUsersIcon' />
+    <strong>队伍信息</strong>
+  </view>
+
+
+  <!--细线，hr不好设置css，用一个高度很小的view来代替-->
+  <view class="hrView" />
+
+
+  <!--学生名单上面那个蓝色的bar-->
+  <view wx:for="{{groupList}}" wx:for-index='i'>
+    <view bindtap='onGroupInfo' class='studentListBarView' data-index='{{i}}'>
+      <span>队伍{{item.id}}</span>
+      <span class="groupTopics">选题：{{item.topics[0].name}}</span>
+      <!--这里记得加一个队伍内部的信息-->
+      <!--这里按钮记得处理-->
+    </view>
+    <view wx:if="{{buttonControll[i]==1}}" class='studentView'>
+      <view wx:for="{{studentList}}" wx:for-item="item">
+        <view class='studentBlock'>
+          <image src="/resources/img/user.png" class='userIcon' />
+          <span class="studentName">{{item.name}}</span>
+          <image src="/resources/img/redX.png" class='redCancelIcon' data-stu-obj="{{item}}" data-group-obj="{{groupList[i]}}" data-index="{{index}}" bindtap='onRemoveStudent' />
+        </view>
+      </view>
+
+      <!--空白添加学生的块-->
+      <view wx:if="{{lateStudentList.length!=0}}" class='studentBlock'>
+        <image src="/resources/img/plus.png" data-group-obj="{{groupList[i]}}" class='addIcon' bindtap='onAddStudent' />
+      </view>
+    </view>
+  </view>
+
+  
+  <!--迟到学生上面那个蓝色的bar-->
+  <view class='studentNoCallBarView'>
+    <span>未签到学生</span>
+  </view>
+
+  <!--未签到学生，要增加新学生复制一个view，修改名字-->
+  <view class='studentView'>
+    <view wx:for="{{lateStudentList}}" wx:for-item="item">
+      <view class='studentBlock'>
+        <image src="/resources/img/user.png" class='userIcon' />
+        <span class="studentName">{{item.name}}</span>
+      </view>
+    </view>
+  </view>
+
+</page>

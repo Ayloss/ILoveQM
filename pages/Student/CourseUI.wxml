@@ -1,0 +1,22 @@
+<page class="page">
+  <view class="head20">
+    <text class="FONT1"> {{courseName}}</text>
+    <image src='/resources/img/chooseschool.png' class="ninePointToCourseInfo" bindtap="detail" />
+  </view>
+
+
+  <view wx:for="{{seminarList}}">
+    <view class='box3' id="{{item.id}}" bindtap="enterSeminar">
+      <!--蓝色选择框-->
+      <text class="FONT12"> 讨论课{{item.id}}</text>
+      <!--蓝色选择框-->
+      <text class="FONT2 seminarDate"> {{item.startTime}}至{{item.endTime}}</text>
+      <text class="FONT2 groupType" wx:if="{{item.groupingMethod=='fixed'}}"> 固定分组</text>
+      <text class="FONT2 groupType" wx:if="{{item.groupingMethod!='fixed'}}"> 随机分组</text>
+      <text class="FONT2 groupGrade"> 成绩：{{item.grade}}     </text>
+    </view>
+  </view>
+
+
+
+</page>

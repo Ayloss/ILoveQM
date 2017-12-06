@@ -1,0 +1,34 @@
+<!--pages/roll-call-list/roll-call-list.wxml-->
+<page>
+  <!--设置左上角的蓝色板-->
+  <view class="blueBoardView">
+    <image src="/resources/img/blueboard.png" class='blueBoardIcon' />
+  </view>
+
+
+  <!--班级1 的字样-->
+  <view class='classNameView'>
+    {{className}}
+  </view>
+
+  <!--学生总数：40 的字样-->
+  <view class='studentSumView'>
+    签到人数：{{attendStudnetList.length}}/{{studentNum}}
+  </view>
+
+
+  <!--学生名单上面那个蓝色的bar-->
+  <view class='studentListBarView'>
+    已签到人员
+  </view>
+
+  <!--学生块，用整个view包住学生的部分，每次添加新学生能自动排好版，之后在span下面修改学生名字-->
+  <view wx:for="{{attendStudnetList}}" wx:for-item="item" class='studentView'>
+    <view class='studentBlock'>
+      <image src="/resources/img/user.png" class='userIcon' />
+      <span class="studentName">{{item.name}}</span>
+    </view>
+  </view>
+
+
+</page>

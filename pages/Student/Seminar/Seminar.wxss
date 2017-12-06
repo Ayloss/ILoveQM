@@ -1,0 +1,142 @@
+
+/* 主标题蓝色顶条的view */
+
+.topView
+{
+	width:100%;
+	height:90px;
+	position:relative;
+	background-color: #66CCFF;
+}
+/* 主标题的字体 */
+.title
+{
+	font-size: 2rem;
+	position: absolute;
+	color: #FFFFFF;
+	margin-top: 20px;
+	width: 100%;
+	text-align: center;
+}
+
+.titleSmall
+{
+	font-size: 1rem;
+	position: absolute;
+	color: #FFFFFF;
+	margin-left: 63%;
+	margin-top: 50px;
+}
+
+/*左边两个Button里的文字*/
+.ButtonTextLeft
+{
+  font-size: 48rpx;
+	color: #FFFFFF;
+  display: flex;
+justify-content: center; 
+align-content: center;
+margin-top: 40%;
+}
+
+/*右边Button里的文字*/
+.ButtonTextRight
+{
+  font-size: 48rpx;
+	color: #FFFFFF;
+  display: flex;
+justify-content: center; 
+align-content: center;
+margin-top: 160%;
+}
+
+.CallBoxBlue
+{
+	position: relative;
+	float: left;
+	margin-left: 5%;
+	margin-right: 5%;
+	background-color:#66CCFF;
+	margin-top: 5%;
+	width: 55%;
+	padding-bottom: 40%;
+	border-radius: 15px;
+  height:80rpx;
+}
+
+.CallBoxGrey
+{
+	position: relative;
+	float: left;
+	margin-left: 5%;
+	margin-right: 5%;
+	background-color:#ccc;
+	margin-top: 5%;
+	width: 55%;
+	padding-bottom: 40%;
+	border-radius: 15px;
+  height:80rpx;
+}
+
+.GroupBoxBlue
+{
+	position: relative;
+	float: left;
+	margin-left: 5%;
+	margin-right: 5%;
+	background-color:#66CCFF;
+	margin-top: 5%;
+	width: 55%;
+	padding-bottom: 40%;
+	border-radius: 15px;
+	height:80rpx;
+}
+
+.GroupBoxGrey
+{
+	position: relative;
+	float: left;
+	margin-left: 5%;
+	margin-right: 5%;
+	background-color:#ccc;
+	margin-top: 5%;
+	width: 55%;
+	padding-bottom: 40%;
+	border-radius: 15px;
+	height:80rpx;
+}
+
+.ScoreBoxBlue
+{
+	position:relative;
+	float: right;
+	margin-right: 5%;
+	background-color:#66CCFF;
+	margin-top: 5%;
+	width: 30%;
+	padding-bottom: 85%;
+	border-radius: 15px;
+  height:160rpx;
+}
+
+.ScoreBoxGrey
+{
+	position:relative;
+	float: right;
+	margin-right: 5%;
+	background-color:#ccc;
+	margin-top: 5%;
+	width: 30%;
+	padding-bottom: 85%;
+	border-radius: 15px;
+  height:160rpx;
+}
+
+/*灰色提示信息字样*/
+
+.noGroup {
+  color: #666;
+  font-size: 28rpx;
+  float: left;
+  margin-left: 16%;
+}

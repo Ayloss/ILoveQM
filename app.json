@@ -1,8 +1,28 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/binding-account/binding-account"
+    "pages/Teacher/class-manage/class-manage",
+    "pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall",
+    "pages/Teacher/RandomGrouping/RandomRollStartCall/RollCallList",
+    "pages/Teacher/RandomGrouping/GroupInfo/GroupInfo",
+    "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedRollStartCall",
+    "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedCallList",
+    "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedGroupInfo",
+    "pages/binding_and_index/Teacher_MainUI/CheckTeacherInfoUI",
+    "pages/binding_and_index/Teacher_MainUI/Teacher_MainUI",
+    "pages/binding_and_index/Binding/ChooseCharacter",
+    "pages/binding_and_index/Binding/CreateSchoolUI",
+    "pages/binding_and_index/Binding/TeacherBindingUI",
+    "pages/binding_and_index/Binding/StudentBindingUI",
+    "pages/Teacher/CourseUI",
+    "pages/Student/CourseUI",
+    "pages/Student/Seminar/Scoring/Score",
+    "pages/Student/Seminar/CallRoll/RollCall",
+    "pages/binding_and_index/Binding/ChooseSchool/ChooseSchool",
+    "pages/Student/Seminar/Seminar",
+    "pages/Student/Seminar/chooseTopic/chooseTopic",
+    "pages/Student/Seminar/CourseInfo",
+    "pages/Student/Seminar/group/group",
+    "pages/Student/studentInfo/studentInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

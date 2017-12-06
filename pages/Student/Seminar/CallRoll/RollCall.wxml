@@ -1,0 +1,49 @@
+<page>
+  <!--设置左上角的blueBoardIcon-->
+  <view class="blueUsersView">
+    <image src="/resources/img/blueboard.png" class='blueUsersIcon' />
+    <strong>讨论课信息</strong>
+  </view>
+
+  <!--细线，hr不好设置css，用一个高度很小的view来代替-->
+  <view class="hrView">
+  </view>
+
+  <!--课堂信息，由一个icon和一行文字组成-->
+  <view class="courseInfoView">
+    <image src="/resources/img/teacher.png" class='courseInfoIcon' />
+    <strong>{{teacher}}</strong>
+  </view>
+  <view class="courseInfoView">
+    <image src="/resources/img/mailpic.png" class='courseInfoIcon' />
+    <strong>{{email}}</strong>
+  </view>
+  <view class="courseInfoView">
+    <image src="/resources/img/date.png" class='courseInfoIcon' />
+    <strong>{{startTime}}至{{endTime}}</strong>
+  </view>
+  <view class="courseInfoView">
+    <image src="/resources/img/location.png" class='courseInfoIcon' />
+    <strong>{{site}}</strong>
+  </view>
+
+  <!--签到按钮-->
+  <view wx:if="{{callCondition==0}}">
+    <button type="button" class="blueBigBtn" bindtap="call" >
+      签到
+    </button>
+  </view>
+
+  <!--签到成功-->
+  <view wx:if="{{callCondition==1}}" class="successCall">
+        <image src="/resources/img/clock.png" class='courseInfoIcon'/>
+        <strong>签到成功</strong>
+   </view>
+
+  <!--迟到签到成功-->
+  <view wx:if="{{callCondition==2}}" class="lateCall">
+        <image src="/resources/img/clock.png" class='courseInfoIcon'/>
+        <strong>迟到签到成功</strong>
+   </view>
+
+</page>

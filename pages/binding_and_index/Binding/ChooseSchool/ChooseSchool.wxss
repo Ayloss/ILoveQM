@@ -1,0 +1,86 @@
+/* pages/index/ChooseSchool.wxss */
+.hrView {
+  height: 2rpx;
+  width: 100%;
+  margin: auto;
+  border: 1rpx solid black;
+  background-color: black;
+  color: black;
+}
+
+/* img7 灯泡 */
+.img7{
+  position:absolute;margin-left: 15%;margin-top: 8%;
+  width:9%;
+  height:19%;
+}
+/* img8 背景 */
+.img8{
+  width:100%;
+  height:100%;
+}
+.body{
+	height: 100%
+}
+.fullbackground
+{
+	background-color: #66CCFF
+}
+
+
+.FONT41{
+	margin-left: 27%;
+	color: #000000;
+	margin-top: 8%;
+	font-size: 3vw;
+	position:absolute; 
+	z-index:2; 
+	top:7%
+}
+
+/* box5 背景图的view*/
+.box5{
+	left: 0rpx;
+	width: 100%;
+	height: 300rpx;
+  position:relative;
+}
+/* box6 省份、州市、学校 标题蓝条*/
+.box6{
+	position:absolute;
+	left: 0px;
+	width: 100%;
+	height: 11%;
+	background-color: #66CCFF;
+}
+/* box7 省份、州市、学校的选择view*/
+.box7{
+	position:absolute;
+	background-color: #ffffff;
+	left: 0px;
+	width: 100%;
+	height: 50%;
+	margin-top: 15%;
+}
+/* button1 省份、州市、学校 的按钮*/
+.button1{
+	background-color: #66CCFF;
+	font-size: 3vw;
+	position: relative;
+	border:none;
+	text-align: center;
+	display: inline-block;
+	padding: 15px 32px;
+	height: 100%;
+	width: 33%;
+	box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2), 0 5px 5px 0 rgba(0,0,0,0.1);
+}
+.box8{
+	left: 0px;
+	width: 100%;
+	height: 50px;
+}
+
+.scrollView{
+  height:330px
+}

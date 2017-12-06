@@ -1,0 +1,60 @@
+/* pages/index/CourseInfoUI.wxss */
+
+/*page的 基本*/
+
+.body {
+  height: 100%;
+}
+
+.fullbackground {
+  background-color: #6cf;
+}
+
+/* 主标题蓝色顶条的view */
+
+.head20 {
+  border-left-width: 1cm;
+  border-right-width: 3cm;
+  height: 90px;
+  position: relative;
+  background-color: #6cf;
+}
+
+/* 主标题的字体 */
+
+.FONT1 {
+  font-size: 80rpx;
+  position: absolute;
+  color: #fff;
+  margin-top: 23px;
+  width: 100%;
+  text-align: center;
+}
+
+/*每一条info的容器view*/
+
+.infoView {
+  margin-top: 25%;
+  width: 100%;
+  height: 60rpx;
+}
+
+/*Icon的容器*/
+
+.imgView {
+  margin-left: 6%;
+  float: left;
+  height: 50rpx;
+  width: 10%;
+  margin-right: 5%;
+}
+
+/*文字的容器*/
+
+.textView {
+  height: 100%;
+  width: 77%;
+  float: left;
+  font-size: 28rpx;
+  word-wrap: break-word;
+}

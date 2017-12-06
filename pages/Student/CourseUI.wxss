@@ -1,0 +1,94 @@
+/* pages/index/CourseUI.wxss */
+
+/*page的 基本*/
+.body{
+	height: 100%
+}
+.fullbackground
+{
+	background-color: #66CCFF
+}
+
+/* 主标题蓝色顶条的view */
+.head20
+{
+	width:100%;
+	height:90px;
+	position:relative;
+	background-color: #66CCFF;
+}
+/* 主标题的字体 */
+.FONT1
+{
+	font-size: 80rpx;
+	position: absolute;
+	color: #FFFFFF;
+	margin-top: 46rpx;
+	width: 100%;
+	text-align: center;
+}
+
+
+.FONT12
+{
+	font-size: 60rpx;
+	position: absolute;
+	color: #FFFFFF;
+	height: 10px;
+	margin-left: 10%;
+	margin-top: 10%;
+}
+.FONT2
+{
+	font-size: 24rpx;
+	position: absolute;
+	color: #FFFFFF;
+	margin-left: 63%;
+	margin-top: 50px;
+}
+
+
+/*box3 蓝色选择框*/
+.box3{
+	position:relative;
+	margin-left: 5%;
+	width: 90%;
+	background-color:#66CCFF;
+	margin-top: 5%;
+	padding-bottom: 25%;
+    border-radius: 15px;
+}
+/*box4 灰色选择框*/
+.box4{
+	position:relative;
+	margin-left: 5%;
+	width: 90%;
+	background-color:#CCCCCC;
+	margin-top: 5%;
+	padding-bottom: 25%;
+    border-radius: 15px;
+	
+}
+
+.seminarDate{
+  margin-left: 60%;
+  margin-top: 3%
+}
+
+.groupType{
+  margin-left: 60%;
+  margin-top: 12%;
+}
+
+.groupGrade{
+  margin-left: 60%;
+  margin-top: 21%
+}
+
+.ninePointToCourseInfo{
+  float:right;
+  width:10%;
+  height:30%;
+  margin-top: 18%;
+  margin-right: 1%;
+}

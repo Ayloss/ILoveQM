@@ -1,0 +1,114 @@
+/* pages/StudentClass/CourseUI/Seminar/FixedGroup/UnChooseTopic.wxss */
+/* 背景色 字体 */
+page {
+  background: rgba(102, 204, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/*左上角图片*/
+.seminarImg{
+  height: 4rem;
+  width: 4rem;
+  margin-left:8%;
+  margin-top:3%;
+  display: inline-block;
+}
+
+/*将固定分组和讨论课4包起来的view*/
+.seminarView{
+  margin-left:5%;
+  width: 50%;
+  height:30%;
+  display: inline-block;
+}
+
+/*将固定分组和讨论课4的文字*/
+.seminarText{
+  height:2rem;
+  margin-left:5%;
+  width: 90%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/*白色的文字，如队伍信息、选题*/
+.WhiteText{
+  height: 2rem;
+  font-size:48rpx;
+  color: white;
+  margin-left: 5%;
+  display: inline-block;
+}
+
+/*显示学生信息的整个白色的框*/
+.WhiteBackSquare{
+  height: 5%;
+  background-color: #ffffff;
+  width: 95%;
+  margin-left: 3%;
+  border-radius: 50rpx;
+  margin-top: 5%;
+  float:left;
+}
+
+/*蓝色的userIcon*/
+.userAvatar{
+  height:2rem;
+  width: 2rem;
+  display: inline-block;
+  padding-left:2%;
+  padding-top:1%;
+}
+
+/*学生姓名和学号的view*/
+.studentView{
+width:60%;
+ display: inline-block;
+ margin-left:5%;
+ font-size:28rpx;
+ margin-bottom: 3%;
+}
+
+/*学生姓名和学号的文字*/
+.groupInfoText{
+  display: inline-block;
+  width:100%;
+}
+
+/*队长文字的view*/
+.leaderTextView{
+  font-size:48rpx;
+  color:#66ccff;
+  width:20%;
+  float:right;
+  height:100%;
+  margin-top: 2.5%;
+}
+
+/*成为队长的按钮*/
+.btnBeLeader{
+	margin-top:3%;
+	color:#FFF;
+	font-size:1rem;
+	border-radius:0.9rem;
+  background-color:#66ccff;
+	width:50%;
+	border-style: none; 
+}
+
+
+/*辞职的按钮*/
+.btnLeave{
+	color:#FFF;
+  background-color:#66ccff;
+	width:30%;
+  margin-left:30%; 
+  vertical-align: middle;
+  font-size:1rem;
+  float: right;
+  margin-right:6%; 
+  margin-bottom:10rpx;
+}

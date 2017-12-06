@@ -5,7 +5,9 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    var jwt = wx.getStorageSync('jwt')
+    //var jwt=''
+    wx.setStorageSync('jwt', jwt)
     // 登录
     wx.login({
       success: res => {
@@ -34,6 +36,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    IPPort:"http://120.77.173.98:8102",
+    //jwt:''
+    //IPPort: "http://localhost:8080"
   }
 })

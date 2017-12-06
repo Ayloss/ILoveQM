@@ -1,0 +1,45 @@
+<page>
+  <!--这里是老师mainUI-->
+  <block wx:if="{{jwt!='' && userType=='teacher'}}">
+    <image src='http://120.77.173.98:8102/avatar/ghg' class='topHead' bindtap='onCheckInfo'></image>
+    <text class='topName' bindtap='onCheckInfo'>姓名：{{userName}}</text>
+    <text class='topID' bindtap='onCheckInfo'>教工号：{{ID}}</text>
+    <image src='/resources/img/background.png' class='topBoardView'></image>
+    <!--这里标准组的时间比较有问题-->
+    <view wx:for="{{courseList}}" wx:if="{{date>item.endTime||date<item.startTime}}" class="box4" bindtap="onClickClass" data-course-obj="{{item}}">
+      <text class="FONT1"> {{item.name}}</text>
+    </view>
+    <view  wx:for="{{courseList}}" class="box3" bindtap="onClickClass" data-course-obj="{{item}}">
+      <text class="FONT1"> {{item.name}}</text>
+    </view>
+  </block>
+  <!--这里是学生mainUI-->
+  <block wx:if="{{jwt!='' && userType=='student'}}">
+    <image src='http://120.77.173.98:8102/avatar/ghg' class='topHead' bindtap='onCheckInfo'></image>
+    <text class='topName' bindtap='onCheckInfo'>姓名：{{userName}}</text>
+    <text class='topID' bindtap='onCheckInfo'>学号：{{ID}}</text>
+    <image src='/resources/img/background.png' class='topBoardView'></image>
+
+    <block wx:for="{{courseInfo}}">
+      <view class="blueButton" id="{{item.id}}" bindtap='onClickCourse'>
+        <text class="FONT11"> {{item.courseName}}</text>
+        <text class="FONT51"> 老师：{{item.courseTeacher}}</text>
+      </view>
+    </block>
+  </block>
+
+  <!--这里是选角色-->
+  <block wx:if="{{jwt==''}}">
+    <image src='/resources/img/light.png' class='topLight'></image>
+    <text class='topTips'>请选择您的账户类型</text>
+    <image src='/resources/img/line.png' class='topLine'></image>
+    <image src='/resources/img/background.png' class='topBoardView'></image>
+    <view class='mainView'>
+      <button class='teacherButton' bindtap='onChooseTeacher'>老师</button>
+      <button class='studentButton' bindtap='onChooseStudent'>学生</button>
+    </view>
+  </block>
+
+
+
+</page>

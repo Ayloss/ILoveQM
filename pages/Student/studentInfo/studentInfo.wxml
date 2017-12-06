@@ -1,0 +1,15 @@
+<!--pages/binding & index/Student_MainUI/CheckStudentInfoUI.wxml-->
+<page>
+  <image src='http://120.77.173.98:8102/avatar/ghg' class='topHead'></image>
+  <text class='topClickHead' bindtap="changPortrait">点击头像修改</text>
+  <text class='topName'>姓名：{{name}}</text>
+  <text class='topID'>学号：{{number}}</text>
+  <image src='/resources/img/background.png' class='topBoardView'></image>
+  <view class='mainView'>
+    <text class='phone'>手机号：{{phone}}</text>
+    <text class='ID'>学号：{{number}}</text>
+    <text class='school'>学校：{{school.name}}</text>
+    <text class='name'>姓名：{{name}}</text>
+    <button class='confirmButton' bindtap="release">解绑</button>
+  </view>
+</page>

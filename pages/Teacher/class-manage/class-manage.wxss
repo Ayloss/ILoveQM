@@ -1,0 +1,83 @@
+/*界面上方蓝色块*/
+
+.blueHeader {
+  width: 750rpx;
+  height: 200.1rpx;
+  background-color: #6cf;
+  color: #fff;
+  font-size: 80rpx;
+  padding-top: 8%;
+  padding-left: 30.5%;
+  display: inline-block;
+}
+
+/*蓝色块里面讨论课的字体*/
+
+.seminarText {
+  color: #fff;
+  font-size: 28rpx;
+}
+
+/*讨论课的时间和分组方式View*/
+/*感谢胡兴波同学提供这个部分的WXSS*/
+/*图中的红色框框*/
+/*如果小程序界面普遍存在这种每栏的设计格式相同，改容器可普适，因此暂时命名为ourcontainer*/
+/* 时间和分组方式两个组件的容器，即蓝色方块下的这一行 */
+.ourcontainer{
+  width: 100%;/*该容器的宽度是外层容器的宽度，此处外层没有容器则取屏幕宽度*/
+  display: flex;/*表示浮动布局*/
+  flex-direction: row;/*所有组件在一行上面*/
+  align-items: flex-start;/*组件对齐方式为交叉轴的起点对齐*/
+  justify-content: space-around;/*每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍*/
+
+}
+
+/*包括图标和文字的小容器*/
+.clockAndGroupView {
+  width: 30%;/*可以改一下这个的比例感受一下被ourcontainer限制的感觉：比如超过50%就被限制在一行内*/
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  color: #000;
+  font-size: 28rpx;
+}
+
+/*讨论课的时间和分组方式Icon*/
+.clockAndGroupIcon {
+  /*注意图片这里我的设置是宽度固定，高度根据宽度自适应，这步的实现须在.wxml中添加 mode="widthFix"*/ 
+  /*图片的自适应也是普适的，只要加个mode就好，比一张一张定像素会好很多*/
+  /*由于本来的图片闹钟和回形针长宽比不同，因此按照自适应显示回形针变得长长的，建议还是改一下回形针长宽比，毕竟放在同一个位置的图标大小应该是一样的才好看，图片的话拿PS处理一下就行，很快的*/
+  width: 16%;
+}
+.clockAndGroupText {
+  width: 80%;
+}
+
+
+
+
+/*班级View*/
+
+.classView {
+  display: inline-block;
+  margin-top: 100rpx;
+  width: 370rpx;
+  height: 300rpx;
+}
+
+/*班级名*/
+
+.className {
+  font-size: 48rpx;
+  padding-left: 30%;
+}
+
+/*班级Icon*/
+
+.classIcon {
+  width: 100%;
+  height: 70%;
+}
+
+

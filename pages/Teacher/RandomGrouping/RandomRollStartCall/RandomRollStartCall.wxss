@@ -1,0 +1,176 @@
+/* 背景色 */
+
+page {
+  background: rgba(102, 204, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* 左上角的蓝色板的容器*/
+
+.blueBoardView {
+  width: 250rpx;
+  height: 250rpx;
+  float: left;
+  padding-top: 50rpx;
+  padding-left: 50rpx;
+}
+
+/* 左上角的蓝色板图标大小*/
+
+.blueBoardIcon {
+  width: 100%;
+  height: 100%;
+}
+
+/* 班级名的位置、字体等样式 */
+
+.classNameView {
+  margin-top: 90rpx;
+  width: 400rpx;
+  height: 100rpx;
+  font-size: 80rpx;
+  float: right;
+}
+
+/* 学生总数的位置、字体等样式*/
+
+.studentSumView {
+  font-size: 48rpx;
+  width: 350rpx;
+  height: 80rpx;
+  float: right;
+  margin-right: 50rpx;
+  padding-top: 20rpx;
+}
+
+/*黑色线的样式*/
+
+.hrView {
+  height: 2rpx;
+  width: 80%;
+  margin: auto;
+  border: 1rpx solid black;
+  background-color: black;
+  color: black;
+  float: right;
+  margin-right: 10%;
+  margin-top: 100rpx;
+}
+
+/*居中的已签到学生的文字和容器*/
+
+.studentNum {
+  height: 50rpx;
+  width: 80%;
+  margin: auto;
+  float: right;
+  color: black;
+  margin-right: 10%;
+  margin-top: 150rpx;
+  font-size: 28rpx;
+}
+
+/*居中已签到学生签名的icon*/
+
+.usersIcon {
+  width: 10%;
+  height: 100%;
+  margin-left: 130rpx;
+}
+
+/*居左情况下已签到学生的文字和容器*/
+
+.studentNum2 {
+  height: 50rpx;
+  width: 60%;
+  float: left;
+  color: black;
+  margin-top: 140rpx;
+  font-size: 28rpx;
+}
+
+/*居左已签到学生签名的icon*/
+
+.usersIcon2 {
+  width: 14%;
+  height: 100%;
+  margin-left: 90rpx;
+}
+
+/*查看签到名单的蓝色小Button*/
+
+.blueSmallBtn {
+  background-color: rgba(102, 204, 255, 1);
+  color: white;
+  font-size: 28rpx;
+  width: 230rpx;
+  border-radius: 40rpx;
+  margin-left: 230rpx;
+  margin-right: 70rpx;
+  float: right;
+  margin-top: -55rpx;
+}
+
+/*蓝色的大button*/
+
+.blueBigBtn {
+  background-color: rgba(102, 204, 255, 1);
+  color: white;
+  font-size: 48rpx;
+  width: 290rpx;
+  border-radius: 40rpx;
+  margin-left: 230rpx;
+  margin-top: 150rpx;
+  float: left;
+}
+
+/*红色的大button*/
+
+.redBigBtn {
+  background-color: #fa8888;
+  color: white;
+  font-size: 48rpx;
+  width: 290rpx;
+  border-radius: 40rpx;
+  margin-left: 230rpx;
+  margin-top: 130rpx;
+  float: left;
+}
+
+/*绿色的大button*/
+
+.greenBigBtn {
+  background-color: #02c3d3;
+  color: white;
+  font-size: 48rpx;
+  width: 290rpx;
+  border-radius: 40rpx;
+  margin-left: 230rpx;
+  margin-top: 130rpx;
+  float: left;
+}
+
+/*灰色的大button*/
+
+.greyBigBtn {
+  background-color: #ccc;
+  color: white;
+  font-size: 48rpx;
+  width: 290rpx;
+  border-radius: 40rpx;
+  margin-left: 230rpx;
+  margin-top: 130rpx;
+  float: left;
+}
+
+/*灰色的大button下的灰色提示信息字样*/
+
+.noGroup {
+  color: #666;
+  font-size: 28rpx;
+  float: left;
+  margin-left: 160rpx;
+}

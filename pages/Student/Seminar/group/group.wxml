@@ -1,0 +1,73 @@
+<import class="grouplist.wxss" />
+
+<view>
+
+  <view>
+    <span>
+      <image src="/resources/img/users.png" class="seminarImg"></image>
+    </span>
+    <view class='seminarView'>
+      <label class="seminarText">讨论课{{seminarID}}</label>
+      <block wx:if="{{groupMethod=='random'}}">
+        <label class="seminarText">随机分组</label>
+      </block>
+      <block wx:if="{{groupMethod=='fixed'}}">
+        <label class="seminarText">固定分组</label>
+      </block>
+    </view>
+  </view>
+
+  <view>
+    <span class="WhiteText">分组信息：</span>
+    <view wx:if="{{isLeader}}">
+      <!--身份是队长时才有辞职button-->
+        <button class="btnLeave" bindtap="resign">辞职</button>
+    </view>
+  </view>
+
+  <block wx:if="{{hasLeader}}">
+    <view class='WhiteBackSquare'>
+      <span>
+        <image src="/resources/img/user.png" class='userAvatar'></image>
+      </span>
+      <view class="studentView">
+        <span class="groupInfoText">{{groupDetail.leader.name}}</span>
+        <span class='groupInfoText'>{{groupDetail.leader.id}}</span>
+      </view>
+      <view class="leaderTextView">
+        <span class="groupInfoText">队长</span>
+      </view>
+    </view>
+  </block>
+  <block wx:for="{{groupDetail.members}}">
+    <view class='WhiteBackSquare'>
+      <span>
+        <image src="/resources/img/user.png" class='userAvatar'></image>
+      </span>
+      <view class="studentView">
+        <span class="groupInfoText">{{item.name}}</span>
+        <span class='groupInfoText'>{{item.id}}</span>
+      </view>
+    </view>
+  </block>
+
+  <block>
+    <view>
+      <span class="WhiteText">选题:{{topic}}</span>
+    </view>
+  </block>
+
+  <block wx:if="{{isLeader&!areTopicsSelected}}">
+    <!--是leader而且还没选题时-->
+    <view>
+      <button class="btnBeLeader" bindtap='chooseTopic'>选题</button>
+    </view>
+  </block>
+  <block wx:if="{{!hasLeader}}">
+    <!--没有leader时-->
+    <view>
+      <button class="btnBeLeader" bindtap="becomeLeader">成为队长</button>
+      <!--<p class="middlegreyword">您的队伍还没有队长，您可以选择成为队长。</p>-->
+    </view>
+  </block>
+</view>

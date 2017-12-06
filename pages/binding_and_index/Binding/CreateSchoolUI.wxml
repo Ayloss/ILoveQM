@@ -1,0 +1,18 @@
+<!--pages/BindingAndIndex/CreateSchoolUI.wxml-->
+<page>
+  <view class='topBoardView'>
+    <image src="/resources/img/background.png" class='topIcon' />
+    <image src="/resources/img/light.png" class='topLight'></image>
+    <text class='topTips'>创建学校</text>
+    <image src="/resources/img/line.png" class='topLine' />
+  </view>
+  <view class='mainView'>
+  <label class='provinceName'>省份：{{province}}</label>
+   <label class='cityName'>州市：{{city}}</label>
+<label class='schoolName'>学校名:</label>
+<input class='inputSchool' bindinput='onInputSchool'></input>
+<button class='confirmButton' bindtap='onConfirm'>确认</button>
+<image src='/resources/img/tips.png' class='tipIcon'/>
+<text class='tipFont'>提交后不能修改</text>
+  </view>
+</page>

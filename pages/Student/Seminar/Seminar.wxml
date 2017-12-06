@@ -1,0 +1,15 @@
+<page>
+  <view class="topView">
+    <span class="title"> {{courseName}}</span>
+    <span class="titleSmall"> 讨论课{{seminarNumber}}</span>
+  </view>
+  <view class="ScoreBoxBlue" bindtap="score">
+    <span class="ButtonTextRight">打分</span>
+  </view>
+  <view class="CallBoxBlue" bindtap="sign">
+    <span class="ButtonTextLeft">签到</span>
+  </view>
+  <view class="GroupBoxBlue" bindtap="group" style="float: ">
+    <span class="ButtonTextLeft">组队和选题</span>
+  </view>
+</page>

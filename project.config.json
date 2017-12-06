@@ -1,27 +1,17 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"minified": true
+		"minified": true,
+		"newFeature": true
 	},
-	"compileType": "weapp",
+	"compileType": "miniprogram",
 	"libVersion": "1.6.0",
-	"appid": "touristappid",
+	"appid": "wx16e28a7d888b1961",
 	"projectname": "%E8%AF%BE%E5%A0%82%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%AB%AF",
 	"condition": {
-		"weapp": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "1",
-					"pathName": "pages/binding-account/binding-account",
-					"query": ""
-				}
-			]
-		},
 		"search": {
 			"current": -1,
 			"list": []
@@ -29,6 +19,41 @@
 		"conversation": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
+			"list": [
+				{
+					"id": 0,
+					"name": "class-manage",
+					"pathName": "pages/Student/studentInfo/studentInfo",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "绑定",
+					"pathName": "pages/binding_and_index/Teacher_MainUI/Teacher_MainUI",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "学生",
+					"pathName": "pages/Student/Seminar/Seminar",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "老师",
+					"pathName": "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedGroupInfo",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "t",
+					"pathName": "pages/Student/Seminar/group/group",
+					"query": ""
+				}
+			]
 		}
 	}
 }

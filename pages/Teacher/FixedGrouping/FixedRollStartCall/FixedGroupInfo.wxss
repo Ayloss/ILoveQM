@@ -1,0 +1,219 @@
+/* 背景色 */
+
+page {
+  background: rgba(102, 204, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* 左上角的users图标和文字的容器*/
+
+.blueUsersView {
+  width: 40%;
+  height: 10%;
+  float: left;
+  margin-top: 5%;
+  margin-left: 10%;
+  font-size: 28rpx;
+}
+
+/* 左上角的蓝色users图标大小*/
+
+.blueUsersIcon {
+  width: 40%;
+  height: 100%;
+  margin-right: 10%;
+  margin-top: 50%；;
+}
+
+/*黑色线的样式*/
+
+.hrView {
+  height: 2rpx;
+  width: 80%;
+  margin: auto;
+  border: 1rpx solid black;
+  background-color: black;
+  color: black;
+  float: right;
+  margin-right: 10%;
+  margin-top: 2.5%;
+  margin-bottom: 5%;
+}
+
+/*学生名单上面那个蓝色的bar*/
+
+.studentListBarView {
+  background-color: #6cf;
+  float: right;
+  width: 90%;
+  height: 60rpx;
+  border-radius: 12rpx;
+  font-size: 28;
+  color: black;
+  margin-right: 5%;
+  margin-top: 2%;
+  padding-bottom: 1%;
+}
+
+/*队伍和选题的文字*/
+
+.groupTopics {
+  float: right;
+  margin-right: 25%;
+}
+
+/*学生列表*/
+.studentView{
+  width : 90%;
+  margin-left: 5%;
+  margin-right: 5%；
+}
+
+/*学生块*/
+
+.studentBlock {
+  background-color: #fff;
+  width: 50%;
+  float: left;
+  border-radius: 12rpx;
+  color: black;
+  height: 100rpx;
+}
+
+/*学生前面的icon*/
+
+.userIcon {
+  float: left;
+  width: 25%;
+  height: 100%;
+}
+
+/*学生名字的文本*/
+
+.studentName {
+  float: left;
+  margin-left: 20%;
+  margin-top: 6%;
+}
+
+/*取消加入迟到学生的红叉*/
+
+.redCancelIcon {
+  float: right;
+  margin-right: 5%;
+  margin-top: 5%;
+  width: 15%;
+  height: 60%;
+}
+
+/*增加学生前面的加号*/
+
+.addIcon {
+  float: right;
+  width: 25%;
+  height: 100%;
+}
+
+/*未签到学生名单上面那个蓝色的bar,相比普通的增加了上方间距*/
+
+.studentNoCallBarView {
+  background-color: #6cf;
+  float: right;
+  width: 90%;
+  height: 60rpx;
+  border-radius: 12rpx;
+  font-size: 28;
+  color: black;
+  margin-right: 5%;
+  margin-top: 10%;
+  padding-bottom: 1%;
+}
+
+
+
+/*模态弹窗*/
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-list{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:unwrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-holder {
+  width: 100%;
+  text-align: center;
+  color: #666;
+  font-size: 40rpx;
+}
+
+.input-holder-select {
+  width: 100%;
+  text-align: center;
+  color: #f9f9f9;
+  font-size: 40rpx;
+  background-color: #6cf;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #6cf;
+  text-align: center;
+}
+
