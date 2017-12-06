@@ -5,6 +5,7 @@ Page({
   /**
    * 页面的初始数据
    */
+  //这里考虑要不要写成多种点开的形式
   data: {
     groupList: [],
     studentList: [],

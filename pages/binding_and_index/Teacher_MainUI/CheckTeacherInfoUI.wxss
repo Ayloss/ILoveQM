@@ -54,7 +54,7 @@
 /*下方的主要选择页面*/
 .mainView
 {
-  background-color: #8cd7ff;
+  background-color: #6cf;
   width:100%;
   height: 1000rpx;
 }

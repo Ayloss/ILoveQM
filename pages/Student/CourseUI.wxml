@@ -7,11 +7,13 @@
 
   <view wx:for="{{seminarList}}">
     <view class='box3' id="{{item.id}}" bindtap="enterSeminar">
-      <text class="FONT12"> {{item.name}}</text>
       <!--蓝色选择框-->
-      <text class="FONT2" style="margin-left: 60%;margin-top: 3%"> {{item.startTime}}至{{item.endTime}}</text>
-      <text class="FONT2" style="margin-left: 60%;margin-top: 12%">分组方式:{{item.groupingMethod}}</text>
-      <text class="FONT2" style="margin-left: 60%;margin-top: 21%"> 成绩：{{item.grade}}     </text>
+      <text class="FONT12"> 讨论课{{item.id}}</text>
+      <!--蓝色选择框-->
+      <text class="FONT2 seminarDate"> {{item.startTime}}至{{item.endTime}}</text>
+      <text class="FONT2 groupType" wx:if="{{item.groupingMethod=='fixed'}}"> 固定分组</text>
+      <text class="FONT2 groupType" wx:if="{{item.groupingMethod!='fixed'}}"> 随机分组</text>
+      <text class="FONT2 groupGrade"> 成绩：{{item.grade}}     </text>
     </view>
   </view>
 

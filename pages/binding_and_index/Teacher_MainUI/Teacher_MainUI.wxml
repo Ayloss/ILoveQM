@@ -1,17 +1,21 @@
 <page>
-  <!--这里是mainUI-->
+  <!--这里是老师mainUI-->
   <block wx:if="{{jwt!='' && userType=='teacher'}}">
-    <image src='/resources/img/users.png' class='topHead' bindtap='onCheckInfo'></image>
+    <image src='http://localhost:8080/avatar/ghg' class='topHead' bindtap='onCheckInfo'></image>
     <text class='topName' bindtap='onCheckInfo'>姓名：{{userName}}</text>
     <text class='topID' bindtap='onCheckInfo'>教工号：{{ID}}</text>
     <image src='/resources/img/background.png' class='topBoardView'></image>
-    <view wx:for="{{courseList}}" class="blueButton" data-course-obj="{{item}}" bindtap='onClickClass'>
-      <text class="Text1"> {{item.name}}</text>
+    <!--这里标准组的时间比较有问题-->
+    <view wx:for="{{courseList}}" wx:if="{{date>item.endTime||date<item.startTime}}" class="box4" bindtap="onClickClass" data-course-obj="{{item}}">
+      <text class="FONT1"> {{item.name}}</text>
+    </view>
+    <view  wx:for="{{courseList}}" class="box3" bindtap="onClickClass" data-course-obj="{{item}}">
+      <text class="FONT1"> {{item.name}}</text>
     </view>
   </block>
-
+  <!--这里是学生mainUI-->
   <block wx:if="{{jwt!='' && userType=='student'}}">
-    <image src='/resources/img/users.png' class='topHead' bindtap='onCheckInfo'></image>
+    <image src='http://localhost:8080/avatar/ghg' class='topHead' bindtap='onCheckInfo'></image>
     <text class='topName' bindtap='onCheckInfo'>姓名：{{userName}}</text>
     <text class='topID' bindtap='onCheckInfo'>学号：{{ID}}</text>
     <image src='/resources/img/background.png' class='topBoardView'></image>

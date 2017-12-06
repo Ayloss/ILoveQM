@@ -15,8 +15,8 @@
 
     <view class="clockAndGroupView">
       <image src="/resources/img/pin.png" mode='widthFix' class="clockAndGroupIcon"></image>
-      <text wx:if="{{seminar.groupingMethod}}=='fixed'" class='clockAndGroupText'>固定分组</text>
-      <text wx:else class='clockAndGroupText'>随机分组</text>
+      <text wx:if="{{seminar.groupingMethod=='fixed'}}" class='clockAndGroupText'>固定分组</text>
+      <text wx:if="{{seminar.groupingMethod=='random'}}" class='clockAndGroupText'>随机分组</text>
     </view>
   </view>
   <!--讨论课的班级，要增加新班级就复制一个view，然后修改班级名称-->

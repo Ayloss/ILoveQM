@@ -97,6 +97,10 @@ Page({
       buttonControllObj[i] = 0
     }
     buttonControllObj[index] = 1
+    /*if (buttonControllObj[index]==0)
+      buttonControllObj[index] = 1
+    else
+      buttonControllObj[index] = 0*/
     this.setData({
       buttonControll: buttonControllObj
     })

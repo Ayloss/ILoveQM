@@ -1,15 +1,15 @@
-<page class="page">
-  <view class="head20">
-    <span class="FONT1"> {{courseName}}</span>
-    <span class="FONT2"> 讨论课{{seminarNumber}}</span>
+<page>
+  <view class="topView">
+    <span class="title"> {{courseName}}</span>
+    <span class="titleSmall"> 讨论课{{seminarNumber}}</span>
   </view>
-  <view class="box2" bindtap="score">
-    <span class="FONT21" style="margin-top: 100%">打分</span>
+  <view class="ScoreBoxBlue" bindtap="score">
+    <span class="ButtonTextRight">打分</span>
   </view>
-  <view class="box1" bindtap="sign">
-    <span class="FONT21">签到</span>
+  <view class="CallBoxBlue" bindtap="sign">
+    <span class="ButtonTextLeft">签到</span>
   </view>
-  <view class="box1" bindtap="group" style="float: ">
-    <span class="FONT21">组队和选题</span>
+  <view class="GroupBoxBlue" bindtap="group" style="float: ">
+    <span class="ButtonTextLeft">组队和选题</span>
   </view>
 </page>

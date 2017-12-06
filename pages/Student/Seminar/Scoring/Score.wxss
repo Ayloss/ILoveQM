@@ -1,3 +1,4 @@
+/* pages/StudentClass/CourseUI/Seminar/Grade/grade.wxss */
 @charset "utf-8";
 /* CSS Document */
 /* 背景色 字体 */
@@ -14,10 +15,6 @@ page{
   float: left;
   width: 100%;
 }
-.seminarimg{
-   height: 3rem;
-   width: 3rem;
-}
 /*打分部分的边缘长度*/
 .scoremargin{
 	margin:10%;
@@ -33,20 +30,34 @@ page{
 	width:50%;
 	border-style: none; 
 }
-/* 居中div */
-.middlediv{
-	text-align: center;
+.seminarimg{
+   height: 3rem;
+   width: 3rem;
+   display: inline-block;
 }
 .greyword{
+  height: 3rem;
+  width: 14rem;
   font-size:0.9375rem; 
-  float: left;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 3rem;
 }
 .column0{
 	float:left;
 	width:15%
 }
-image{
+.text{
   height: 1.5rem;
   width: 1.5rem;
+  display: inline-block;
+  margin-left: 10%;
+}
+.heart{
+  line-height: 0.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: inline-block;
+  vertical-align: middle;
   margin: 3%;
 }

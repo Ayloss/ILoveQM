@@ -14,13 +14,13 @@
 <view class="middlediv scoremargin">
 <block wx:for="{{presentationGrade}}" wx:for-item="i">
   <view>
-      <label class='la'>{{i.name}}</label>
+      <label class='text'>{{i.name}}</label>
       <block wx:for="{{[1,2,3,4,5]}}">
         <block wx:if="{{item<=i.grade}}">
-          <image src="/resources/img/heart_chosen.png" data-group="{{i.id}}" data-score="{{item}}" bindtap="score" />
+          <image src="/resources/img/heart_chosen.png" data-group="{{i.id}}" data-score="{{item}}" bindtap="score" class='heart'/>
         </block>
         <block wx:if="{{item>i.grade}}">
-          <image src="/resources/img/heart_empty.png" data-group="{{i.id}}" data-score="{{item}}" bindtap="score" />
+          <image src="/resources/img/heart_empty.png" data-group="{{i.id}}" data-score="{{item}}" bindtap="score" class='heart'/>
         </block>
       </block>
   </view>

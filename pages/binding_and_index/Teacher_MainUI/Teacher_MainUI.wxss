@@ -174,7 +174,7 @@
 /*下方的主要选择页面*/
 .mainView
 {
-  background-color: #8cd7ff;
+  background-color: #6cf;
   width:100%;
   height: 1000rpx;
 }
@@ -194,4 +194,27 @@
 	color: #666666;
 	margin-left: 60%;
 	margin-top: 11%;
+}
+
+
+/*box3 蓝色选择框*/
+.box3{
+	position:relative;
+	margin-left: 5%;
+	width: 90%;
+	background-color:#66CCFF;
+	margin-top: 5%;
+	padding-bottom: 25%;
+  border-radius: 15px;
+}
+
+/* 主标题的字体 */
+.FONT1
+{
+	font-size: 6vw;
+	position: absolute;
+	color: #FFFFFF;
+	margin-top: 23px;
+	width: 100%;
+	text-align: center;
 }

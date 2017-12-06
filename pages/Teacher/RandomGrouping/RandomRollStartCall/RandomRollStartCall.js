@@ -16,7 +16,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) {//这里需要判断当前签到清空进行跳转
     var self = this;
     var getIPPort = app.globalData.IPPort;
     //console.log(options.classID)

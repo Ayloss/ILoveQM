@@ -22,6 +22,7 @@ Page({
       course: JSON.parse(options.course),
       seminar: JSON.parse(options.seminar)
     })
+    //console.log(options.seminar)
     var getIPPort = app.globalData.IPPort;
     var courseID = this.data.course.id;
     var self = this;
@@ -90,7 +91,7 @@ Page({
   onGroupingPage: function (e) {
     //console.log(e.currentTarget.dataset.classID)
     var classID = e.currentTarget.dataset.classId
-    if (this.data.seminar.groupingMethod != "fixed")
+    if (this.data.seminar.groupingMethod == "fixed")
       wx.navigateTo({
         url: '../FixedGrouping/FixedRollStartCall/FixedRollStartCall?seminar=' + JSON.stringify(this.data.seminar) + '&classID=' + classID
       })
