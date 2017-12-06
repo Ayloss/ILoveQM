@@ -1,3 +1,4 @@
+/* pages/StudentClass/CourseUI/Seminar/ChooseTopic/ChooseTopic.wxss */
 /* 背景色 */
 
 page {
@@ -22,10 +23,18 @@ page {
 /* 左上角的蓝色users图标大小*/
 
 .blueUsersIcon {
-  width: 20%;
-  height: 100%;
-  margin-right: 10%;
-  margin-top: 50%；;
+  height: 3rem;
+  width: 3rem;
+  display: inline-block;
+}
+
+.title{
+  height: 3rem;
+  width: 10rem;
+  font-size:0.9375rem; 
+  display: inline-block;
+  vertical-align: top;
+  line-height: 3rem;
 }
 
 /*黑色线的样式*/
@@ -96,6 +105,7 @@ page {
   font-size: 28rpx;
   width: 60%;
   margin-top: 5%;
+  margin-left: 5%;
 }
 
 /*选题框右边的剩余人数，当人数大于等于2时为白色*/
@@ -105,6 +115,7 @@ page {
   float: left;
   font-size: 28rpx;
   margin-top: 5%;
+  margin-left: 5%;
 }
 
 /*选题框右边的剩余人数，当人数为1时为红色*/
@@ -114,6 +125,7 @@ page {
   float: left;
   font-size: 28rpx;
   margin-top: 5%;
+  margin-left: 5%;
 }
 
 /*选题框右下角的九点按钮*/

@@ -2,17 +2,16 @@
   <view class="head20">
     <text class="FONT1"> {{name}}</text>
   </view>
-  <view style="margin-top: 15%;">
-    <image class="img3" src="/resources/img/userpic.png" alt="" />
-    <text class="FONT3">老师：{{teacherName}}</text>
+  <view class='infoView'>
+    <image class="imgView" src="/resources/img/userpic.png"/>
+    <text class="textView">老师：{{teacherName}}</text>
   </view>
-  <view style="margin-top: 4%;">
-    <image class="img4" src="/resources/img/mailpic.png" alt="" />
-    <text class="FONT3">邮箱：{{teacherEmail}}</text>
+  <view class='infoView'>
+    <image class="imgView" src="/resources/img/mailpic.png"/>
+    <text class="textView">邮箱：{{teacherEmail}}</text>
   </view>
-  
-  <view style="margin-top: 4%;">
-    <image class="img6" src="/resources/img/docpic.png" alt="" />
-    <text class="FONT3">简介：{{description}}</text>
+  <view class='infoView'>
+    <image class="imgView" src="/resources/img/docpic.png"/>
+    <text class="textView">简介：{{description}}</text>
   </view>
 </page>
