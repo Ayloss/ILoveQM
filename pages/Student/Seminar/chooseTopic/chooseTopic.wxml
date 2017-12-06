@@ -10,17 +10,17 @@
 
   <block  wx:for="{{topics}}">
 
-    <view wx:if="{{item.groupLeft>0}}" class="blueTopicView">
-              <span class="topic" id="{{item.id}}" bindtap="chooseTopic">话题{{match[index]}}</span>
+    <view wx:if="{{item.groupLeft>0}}" class="blueTopicView"  catchtap="chooseTopic">
+              <span class="topic" id="{{item.id}}">话题{{match[index]}}</span>
               <view class="hrVertical"> </view>
-              <span class="topicName" id="{{item.id}}" bindtap="chooseTopic">{{item.name}}</span>
+              <span class="topicName" id="{{item.id}}">{{item.name}}</span>
               <span wx:if="{{item.groupLeft>1}}">
-              <span class="leftNumWhite" id="{{item.id}}" bindtap="chooseTopic">剩余 ： {{item.groupLeft}}/{{item.groupLimit}}</span>
+              <span class="leftNumWhite" id="{{item.id}}">剩余 ： {{item.groupLeft}}/{{item.groupLimit}}</span>
               </span>
               <span wx:if="{{item.groupLeft==1}}">
-              <span class="leftNumRed" id="{{item.id}}" bindtap="chooseTopic">剩余 ： {{item.groupLeft}}/{{item.groupLimit}}</span>
+              <span class="leftNumRed" id="{{item.id}}">剩余 ： {{item.groupLeft}}/{{item.groupLimit}}</span>
               </span>
-              <image src='/resources/img/chooseschool.png' id="{{item.id}}" class="nineIcon" bindtap="detail"></image>
+              <image src='/resources/img/chooseschool.png' id="{{item.id}}" class="nineIcon" catchtap="detail"></image>
     </view>
 
     <view wx:if="{{item.groupLeft==0}}" class="greyTopicView">
