@@ -9,7 +9,7 @@ Page({
     userName: "",
     teacherID: "",
     phoneNum: "", 
-    school: "厦门大学"
+    school: ""
   },
 
   /**
@@ -26,6 +26,7 @@ Page({
         //console.log(result)
         self.setData({
           userName:result.data.name,
+          school: result.data.school.name,
           teacherID: result.data.number,
           phoneNum: result.data.number,
         })
