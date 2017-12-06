@@ -1,19 +1,35 @@
 // pages/Student/CourseUI.js
+var app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    courseName:""
+    course:{},
+    seminarList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var self=this
+    var IPPort=app.globalData.IPPort
     this.setData({
-      courseName: JSON.parse(options.courseName)
+      course: JSON.parse(options.course),
+    })
+    wx.request({
+      url: IPPort+'/course/'+self.data.course.id+'/seminar',
+      data:{
+        embedGrade:'false'
+      },
+      method:'GET',
+      success:function(res){
+        self.setData({
+          seminarList:res.data
+        })
+      }
     })
   },
 
@@ -64,5 +80,11 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  onClickSeminar:function(e){
+    wx.navigateTo({
+      url: './class-manage/class-manage?seminar=' + JSON.stringify(e.currentTarget.dataset.seminarObj)+'&course='+JSON.stringify(this.data.course),
+    })
   }
 })

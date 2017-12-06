@@ -21,16 +21,16 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
 					"name": "class-manage",
-					"pathName": "pages/Student/Seminar/CallRoll/RollCall",
+					"pathName": "pages/Student/studentInfo/studentInfo",
 					"query": ""
 				},
 				{
-					"id": 5,
+					"id": 1,
 					"name": "绑定",
 					"pathName": "pages/binding_and_index/Teacher_MainUI/Teacher_MainUI",
 					"query": ""
@@ -44,7 +44,13 @@
 				{
 					"id": 3,
 					"name": "老师",
-					"pathName": "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedRollStartCall",
+					"pathName": "pages/Teacher/FixedGrouping/FixedRollStartCall/FixedGroupInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "t",
+					"pathName": "pages/binding_and_index/Teacher_MainUI/CheckTeacherInfoUI",
 					"query": ""
 				}
 			]

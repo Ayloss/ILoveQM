@@ -2,18 +2,18 @@
 <page>
   <!--设置左上角的蓝色板-->
   <view class="blueBoardView">
-    <image src="resources/img/blueboard.png" class='blueBoardIcon' />
+    <image src="/resources/img/blueboard.png" class='blueBoardIcon' />
   </view>
 
 
   <!--班级1 的字样-->
   <view class='classNameView'>
-    班级1
+    {{className}}
   </view>
 
   <!--学生总数：40 的字样-->
   <view class='studentSumView'>
-    学生总数: 40
+    学生总数: {{studentNum}}
   </view>
 
   <!--细线，hr不好设置css，用一个高度很小的view来代替-->
@@ -22,7 +22,7 @@
   <view wx:if="{{CallInRollCondition==0}}">
     <view class="studentNum">
       <image src="/resources/img/users.png" class="usersIcon" />
-      <span>已签到学生: 0/40</span>
+      <span>已签到学生: 0/{{studentNum}}</span>
     </view>
     <view>
       <button class="blueBigBtn" bindtap='onStartCall'>开始签到</button>
@@ -40,7 +40,7 @@
     <view>
       <view class="studentNum2">
         <image src="/resources/img/users.png" class="usersIcon2" />
-        <span>已签到学生: 9/40</span>
+        <span>已签到学生: {{nowStudentNum}}/{{studentNum}}</span>
       </view>
       <button class="blueSmallBtn" bindtap='onRollCallList'>签到名单</button>
     </view>
@@ -53,7 +53,7 @@
   <view wx:if="{{CallInRollCondition==2}}">
     <view class="studentNum">
       <image src="/resources/img/users.png" class="usersIcon" />
-      <span>已签到学生: 37/40</span>
+      <span>已签到学生: {{nowStudentNum}}/{{studentNum}}</span>
     </view>
     <view>
       <button class="blueBigBtn" bindtap='onCheckList'>查看分组</button>

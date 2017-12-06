@@ -1,7 +1,7 @@
 <!--pages/binding & index/Student_MainUI/CheckStudentInfoUI.wxml-->
 <page>
-  <image src='/resources/img/users.png' class='topHead'></image>
-  <text class='topClickHead'>点击头像修改</text>
+  <image src='http://120.77.173.98:8102/avatar/ghg' class='topHead'></image>
+  <text class='topClickHead'  bindtap="changPortrait">点击头像修改</text>
   <text class='topName'>姓名：{{userName}}</text>
   <text class='topID'>教工号：{{teacherID}}</text>
   <image src='/resources/img/background.png' class='topBoardView'></image>
@@ -10,6 +10,6 @@
     <text class='ID'>教工号：{{teacherID}}</text>
     <text class='school'>学校：{{school}}</text>
     <text class='name'>姓名：{{userName}}</text>
-    <button class='confirmButton'>解绑</button>
+    <button class='confirmButton' bindtap='onUnBind'>解绑</button>
   </view>
 </page>

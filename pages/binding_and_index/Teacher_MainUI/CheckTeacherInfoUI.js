@@ -8,7 +8,7 @@ Page({
   data: {
     userName: "",
     teacherID: "",
-    phoneNum: "",   //这里的手机号码url还有问题
+    phoneNum: "", 
     school: "厦门大学"
   },
 
@@ -80,5 +80,62 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  changPortrait: function () {
+    console.log(2)
+    var self = this
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        self.data.photoPath = res.tempFilePaths
+        console.log(self.data.photoPath)
+        wx.uploadFile({
+          url: app.globalData.IPPort + '/upload/avatar',
+          filePath: self.data.photoPath[0],
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success: function (res) {
+            console.log(res.data)
+          },
+          fail: function () {
+            wx.showToast({
+              title: '失败',
+              icon: 'fail',
+              duration: 1000,
+              mask: true
+            })
+          }
+        })
+      }
+    })
+  },
+
+  onUnBind:function(){
+    var IPPort=app.globalData.IPPort
+    var self=this
+    var page=getCurrentPages()
+    var prvpage=page[page.length-2]
+    wx.request({
+      url: IPPort+'/me',
+      data:{
+        unionId:''
+      },
+      method:'PUT',
+      success:function(){
+        wx.setStorageSync('jwt', '')
+        prvpage.setData({
+          jwt:''
+        })
+        wx.navigateBack({
+          delta:1
+        })
+      }
+    })
+  },
+  
 })

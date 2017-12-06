@@ -1,21 +1,41 @@
-	
-<page style="background=#000000">
-	<image src='/resources/img/light.png' class='topLight'></image>
-  <text class='topTips'>请选择您的账户类型</text>
-  <image src='/resources/img/line.png' class='topLine'></image>
-  <image src='/resources/img/background.png' class='topBoardView'></image>
-	<view class="box6" style="background-color: =#66CCFF;">
-	<button class="button1" >省份</button>
-	<button class="button1" >州市</button>
-	<button class="button1" >学校</button>
-	</view>
-	<view class="box7" >
-     <view class="box8"><button class="button2" style="">北京</button></view>
-	<view class="box8"><button class="button2" style="">天津</button></view>
-		<view class="box8"><button class="button2" style="">北京</button></view>
-	<view class="box8"><button class="button2" style="">天津</button></view>
-		<view class="box8"><button class="button2" style="">北京</button></view>
-	<view class="box8"><button class="button2" style="">天津</button></view>
-	</view>
+<page>
+  <view class="box5">
+    <!-- 背景图的view -->
+    <image class="img7" src="/resources/img/light.png" />
+    <image class="img8" src="/resources/img/background.png" />
+    <view class="FONT41">请选择您的学校</view>
+  </view>
+
+  <view class="box6">
+    <button class="button1" bindtap='onProvinceBtn'>省份
+      <view wx:if="{{pageCondition==0}}" class="hrView" />
+    </button>
+    <button class="button1" bindtap='onCityBtn'>州市
+      <view wx:if="{{pageCondition==1}}" class="hrView" />
+    </button>
+    <button class="button1" bindtap='onSchoolBtn'>学校
+      <view wx:if="{{pageCondition==2}}" class="hrView" />
+    </button>
+  </view>
+
+  <view class="box7">
+    <scroll-view scroll-y="true" class="scrollView">
+
+      <view wx:if="{{pageCondition==0}}" wx:for="{{province}}" class="box8" bindtap="onChooseProvince" data-province-obj="{{item}}">
+        <button class="button2">{{item}}</button>
+      </view>
+
+      <view wx:if="{{pageCondition==1}}" wx:for="{{city}}" class="box8" bindtap="onChooseCity" data-city-obj="{{item}}">
+        <button class="button2">{{item}}</button>
+      </view>
+
+      <view wx:if="{{pageCondition==2}}" wx:for="{{school}}" class="box8" bindtap="onChooseSchool" data-school-obj="{{item}}">
+        <button class="button2">{{item.name}}</button>
+      </view>
+
+      <view wx:if="{{pageCondition==2 && userType=='teacher'}}">
+        <button class="button2" bindtap='onCreateSchool'>无学校？选择创建</button>
+      </view>
+    </scroll-view>
+  </view>
 </page>
-	

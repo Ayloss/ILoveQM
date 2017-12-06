@@ -1,14 +1,14 @@
 <page class="body">
   <view class="head20">
-    <text class="FONT1"> OOAD</text>
+    <text class="FONT1"> {{name}}</text>
   </view>
   <view style="margin-top: 15%;">
     <image class="img3" src="/resources/img/userpic.png" alt="" />
-    <text class="FONT3">老师：邱明</text>
+    <text class="FONT3">老师：{{teacherName}}</text>
   </view>
   <view style="margin-top: 4%;">
     <image class="img4" src="/resources/img/mailpic.png" alt="" />
-    <text class="FONT3">邮箱：qiuming@gmail.com</text>
+    <text class="FONT3">邮箱：{{teacherEmail}}</text>
   </view>
   <!--
   <view style="margin-top: 4%;">
@@ -30,6 +30,6 @@
   </view>-->
   <view style="margin-top: 4%;">
     <image class="img6" src="/resources/img/docpic.png" alt="" />
-    <text class="FONT3">简介：</text>
+    <text class="FONT3">简介：{{description}}</text>
   </view>
 </page>

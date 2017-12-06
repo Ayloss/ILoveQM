@@ -2,34 +2,29 @@
 <page>
   <!--设置蓝色上方-->
   <view class='blueHeader'>
-    <span>{{courseName}}</span>
-    <span class="seminarText">讨论课4</span>
+    <span>{{course.name}}</span>
+    <span class="seminarText">{{seminar.name}}</span>
   </view>
   <!--讨论课的时间和分组方式-->
 
-  <view class="clockAndGroupView">
-    <image src="../../../../resources/img/clock.png" class='clockAndGroupIcon' />
-    <span>11月6日-11月12日</span>
-  </view>
+  <view class='ourcontainer'>
+    <view class="clockAndGroupView">
+      <image src="/resources/img/clock.png" mode='widthFix' class='clockAndGroupIcon' />
+      <text class='clockAndGroupText'>{{seminar.startTime}}-{{seminar.endTime}}</text>
+    </view>
 
-  <view class="clockAndGroupView">
-    <image src="../../../../resources/img/pin.png" class="clockAndGroupIcon"></image>
-    <span>随机分组</span>
+    <view class="clockAndGroupView">
+      <image src="/resources/img/pin.png" mode='widthFix' class="clockAndGroupIcon"></image>
+      <text wx:if="{{seminar.groupingMethod}}=='fixed'" class='clockAndGroupText'>固定分组</text>
+      <text wx:else class='clockAndGroupText'>随机分组</text>
+    </view>
   </view>
-
   <!--讨论课的班级，要增加新班级就复制一个view，然后修改班级名称-->
-  <view class="classView">
-    <image src="../../../../resources/img/class.png" class="classIcon" bindtap='onGroupingPage'/>
-    <p class="className" bindtap='onGroupingPage'>班级1</p>
+  <view wx:for="{{classs}}" class="classView" bindtap='onGroupingPage' data-class-id="{{item.id}}">
+    <image src="/resources/img/class.png" class="classIcon" />
+    <p class="className">{{item.name}}</p>
   </view>
-  <view class="classView">
-    <image src="../../../../resources/img/class.png" class="classIcon" bindtap='onGroupingPage'/>
-    <p class="className" bindtap='onGroupingPage'>班级2</p>
-  </view>
-  <view class="classView">
-    <image src="../../../../resources/img/class.png" class="classIcon" bindtap='onGroupingPage'/>
-    <p class="className" bindtap='onGroupingPage'>班级3</p>
-  </view>
+  
 
 
 </page>

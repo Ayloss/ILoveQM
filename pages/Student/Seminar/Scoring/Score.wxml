@@ -1,50 +1,33 @@
 <import class="score.wxss"/>
 
 <view class="seminarblock">	
-  <span class="column0"><image class="seminarimg" src="../../../../resources/img/users.png" /></span>
+  <span class="column0"><image class="seminarimg" src="/resources/img/users.png" /></span>
+  <block wx:if="{{flag}}">
   <label class='greyword'>请为别的小组展示打分</label>
+  </block>
+  <block wx:if="{{!flag}}">
+  <label class='greyword'>您的打分结果</label>
+  </block>
 </view>
 
+<!--打分表单-->
 <view class="middlediv scoremargin">
-<view>
-    <label class='la'>A1</label>
-    <image src="../../../../resources/img/heart_chosen.png" />
-      <image src="../../../../resources/img/heart_chosen.png" />
-      <image src="../../../../resources/img/heart_chosen.png" />
-      <image src="../../../../resources/img/heart_chosen.png" />
-      <image src="../../../../resources/img/heart_chosen.png" />     
-</view>
-<view>
-  <label>A2</label>
-  <image src="../../../../resources/img/heart_chosen.png" />
-    <image src="../../../../resources/img/heart_chosen.png" />
-    <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />     
-</view>
-<view>
-  <label>A3</label>
-  <image src="../../../../resources/img/heart_chosen.png" />
-    <image src="../../../../resources/img/heart_chosen.png" />
-    <image src="../../../../resources/img/heart_chosen.png" />
-    <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />     
-</view>     
-<view>
-  <label>B1</label>
-  <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />     
-</view>
-<view>
-  <label>B2</label>
-  <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />
-    <image src="../../../../resources/img/heart_empty.png" />     
-</view>
+<block wx:for="{{presentationGrade}}" wx:for-item="i">
+  <view>
+      <label class='la'>{{i.name}}</label>
+      <block wx:for="{{[1,2,3,4,5]}}">
+        <block wx:if="{{item<=i.grade}}">
+          <image src="/resources/img/heart_chosen.png" data-group="{{i.id}}" data-score="{{item}}" bindtap="score" />
+        </block>
+        <block wx:if="{{item>i.grade}}">
+          <image src="/resources/img/heart_empty.png" data-group="{{i.id}}" data-score="{{item}}" bindtap="score" />
+        </block>
+      </block>
+  </view>
+</block>
+
+<block wx:if="{{flag}}">
+
 <button class="btnsubmit" bindtap="submit">提交</button>
+</block>
  </view>

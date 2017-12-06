@@ -8,12 +8,12 @@
 
   <!--班级1 的字样-->
   <view class='classNameView'>
-    班级1
+    {{className}}
   </view>
 
   <!--学生总数：40 的字样-->
   <view class='studentSumView'>
-    签到人数：9/40
+    签到人数：{{attendStudnetList.length}}/{{studentNum}}
   </view>
 
 
@@ -21,22 +21,13 @@
   <view class='studentListBarView'>
     已签到人员
   </view>
-
-  <!--学生块，分为左边的和右边的，增加学生的时候选择好左边或者
-右边后直接复制就好，之后在span下面修改学生名字-->
-  <view class='studentLeftBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">杨xx</span>
-  </view>
-
-  <view class='studentRightBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">周xx</span>
-  </view>
-
-  <view class='studentLeftBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">孙xx</span>
+  <!--这里差个自适应的-->
+  <!--学生块，用整个view包住学生的部分，每次添加新学生能自动排好版，之后在span下面修改学生名字-->
+  <view wx:for="{{attendStudnetList}}" wx:for-item="item" class='studentView'>
+    <view class='studentBlock'>
+      <image src="/resources/img/user.png" class='userIcon' />
+      <span class="studentName">{{item.name}}</span>
+    </view>
   </view>
 
 </page>

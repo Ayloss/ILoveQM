@@ -1,18 +1,44 @@
-// pages/Student/Seminar/CourseInfo.js
+var app = getApp();// pages/Student/Seminar/CourseInfo.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    courseID:'',
+    name: "OOAD1",
+    description: "面向对象分析与设计",
+    teacherName: "邱明",
+    teacherEmail: "mingqiu@xmu.edu.cn"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var cid= JSON.parse(options.str)
+    var self=this
+    wx.request({
+      url: app.globalData.IPPort + '/course/' + cid,
+      method: 'get',
+      success: function (res) {
+        var temp=res.data
+        self.setData({
+          name: temp.name,
+          description: temp.description,
+          teacherName: temp.teacherName,
+          teacherEmail: temp.teacherEmail
+        })
+      },
+      fail: function () {
+        wx.showToast({
+          title: '页面加载失败',
+          icon: 'fail',
+          duration: 1000,
+          mask: true
+        })
+      }
+    })  
   },
 
   /**

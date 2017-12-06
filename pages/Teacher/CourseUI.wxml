@@ -1,32 +1,21 @@
 <page class="page">
-<view class="head20">
-	<text class="FONT1"> {{courseName}}</text>
-	</view>
-<view class="box3">
-	<text class="FONT12" > 讨论课4</text><!--蓝色选择框-->
-	<text class="FONT2" style="margin-left: 60%;margin-top: 3%" > 11月6日至11月12日</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 12%"> 固定分组</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 21%"> 成绩：未完成</text>
-	</view>
-	
-<view class="box4"> <!--灰色选择框-->
-	<text class="FONT12"> 讨论课5</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 3%" > 11月6日至11月12日</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 12%"> 固定分组</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 21%"> 成绩：未完成</text>
-	</view>
-<view class="box4"> <!--灰色选择框-->
-	<text class="FONT12"> 讨论课6</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 3%"> 11月6日至11月12日</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 12%"> 固定分组</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 21%"> 成绩：未完成</text>
-	</view>
-<view class="box4"> <!--灰色选择框-->
-	<text class="FONT12"> 讨论课7</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 3%"> 11月6日至11月12日</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 12%"> 固定分组</text>
-	<text class="FONT2" style="margin-left: 60%;margin-top: 21%"> 成绩：未完成</text>
-	</view>
-	
-	
+  <view class="head20">
+    <text class="FONT1"> {{course.name}}</text>
+  </view>
+  <view wx:for="{{seminarList}}" class="box3" data-seminar-obj='{{item}}' bindtap='onClickSeminar'>
+    <text class="FONT12"> {{item.name}}</text>
+    <!--蓝色选择框-->
+    <text class="FONT2" style="margin-left: 60%;margin-top: 3%"> {{item.startTime}}至{{item.endTime}}</text>
+    <text  class="FONT2" style="margin-left: 60%;margin-top: 12%"> 固定分组</text>
+  </view>
+
+  <view class="box4">
+    <!--灰色选择框-->
+    <text class="FONT12"> 讨论课5</text>
+    <text class="FONT2" style="margin-left: 60%;margin-top: 3%"> 11月6日至11月12日</text>
+    <text class="FONT2" style="margin-left: 60%;margin-top: 12%"> 固定分组</text>
+    <text class="FONT2" style="margin-left: 60%;margin-top: 21%"> 成绩：未完成</text>
+  </view>
+
+
 </page>

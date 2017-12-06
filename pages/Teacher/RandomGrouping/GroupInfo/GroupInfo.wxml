@@ -8,87 +8,47 @@
 
 
   <!--细线，hr不好设置css，用一个高度很小的view来代替-->
-  <view class="hrView">
-  </view>
+  <view class="hrView" />
 
 
   <!--学生名单上面那个蓝色的bar-->
-  <view class='studentListBarView'>
-    <span>队伍1</span>
-    <span class="groupTopics">选题：</span>
+  <view wx:for="{{groupList}}" wx:for-index='i'>
+    <view bindtap='onGroupInfo' class='studentListBarView' data-index='{{i}}'>
+      <span>队伍{{item.id}}</span>
+      <span class="groupTopics">选题：{{item.topics[0].name}}</span>
+      <!--这里记得加一个队伍内部的信息-->
+      <!--这里按钮记得处理-->
+    </view>
+    <view wx:if="{{buttonControll[i]==1}}" class='studentView'>
+      <view wx:for="{{studentList}}" wx:for-item="item">
+        <view class='studentBlock'>
+          <image src="/resources/img/user.png" class='userIcon' />
+          <span class="studentName">{{item.name}}</span>
+          <image src="/resources/img/redX.png" class='redCancelIcon' data-stu-obj="{{item}}" data-group-obj="{{groupList[i]}}" data-index="{{index}}" bindtap='onRemoveStudent' />
+        </view>
+      </view>
+
+      <!--空白添加学生的块-->
+      <view wx:if="{{lateStudentList.length!=0}}" class='studentBlock'>
+        <image src="/resources/img/plus.png" data-group-obj="{{groupList[i]}}" class='addIcon' bindtap='onAddStudent' />
+      </view>
+    </view>
   </view>
 
-  <!--学生块，分为左边的和右边的，增加学生的时候选择好左边或者
-右边后直接复制就好，之后在span下面修改学生名字-->
-  <view class='studentLeftBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">杨xx</span>
-  </view>
-
-  <view class='studentRightBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">周xx</span>
-  </view>
-
-  <view class='studentLeftBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">孙xx</span>
-  </view>
-
-
-  <!--加入红叉的学生块-->
-  <view class='studentRightBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">王xx</span>
-    <image src="/resources/img/redX.png" class='redCancelIcon' />
-  </view>
-
-  <view class='studentLeftBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">李xx</span>
-    <image src="/resources/img/redX.png" class='redCancelIcon' />
-  </view>
-
-  <!--空白添加学生的块-->
-  <view class='studentRightBlock'>
-    <image src="/resources/img/plus.png" class='addIcon' />
-  </view>
-
-
-  <!--学生名单上面那个蓝色的bar-->
-  <view class='studentListBarView'>
-    <span>队伍2</span>
-    <span class="groupTopics">选题：</span>
-  </view>
-  <view class='studentListBarView'>
-    <span>队伍3</span>
-    <span class="groupTopics">选题：</span>
-  </view>
-  <view class='studentListBarView'>
-    <span>队伍4</span>
-    <span class="groupTopics">选题：</span>
-  </view>
-
-
+  
   <!--迟到学生上面那个蓝色的bar-->
   <view class='studentNoCallBarView'>
     <span>未签到学生</span>
   </view>
 
   <!--未签到学生，要增加新学生复制一个view，修改名字-->
-  <view class='studentLeftBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">杨xx</span>
-  </view>
-
-  <view class='studentRightBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">周xx</span>
-  </view>
-
-  <view class='studentLeftBlock'>
-    <image src="/resources/img/user.png" class='userIcon' />
-    <span class="studentName">李xx</span>
+  <view class='studentView'>
+    <view wx:for="{{lateStudentList}}" wx:for-item="item">
+      <view class='studentBlock'>
+        <image src="/resources/img/user.png" class='userIcon' />
+        <span class="studentName">{{item.name}}</span>
+      </view>
+    </view>
   </view>
 
 </page>

@@ -7,9 +7,11 @@ Page({
    */
   data: {
     CallInRollCondition:0,
+    seminar:{},
     studentNum:0,
     classID:1,
     className:"",
+    nowStudentNum:9
   },
   /**
    * 生命周期函数--监听页面加载
@@ -21,8 +23,9 @@ Page({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method: 'GET',
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         self.setData({
+          seminar: JSON.parse(options.seminar),
           className: res.data.name,
           studentNum: res.data.numStudent
         })
@@ -85,10 +88,10 @@ Page({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method:'PUT',
       data:{
-        calling:"false"
+        calling:"1"
       },
       success:function(res){
-        console.log(res)
+        //console.log(res)
       }
     })
     this.setData({
@@ -103,6 +106,17 @@ Page({
       content: '是否结束签到',
       success:function(res){
         if(res.confirm){
+          var getIPPort = app.globalData.IPPort;
+          wx.request({
+            url: getIPPort + '/class' + '/' + thisApp.data.classID,
+            method: 'PUT',
+            data: {
+              calling: "-1"
+            },
+            success: function (res) {
+              //console.log(res)
+            }
+          })
           thisApp.setData({
             CallInRollCondition:2
           })
@@ -115,13 +129,15 @@ Page({
 
   onRollCallList:function(){
     wx.navigateTo({
-      url: './FixedCallList',
+      url: './FixedCallList?classID=' + + JSON.stringify(this.data.classID) + '&seminar=' + JSON.stringify(this.data.seminar),
     })
   },
 
   onCheckList:function(e){
+    //console.log('./FixedGroupInfo?classID=' + JSON.stringify(this.data.classID) + 'seminarID=' + JSON.stringify(this.data.seminarID))
+    //console.log('test')
     wx.navigateTo({
-      url: './FixedGroupInfo' + '?' + this.data.classID,
+      url: './FixedGroupInfo?classID=' + JSON.stringify(this.data.classID) + '&seminar=' + JSON.stringify(this.data.seminar)
     })
   }
 })

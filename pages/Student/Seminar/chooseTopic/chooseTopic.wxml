@@ -1,0 +1,49 @@
+<page>
+  <!--设置左上角的usersIcon-->
+  <view class="blueUsersView">
+    <image src="/resources/img/users.png" class='blueUsersIcon' />
+    <strong>请为您的队伍选题</strong>
+  </view>
+
+  <!--细线，hr不好设置css，用一个高度很小的view来代替-->
+  <view class="hrView"/>
+
+  <block  wx:for="{{topics}}">
+
+    <view wx:if="{{item.groupLeft>0}}" class="blueTopicView">
+              <span class="topic" id="{{item.id}}" bindtap="chooseTopic">话题{{match[index]}}</span>
+              <view class="hrVertical"> </view>
+              <span class="topicName" id="{{item.id}}" bindtap="chooseTopic">{{item.name}}</span>
+              <span wx:if="{{item.groupLeft>1}}">
+              <span class="leftNumWhite" id="{{item.id}}" bindtap="chooseTopic">剩余 ： {{item.groupLeft}}/{{item.groupLimit}}</span>
+              </span>
+              <span wx:if="{{item.groupLeft==1}}">
+              <span class="leftNumRed" id="{{item.id}}" bindtap="chooseTopic">剩余 ： {{item.groupLeft}}/{{item.groupLimit}}</span>
+              </span>
+              <image src='/resources/img/chooseschool.png' id="{{item.id}}" class="nineIcon" bindtap="detail"></image>
+    </view>
+
+    <view wx:if="{{item.groupLeft==0}}" class="greyTopicView">
+              <span class="topic">话题{{match[index]}}</span>
+              <view class="hrVertical"> </view>
+              <span class="topicName">{{item.name}}</span>
+              <span class="leftNumWhite">剩余 ： {{item.groupLeft}}/{{item.groupLimit}}</span>
+              <image src='/resources/img/chooseschool.png' id="{{item.id}}" class="nineIcon" bindtap="detail"></image>
+     </view>
+
+    <view wx:if="{{item.detailJud==1}}" class="topicDescribeView">  <!--是否显示detail-->
+              <span class="topicDescribeTitle">
+                {{item.name}}
+              </span>
+              <span class="topicDescribeText">
+                {{item.description}}
+              </span>
+     </view>
+
+  </block>
+
+<view>  
+  <modal title="提示" hidden="{{modalHidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalBindaconfirm" bindcancel="modalBindcancel">是否选择该话题</modal>  
+</view>  
+  
+</page>

@@ -24,14 +24,20 @@ Page({
   call:function()          //签到
   {
     var d={}
+    var self =this
     wx.request({
-      url: app.globalData.IPPort + '/class/' + this.data.classID + '/attendance/'+this.data.studentID,
+      url: app.globalData.IPPort + '/seminar/' + this.data.seminarID + '/class/' + this.data.classID +'/attendance/'+this.data.studentID,
       method: 'put',
       data:d,
       success: function (res) {
+        if (res.data.status=="late")
         self.setData({
-          callCondition: res.data
+          callCondition: 2
         })
+        else
+          self.setData({
+            callCondition: 1
+          })
       },
       fail: function () {
         wx.showToast({
@@ -55,12 +61,13 @@ Page({
       courseID: temp.courseID,
       courseName: temp.courseName,
     })
-
+    var self=this
     wx.request({
-      url: app.globalData.IPPort + '/seminar/' + this.data.seminarID ,
+      url: app.globalData.IPPort + '/seminar/' + this.data.seminarID+'/detail' ,
       method: 'get',
       success: function (res) {
         var temp=res.data
+        console.log(temp)
         self.setData({
           teacher: temp.teacherName,
           email: temp.teacherEmail,

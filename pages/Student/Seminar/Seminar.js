@@ -1,4 +1,4 @@
-// pages/Student/Seminar/Seminar.js
+var app = getApp();// pages/Student/Seminar/Seminar.js
 Page({
   /**
    * 页面的初始数据
@@ -7,8 +7,12 @@ Page({
     studentID: 1,
     classID: 1,
     courseID: 1,
-    courseName: 'OOAD',      
-    seminarID:""
+    courseName: '652',      
+    seminarID:1,
+    seminarNumber:1,
+
+
+    seminarData:''
   },
 
 
@@ -23,20 +27,30 @@ Page({
     })
   },
 
-  socre: function () {
+  score: function () {
     var data = {
       'studentID': this.data.studentID, 'classID': this.data.classID,
-      'courseID': this.data.courseID, 'courseName': this.data.courseName, 'seminarID':
-      this.data.seminarID
+      'courseID': this.data.courseID, 'courseName': this.data.courseName, 'seminarID':this.data.seminarID
     }
     wx.navigateTo({
       url: 'Scoring/Score?str=' + JSON.stringify(data),
     })
   },
+
+  group:function(){
+    var data = {
+      'studentID': this.data.studentID, 'classID': this.data.classID,
+      'courseID': this.data.courseID, 'courseName': this.data.courseName, 'seminarID': this.data.seminarID, 'groupMethod': this.data.seminarData.groupingMethod, 'isLeader': this.data.seminarData.isLeader, 'areTopicsSelected': this.data.seminarData.areTopicsSelected
+    }
+    console.log(this.data.seminarData.areTopicsSelected)
+    wx.navigateTo({
+      url: 'group/group?str=' + JSON.stringify(data),
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) {   //从courseUI进来
     var temp = JSON.parse(options.str)
     console.log(temp)
   this.setData({
@@ -45,9 +59,26 @@ Page({
     classID:  temp.classID,
     courseID: temp.courseID,
     courseName: temp.courseName, 
+    seminarNumber: temp.seminarNumber
   })
+  this.getData()
   },
+  
+  getData:function(){   //获得关于讨论课信息的数据
+    var self =this
+    wx.request({
+      url: app.globalData.IPPort + '/seminar/'+this.data.seminarID+'/my',
+      method: 'get',
+      success: function (res) {
+        var temp = res.data
+        console.log(temp)
+        self.setData({
+          seminarData:temp
+         })
+      }
+    })
 
+  },
     
   /**
    * 生命周期函数--监听页面初次渲染完成

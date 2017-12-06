@@ -1,17 +1,40 @@
 // pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    CallInRollCondition:0
+    CallInRollCondition:0,
+    studentNum: 0,
+    classID: 0,
+    className: "",
+    nowStudentNum: 37,
+    seminar:{}
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var self = this;
+    var getIPPort = app.globalData.IPPort;
+    //console.log(options.classID)
+    this.setData({
+      classID: options.classID,
+    })
+    wx.request({
+      url: getIPPort + '/class' + '/' + self.data.classID,
+      method: 'GET',
+      success: function (res) {
+        //console.log(res)
+        self.setData({
+          seminar:JSON.parse(options.seminar),
+          className: res.data.name,
+          studentNum: res.data.numStudent
+        })
+      }
+    })
   },
 
   /**
@@ -64,22 +87,45 @@ Page({
   },
 
   onStartCall:function(){
+    var self = this;
+    var getIPPort = app.globalData.IPPort;
+    wx.request({
+      url: getIPPort + '/class' + '/' + self.data.classID,
+      method: 'PUT',
+      data: {
+        calling: "1"
+      },
+      success: function (res) {
+        //console.log(res)
+      }
+    })
     this.setData({
       CallInRollCondition: 1
     })
   },
 
   onEndCall:function(){
-    const thisApp=this
+    const thisApp = this
     wx.showModal({
       title: '提示',
       content: '是否结束签到',
-      success:function(res){
-        if(res.confirm){
-          thisApp.setData({
-            CallInRollCondition:2
+      success: function (res) {
+        if (res.confirm) {
+          var getIPPort = app.globalData.IPPort;
+          wx.request({
+            url: getIPPort + '/class' + '/' + thisApp.data.classID,
+            method: 'PUT',
+            data: {
+              calling: "-1"
+            },
+            success: function (res) {
+              //console.log(res)
+            }
           })
-        } else if(res.cancel) {
+          thisApp.setData({
+            CallInRollCondition: 2
+          })
+        } else if (res.cancel) {
           console.log('user choose cancel')
         }
       }
@@ -87,14 +133,16 @@ Page({
   },
 
   onRollCallList:function(){
+    //console.log(this.data.classID)
     wx.navigateTo({
-      url: './RollCallList',
+      url: './RollCallList?classID=' + this.data.classID + '&seminar=' + JSON.stringify(this.data.seminar),
     })
   },
 
-  onCheckList:function(){
+  onCheckList:function(e){
+    //console.log('./FixedGroupInfo?classID=' + JSON.stringify(this.data.classID) + 'seminarID=' + JSON.stringify(this.data.seminarID))
     wx.navigateTo({
-      url: '../GroupInfo/GroupInfo',
+      url: '../GroupInfo/GroupInfo?classID=' + this.data.classID + '&seminar=' + JSON.stringify(this.data.seminar)
     })
   }
 })

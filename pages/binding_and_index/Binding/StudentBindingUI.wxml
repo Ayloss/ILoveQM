@@ -6,14 +6,14 @@
   <image src='/resources/img/background.png' class='topBoardView'></image>
   <view class='mainView'>
     <text class='studentID'>学号：</text>
-    <input class='inputStudentID'></input>
+    <input class='inputStudentID' bindinput='onInputID'></input>
     <image src='/resources/img/tips.png' class='tipIcon'></image>
     <text class='tipFont'>提交后不能修改</text>
     <text class='name'>姓名：</text>
-    <input class='inputName'></input>
+    <input class='inputName' bindinput='onInputName'></input>
     <text class='school'>学校：</text>
-    <input class='inputSchool'></input>
-    <button class='confirmButton'>绑定</button>
-    <image src='/resources/img/chooseschool.png' class='selectSchoolIcon'></image>
+    <input class='inputSchool' bindtap='onChooseSchool' value='{{school.name}}'disabled='disabled'></input>
+    <button class='confirmButton' bindtap='onBinding'>绑定</button>
+    <image src='/resources/img/chooseschool.png' class='selectSchoolIcon'bindtap='onChooseSchool'></image>
   </view>
 </page>

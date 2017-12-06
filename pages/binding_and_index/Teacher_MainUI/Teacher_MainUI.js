@@ -7,8 +7,11 @@ Page({
    */
   data: {
     userName: "",
-    teacherID: "",
-    courseList: []
+    ID: "",
+    userType: 'teacher',
+    courseList: [],
+    jwt: '',
+    courseInfo: []
   },
 
   /**
@@ -17,89 +20,155 @@ Page({
   onLoad: function (options) {
     var getIPPort = app.globalData.IPPort;
     var self = this;
-    wx.request({
-      url: getIPPort + '/me',
-      //header: { 'Content-Type': wx.getStorage('jwt') },
-      method:'GET',
-      success: function (result) {
-        //console.log(result)
-        self.setData({
-          userName: result.data.name,
-          teacherID: result.data.number,
-        })
-      }
-    });
-    wx.request({
-      url: getIPPort+'/course',
-      method:'GET',
-      success:function(res){
-        //console.log(res)
-        self.setData({
-          courseList:res.data
-        })
-      }
+    var jwt = wx.getStorageSync('jwt')
+    this.setData({
+      jwt: jwt
     })
+    if (jwt != '') {
+      wx.request({
+        url: getIPPort + '/me',
+        //header: { 'Content-Type': wx.getStorage('jwt') },
+        method: 'GET',
+        success: function (result) {
+          //console.log(result)
+          self.setData({
+            userName: result.data.name,
+            ID: result.data.number,
+          })
+          if (result.data.type=='teacher'){
+            wx.request({
+              url: getIPPort + '/course',
+              method: 'GET',
+              success: function (res) {
+                //console.log(res)
+                self.setData({
+                  courseList: res.data
+                })
+              }
+            })
+            self.setData({
+              userType:'teacher'
+            })
+          }
+          else{
+            wx.request({
+              url: app.globalData.IPPort + '/class',
+              method: 'get',
+              success: function (res) {
+                prepage.setData({
+                  courseInfo: res.data
+                })
+              },
+              fail: function () {
+                wx.showToast({
+                  title: '页面加载失败',
+                  icon: 'fail',
+                  duration: 1000,
+                  mask: true
+                })
+              }
+            })
+            self.setData({
+              userType: 'student'
+            })
+          }
+        }
+      });
+      
+    }
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
 
-  onClickClass:function(e){
+  onClickClass: function (e) {
     //console.log(e.currentTarget.dataset.courseObj.id);
     wx.navigateTo({//这个传参还不确定
-      url: '../../Teacher/CourseUI?courseID=' + JSON.stringify(e.currentTarget.dataset.courseObj.id),
+      url: '../../Teacher/CourseUI?course=' + JSON.stringify(e.currentTarget.dataset.courseObj),
     })
   },
 
-  onCheckInfo:function(){
+  onCheckInfo: function () {
     wx.navigateTo({
       url: './CheckTeacherInfoUI',
+    })
+  },
+
+  onChooseTeacher: function () {
+    wx.navigateTo({
+      url: '../Binding/TeacherBindingUI',
+    })
+  },
+
+  onChooseStudent: function () {
+    wx.navigateTo({
+      url: '../Binding/StudentBindingUI',
+    })
+  },
+
+
+  onClickCourse: function (e) {
+    var cid = e.currentTarget.id
+    console.log(cid)
+    for (var i = 0; i < this.data.courseInfo.length; ++i)
+      if (this.data.courseInfo[i].id == cid)
+        var cname = this.data.courseInfo[i].courseName
+    var data = {
+      //studentID: this.data.ID,
+      studentID: 2757,
+      classID: cid,                    //id
+      courseID: cid,
+      courseName: cname,           //这四个靠前面传过来
+    }
+    wx.navigateTo({
+      url: '../../Student/CourseUI?str=' + JSON.stringify(data),
     })
   }
 })
