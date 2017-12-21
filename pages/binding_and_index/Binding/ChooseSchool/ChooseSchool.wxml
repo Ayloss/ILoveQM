@@ -22,11 +22,11 @@
     <scroll-view scroll-y="true" class="scrollView">
 
       <view wx:if="{{pageCondition==0}}" wx:for="{{province}}" class="box8" bindtap="onChooseProvince" data-province-obj="{{item}}">
-        <button class="button2">{{item}}</button>
+        <button class="button2">{{item.name}}</button>
       </view>
 
       <view wx:if="{{pageCondition==1}}" wx:for="{{city}}" class="box8" bindtap="onChooseCity" data-city-obj="{{item}}">
-        <button class="button2">{{item}}</button>
+        <button class="button2">{{item.name}}</button>
       </view>
 
       <view wx:if="{{pageCondition==2}}" wx:for="{{school}}" class="box8" bindtap="onChooseSchool" data-school-obj="{{item}}">

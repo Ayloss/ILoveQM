@@ -26,12 +26,19 @@ Page({
       userType: options.userType
     })
     wx.request({
-      url: IPPort + '/school/province',
+      url: 'http://apis.map.qq.com/ws/district/v1/list',
       method: 'GET',
+      data:{
+        "key": "RR7BZ-74AEP-JFKDC-LC4EB-ROFYV-TBBBO"
+      },
       success: function (res) {
-        //console.log(res.data)
+        console.log(res)
+        var list=[];
+        for(var i=0;i<res.data.result[0].length;i++){
+          list[i] = res.data.result[0][i]
+        }
         self.setData({
-          province: res.data
+          province: list
         })
       }
     })
@@ -114,15 +121,20 @@ Page({
       provincechoose: e.currentTarget.dataset.provinceObj
     })
     wx.request({
-      url: IPPort + '/school/city',
+      url: 'http://apis.map.qq.com/ws/district/v1/getchildren',
       data: {
-        province: e.currentTarget.dataset.provinceObj
+        id: e.currentTarget.dataset.provinceObj.id,
+        key:'RR7BZ-74AEP-JFKDC-LC4EB-ROFYV-TBBBO'
       },
       method: 'GET',
       success: function (res) {
-        //console.log(res.data)
+        console.log(res.data)
+        var list=[];
+        for(var i=0;i<res.data.result[0].length;i++){
+          list[i]=res.data.result[0][i]
+        }
         self.setData({
-          city: res.data
+          city: list
         })
       }
     })
@@ -140,7 +152,7 @@ Page({
     wx.request({
       url: IPPort + '/school',
       data: {
-        city: e.currentTarget.dataset.cityObj
+        city: e.currentTarget.dataset.cityObj.name
       },
       method: 'GET',
       success: function (res) {
@@ -169,7 +181,7 @@ Page({
   onCreateSchool: function () {
     var self = this
     wx.navigateTo({
-      url: '../CreateSchoolUI?province=' + self.data.provincechoose + '&city=' + self.data.citychoose,
+      url: '../CreateSchoolUI?province=' + self.data.provincechoose.name + '&city=' + self.data.citychoose.name,
     })
   }
 })
