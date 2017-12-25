@@ -29,10 +29,37 @@ Page({
       success: function (res) {
         //console.log(res)
         self.setData({
-          seminar:JSON.parse(options.seminar),
+          seminar: JSON.parse(options.seminar),
           className: res.data.name,
           studentNum: res.data.numStudent
         })
+        var status = ""
+        wx.request({
+          url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance',
+          method: 'GET',
+          success: function (res) {
+            self.setData({
+              studentNum: res.data.numStudent,
+              nowStudentNum: res.data.numPresent
+            })
+            status = res.data.status;
+          }
+        })
+        if (status == "calling") {
+          self.setData({
+            CallInRollCondition: 1
+          })
+        }
+        if (status == "notstart") {
+          self.setData({
+            CallInRollCondition: 0
+          })
+        }
+        if (status == "end") {
+          self.setData({
+            CallInRollCondition: 2
+          })
+        }
       }
     })
   },

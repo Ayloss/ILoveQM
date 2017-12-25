@@ -11,7 +11,7 @@ Page({
     studentNum:0,
     classID:1,
     className:"",
-    nowStudentNum:9
+    nowStudentNum:0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -19,6 +19,9 @@ Page({
   onLoad: function (options) {
     var self = this;
     var getIPPort = app.globalData.IPPort;
+    this.setData({
+      classID:options.classID
+    })
     wx.request({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method: 'GET',
@@ -29,6 +32,33 @@ Page({
           className: res.data.name,
           studentNum: res.data.numStudent
         })
+        var status = ""
+        wx.request({
+          url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance',
+          method:'GET',
+          success:function(res){
+            self.setData({
+              studentNum:res.data.numStudent,
+              nowStudentNum:res.data.numPresent
+            })
+            status=res.data.status;
+          }
+        })
+        if(status=="calling"){
+          self.setData({
+            CallInRollCondition:1
+          })
+        }
+        if (status == "notstart") {
+          self.setData({
+            CallInRollCondition: 0
+          })
+        }
+        if (status == "end") {
+          self.setData({
+            CallInRollCondition: 2
+          })
+        }
       }
     })
   },
@@ -88,7 +118,7 @@ Page({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method:'PUT',
       data:{
-        calling:"1"
+        calling: self.data.seminar.id
       },
       success:function(res){
         //console.log(res)
@@ -129,7 +159,7 @@ Page({
 
   onRollCallList:function(){
     wx.navigateTo({
-      url: './FixedCallList?classID=' + + JSON.stringify(this.data.classID) + '&seminar=' + JSON.stringify(this.data.seminar),
+      url: './FixedCallList?classID=' + this.data.classID + '&seminar=' + JSON.stringify(this.data.seminar),
     })
   },
 
@@ -137,7 +167,7 @@ Page({
     //console.log('./FixedGroupInfo?classID=' + JSON.stringify(this.data.classID) + 'seminarID=' + JSON.stringify(this.data.seminarID))
     //console.log('test')
     wx.navigateTo({
-      url: './FixedGroupInfo?classID=' + JSON.stringify(this.data.classID) + '&seminar=' + JSON.stringify(this.data.seminar)
+      url: './FixedGroupInfo?classID=' + this.data.classID + '&seminar=' + JSON.stringify(this.data.seminar)
     })
   }
 })
