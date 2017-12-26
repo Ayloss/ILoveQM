@@ -92,7 +92,7 @@ Page({
         Authorization: 'Bearer ' + jwt
       },
       success:function(res){
-        schoolID:res.data.id
+        schoolID=res.data.id
       }
     })
     //跳转

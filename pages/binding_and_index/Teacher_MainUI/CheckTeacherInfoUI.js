@@ -9,7 +9,8 @@ Page({
     userName: "",
     teacherID: "",
     phoneNum: "", 
-    school: ""
+    school: "",
+    usertype:"",
   },
 
   /**
@@ -18,6 +19,10 @@ Page({
   onLoad: function (options) {
     var getIPPort = app.globalData.IPPort;
     var self = this;
+    var usertype = wx.getStorageSync('type')
+    this.setData({
+      usertype:usertype
+    })
     var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: getIPPort+'/me',
@@ -32,7 +37,7 @@ Page({
           userName:result.data.name,
           school: result.data.school.name,
           teacherID: result.data.number,
-          phoneNum: result.data.number,
+          phoneNum: result.data.phone,
         })
       }
     })
@@ -142,7 +147,7 @@ Page({
         wx.setStorageSync("name", "")
         wx.setStorageSync("id", "")
 
-        console.log(wx.getStorage("jwt"))
+        console.log(wx.getStorageSync("jwt"))
         wx.reLaunch({
           url: '/pages/login'
         })

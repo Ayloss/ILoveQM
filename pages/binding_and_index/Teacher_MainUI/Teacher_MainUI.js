@@ -59,6 +59,7 @@ Page({
           Authorization: 'Bearer ' + jwt
         },
         success: function (result) {
+          console.log(result)
           //console.log(result)
           self.setData({
             userName: result.data.name,
@@ -172,9 +173,9 @@ Page({
   },
 
   onCheckInfo: function () {
-    wx.navigateTo({
-      url: './CheckTeacherInfoUI',
-    })
+      wx.navigateTo({
+        url: './CheckTeacherInfoUI',
+      })
   },
 
   onChooseTeacher: function () {
