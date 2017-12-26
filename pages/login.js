@@ -13,8 +13,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(wx.getStorageSync("jwt"));
+    console.log(wx.getStorageSync("jwt"))
 
+    console.log(!wx.getStorageSync("jwt"))
     if (!wx.getStorageSync("jwt")) {
       // 调用登录获得code
       

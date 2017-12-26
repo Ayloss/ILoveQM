@@ -9,7 +9,7 @@
     <view wx:for="{{courseList}}" wx:if="{{date>item.endTime||date<item.startTime}}" class="box4" bindtap="onClickClass" data-course-obj="{{item}}">
       <text class="FONT1"> {{item.name}}</text>
     </view>
-    <view  wx:for="{{courseList}}" class="box3" bindtap="onClickClass" data-course-obj="{{item}}">
+    <view wx:for="{{courseList}}" class="box3" bindtap="onClickClass" data-course-obj="{{item}}">
       <text class="FONT1"> {{item.name}}</text>
     </view>
   </block>
@@ -28,8 +28,8 @@
     </block>
   </block>
 
-  <!--这里是选角色-->
-  <block wx:if="{{userType === ''}}">
+  <!--绑定界面-->
+  <block wx:if="{{userType == ''}}">
     <image src='/resources/img/light.png' class='topLight'></image>
     <text class='topTips'>请选择您的账户类型</text>
     <image src='/resources/img/line.png' class='topLine'></image>

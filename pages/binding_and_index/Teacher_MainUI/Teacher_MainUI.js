@@ -8,7 +8,7 @@ Page({
   data: {
     userName: wx.getStorageSync("name"),
     date:'',
-    ID: wx.getStorageSync("id"),
+    ID: '',
     userType: wx.getStorageSync("type"),
     courseList: [],
     jwt: wx.getStorageSync("jwt"),
@@ -82,7 +82,8 @@ Page({
               userType:'teacher'
             })
           }
-          else{
+          // 此处要再判断type类型而不能直接else，因为type会有null的情况
+          else if (result.data.type == 'student'){
             wx.request({
               url: app.globalData.IPPort + '/class',
               method: 'get',
@@ -90,7 +91,7 @@ Page({
                 Authorization: 'Bearer ' + jwt
               },
               success: function (res) {
-                prepage.setData({
+                self.setData({
                   courseInfo: res.data
                 })
               },

@@ -125,20 +125,26 @@ Page({
     var IPPort=app.globalData.IPPort
     var self=this
     var page=getCurrentPages()
-    var prvpage=page[page.length-2]
     wx.request({
       url: IPPort+'/me',
+      header:{
+        Authorization:"Bearer " + wx.getStorageSync("jwt")
+      },
       data:{
-        unionId:''
+        openId:null,
+        name:null,
+        "type":null
       },
       method:'PUT',
       success:function(){
-        wx.setStorageSync('jwt', '')
-        prvpage.setData({
-          jwt:''
-        })
-        wx.navigateBack({
-          delta:1
+        wx.setStorageSync('jwt', "")
+        wx.setStorageSync("type", "")
+        wx.setStorageSync("name", "")
+        wx.setStorageSync("id", "")
+
+        console.log(wx.getStorage("jwt"))
+        wx.reLaunch({
+          url: '/pages/login'
         })
       }
     })
