@@ -70,7 +70,8 @@
 
 .className {
   font-size: 48rpx;
-  padding-left: 30%;
+  /*padding-left: 30%;*/
+  text-align: center;
 }
 
 /*班级Icon*/

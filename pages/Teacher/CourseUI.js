@@ -16,6 +16,7 @@ Page({
   onLoad: function (options) {
     var self=this
     var IPPort=app.globalData.IPPort
+    var jwt = wx.getStorageSync('jwt')
     this.setData({
       course: JSON.parse(options.course),
     })
@@ -25,6 +26,9 @@ Page({
         embedGrade:'false'
       },
       method:'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success:function(res){
         self.setData({
           seminarList:res.data

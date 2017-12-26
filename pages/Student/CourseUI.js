@@ -32,9 +32,13 @@ Page({
      courseName: temp.courseName,           //这四个靠前面传过来
   })
     var self = this;
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/course/' + this.data.courseID +'/seminar?embedGrade=true',
       method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         self.setData({
           seminarList: res.data

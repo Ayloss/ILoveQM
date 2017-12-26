@@ -18,9 +18,13 @@ Page({
   onLoad: function (options) {
     var cid= JSON.parse(options.str)
     var self=this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/course/' + cid,
       method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         var temp=res.data
         self.setData({

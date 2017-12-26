@@ -23,9 +23,13 @@ Page({
 
   becomeLeader:function(){    //成为队长
     var self=this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/group/' + this.data.groupDetail.id + '/assign',
       method: 'put',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: { 'id': this.data.studentID },
       success: function (res) {
         var me = {}
@@ -66,9 +70,13 @@ Page({
   
   resign:function(){    //辞职
     var self= this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/group/' + this.data.groupDetail.id + '/resign',
       method: 'put',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data:{'id':this.data.studentID},
       success: function (res) {
         var me = self.data.groupDetail.leader
@@ -112,9 +120,13 @@ Page({
 
     getGroupDetail:function(){
       var self=this
+      var jwt = wx.getStorageSync('jwt')
       wx.request({
         url: app.globalData.IPPort + '/seminar/' + this.data.seminarID +'/group/my',
         method: 'get',
+        header: {
+          Authorization: 'Bearer ' + jwt
+        },
         success: function (res) {
           self.setData({
             groupDetail: res.data

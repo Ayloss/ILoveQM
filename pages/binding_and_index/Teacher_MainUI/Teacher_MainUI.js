@@ -55,6 +55,9 @@ Page({
         url: getIPPort + '/me',
         //header: { 'Content-Type': wx.getStorage('jwt') },
         method: 'GET',
+        header: {
+          Authorization: 'Bearer ' + jwt
+        },
         success: function (result) {
           //console.log(result)
           self.setData({
@@ -65,6 +68,9 @@ Page({
             wx.request({
               url: getIPPort + '/course',
               method: 'GET',
+              header: {
+                Authorization: 'Bearer ' + jwt
+              },
               success: function (res) {
                 //console.log(res)
                 self.setData({
@@ -80,6 +86,9 @@ Page({
             wx.request({
               url: app.globalData.IPPort + '/class',
               method: 'get',
+              header: {
+                Authorization: 'Bearer ' + jwt
+              },
               success: function (res) {
                 prepage.setData({
                   courseInfo: res.data

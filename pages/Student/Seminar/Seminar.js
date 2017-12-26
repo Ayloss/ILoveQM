@@ -66,9 +66,13 @@ Page({
   
   getData:function(){   //获得关于讨论课信息的数据
     var self =this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/seminar/'+this.data.seminarID+'/my',
       method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         var temp = res.data
         console.log(temp)

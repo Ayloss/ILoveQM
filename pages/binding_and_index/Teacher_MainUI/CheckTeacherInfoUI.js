@@ -18,10 +18,14 @@ Page({
   onLoad: function (options) {
     var getIPPort = app.globalData.IPPort;
     var self = this;
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: getIPPort+'/me',
       //header: { 'Content-Type': wx.getStorage('jwt') },
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success:function(result){
         //console.log(result)
         self.setData({
@@ -85,6 +89,7 @@ Page({
   changPortrait: function () {
     console.log(2)
     var self = this
+    var jwt = wx.getStorageSync('jwt')
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有

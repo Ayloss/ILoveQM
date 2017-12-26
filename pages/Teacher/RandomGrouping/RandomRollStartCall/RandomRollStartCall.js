@@ -23,9 +23,13 @@ Page({
     this.setData({
       classID: options.classID,
     })
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         //console.log(res)
         self.setData({
@@ -37,6 +41,9 @@ Page({
         wx.request({
           url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance',
           method: 'GET',
+          header: {
+            Authorization: 'Bearer ' + jwt
+          },
           success: function (res) {
             self.setData({
               studentNum: res.data.numStudent,
@@ -116,9 +123,13 @@ Page({
   onStartCall:function(){
     var self = this;
     var getIPPort = app.globalData.IPPort;
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method: 'PUT',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: {
         calling: "1"
       },
@@ -133,6 +144,7 @@ Page({
 
   onEndCall:function(){
     const thisApp = this
+    var jwt = wx.getStorageSync('jwt')
     wx.showModal({
       title: '提示',
       content: '是否结束签到',
@@ -142,6 +154,9 @@ Page({
           wx.request({
             url: getIPPort + '/class' + '/' + thisApp.data.classID,
             method: 'PUT',
+            header: {
+              Authorization: 'Bearer ' + jwt
+            },
             data: {
               calling: "-1"
             },

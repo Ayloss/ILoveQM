@@ -25,9 +25,13 @@ Page({
     this.setData({
       userType: options.userType
     })
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: 'http://apis.map.qq.com/ws/district/v1/list',
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data:{
         "key": "RR7BZ-74AEP-JFKDC-LC4EB-ROFYV-TBBBO"
       },
@@ -117,6 +121,7 @@ Page({
   onChooseProvince: function (e) {
     var self = this
     var IPPort = app.globalData.IPPort
+    var jwt = wx.getStorageSync('jwt')
     this.setData({
       provincechoose: e.currentTarget.dataset.provinceObj
     })
@@ -127,6 +132,9 @@ Page({
         key:'RR7BZ-74AEP-JFKDC-LC4EB-ROFYV-TBBBO'
       },
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         console.log(res.data)
         var list=[];
@@ -146,6 +154,8 @@ Page({
   onChooseCity: function (e) {
     var self = this
     var IPPort = app.globalData.IPPort
+    var jwt = wx.getStorageSync('jwt')
+    jwt = 'eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoidGVhY2hlciIsIm5hbWUiOiLnjovnvo7nuqIiLCJpZCI6MiwiZXhwIjoxNTE2ODg2Nzc0fQ.KfSoj2OvRi5JUEro3C6p11sP8prp0b6wYXYx0PKx1zw'
     this.setData({
       citychoose: e.currentTarget.dataset.cityObj
     })
@@ -155,8 +165,11 @@ Page({
         city: e.currentTarget.dataset.cityObj.name
       },
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
-        //console.log(res.data)
+        console.log(res.data)
         self.setData({
           school: res.data
         })

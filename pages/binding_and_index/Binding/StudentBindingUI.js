@@ -87,6 +87,7 @@ Page({
     if (this.data.studentID != '' && this.data.name != '' && this.data.school != '') {
       var IPPort = app.globalData.IPPort
       var self = this
+      var jwt = wx.getStorageSync('jwt')
       wx.request({
         url: IPPort + '/signin',
         data: {
@@ -95,6 +96,9 @@ Page({
           success_url: ''
         },
         method: 'GET',
+        header: {
+          Authorization: 'Bearer ' + jwt
+        },
         success: function (res) {
           wx.setStorageSync('jwt', res.data.jwt)
         }
@@ -107,6 +111,9 @@ Page({
           "school": self.data.school
         },
         method: 'PUT',
+        header: {
+          Authorization: 'Bearer ' + jwt
+        },
         success: function () {
           //console.log(self.data.school)
           //console.log('bind success')
@@ -122,6 +129,9 @@ Page({
           wx.request({
             url: app.globalData.IPPort + '/class',
             method: 'get',
+            header: {
+              Authorization: 'Bearer ' + jwt
+            },
             success: function (res) {
               prepage.setData({
                 courseInfo: res.data

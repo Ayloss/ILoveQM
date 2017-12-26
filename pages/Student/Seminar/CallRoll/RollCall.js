@@ -25,9 +25,13 @@ Page({
   {
     var d={}
     var self =this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/seminar/' + this.data.seminarID + '/class/' + this.data.classID +'/attendance/'+this.data.studentID,
       method: 'put',
+      header:{
+        Authorization: 'Bearer ' + jwt
+      },
       data:d,
       success: function (res) {
         if (res.data.status=="late")
@@ -62,9 +66,13 @@ Page({
       courseName: temp.courseName,
     })
     var self=this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/seminar/' + this.data.seminarID+'/detail' ,
       method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         var temp=res.data
         console.log(temp)

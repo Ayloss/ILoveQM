@@ -6,7 +6,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     var jwt = wx.getStorageSync('jwt')
-    //var jwt=''
+    //var jwt ='eyJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoidGVhY2hlciIsIm5hbWUiOiLnjovnvo7nuqIiLCJpZCI6MiwiZXhwIjoxNTE2ODg2Nzc0fQ.KfSoj2OvRi5JUEro3C6p11sP8prp0b6wYXYx0PKx1zw'
     wx.setStorageSync('jwt', jwt)
     // 登录
     wx.login({
@@ -37,8 +37,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    IPPort:"http://120.77.173.98:8102",
+    //IPPort:"http://120.77.173.98:8102",
     //jwt:''
-    //IPPort: "http://localhost:8080"
+    IPPort: "http://localhost:8080"
   }
 })
