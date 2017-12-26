@@ -6,12 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userName: "",
+    userName: wx.getStorageSync("name"),
     date:'',
-    ID: "",
-    userType: 'teacher',
+    ID: wx.getStorageSync("id"),
+    userType: wx.getStorageSync("type"),
     courseList: [],
-    jwt: '',
+    jwt: wx.getStorageSync("jwt"),
     courseInfo: []
   },
 
