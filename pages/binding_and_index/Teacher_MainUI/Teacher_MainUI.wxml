@@ -29,7 +29,7 @@
   </block>
 
   <!--这里是选角色-->
-  <block wx:if="{{jwt==''}}">
+  <block wx:if="{{userType === ''}}">
     <image src='/resources/img/light.png' class='topLight'></image>
     <text class='topTips'>请选择您的账户类型</text>
     <image src='/resources/img/line.png' class='topLine'></image>

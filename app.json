@@ -22,7 +22,8 @@
     "pages/Student/Seminar/chooseTopic/chooseTopic",
     "pages/Student/Seminar/CourseInfo",
     "pages/Student/Seminar/group/group",
-    "pages/Student/studentInfo/studentInfo"
+    "pages/Student/studentInfo/studentInfo",
+    "pages/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
