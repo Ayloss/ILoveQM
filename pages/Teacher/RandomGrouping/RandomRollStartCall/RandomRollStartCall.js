@@ -131,7 +131,7 @@ Page({
         Authorization: 'Bearer ' + jwt
       },
       data: {
-        calling: "1"
+        calling: self.data.seminar.id
       },
       success: function (res) {
         //console.log(res)
