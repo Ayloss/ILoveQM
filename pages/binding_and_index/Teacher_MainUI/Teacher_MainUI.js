@@ -108,6 +108,10 @@ Page({
             self.setData({
               userType: 'student'
             })
+          } else {
+            self.setData({
+              useType: null
+            })
           }
         }
       });
