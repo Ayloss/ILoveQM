@@ -14,7 +14,7 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 界面加载的时候，暂时不管前面，从一组既定数据开始测试
    */
   /*
   onLoad: function (options) {
@@ -22,7 +22,7 @@ Page({
       courseName: JSON.parse(options.courseList)
     })*/
   onLoad: function (options) {
-    var temp = JSON.parse(options.str)
+ /*   var temp = JSON.parse(options.str)
     console.log(temp)
 
    this.setData({
@@ -30,7 +30,7 @@ Page({
      classID: temp.classID,
      courseID: temp.courseID,
      courseName: temp.courseName,           //这四个靠前面传过来
-  })
+  })*/
     var self = this;
     var jwt = wx.getStorageSync('jwt')
     wx.request({
