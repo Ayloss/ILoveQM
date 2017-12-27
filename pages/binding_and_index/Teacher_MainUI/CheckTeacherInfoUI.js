@@ -130,33 +130,44 @@ Page({
     var IPPort=app.globalData.IPPort
     var self=this
     var page=getCurrentPages()
-    wx.request({
-      url: IPPort+'/me',
-      header:{
-        Authorization:"Bearer " + wx.getStorageSync("jwt")
-      },
-      data:{
-        openId:null,
-        name:null,
-        "type":null
-      },
-      method:'PUT',
-      success:function(){
-        wx.setStorageSync('jwt', "")
-        wx.setStorageSync("type", "")
-        wx.setStorageSync("name", "")
-        wx.setStorageSync("id", "")
-        var pages = page[page.length-2]
-        pages.setData({
-          userType:''
-        })
+    wx.showModal({
+      title: '提示',
+      content: '是否解绑账号？',
+      success: function (res) {
+        if(res.confirm){
+            wx.request({
+              url: IPPort+'/me',
+              header:{
+                Authorization:"Bearer " + wx.getStorageSync("jwt")
+              },
+              data:{
+                openId:null,
+                name:null,
+                "type":null
+              },
+              method:'PUT',
+              success:function(){
+                //wx.setStorageSync('jwt', "")
+                wx.setStorageSync("type", "")
+                wx.setStorageSync("name", "")
+                wx.setStorageSync("id", "")
+                var pages = page[page.length-2]
+                pages.setData({
+                  userType:''
+                })
 
-        console.log(wx.getStorageSync("jwt"))
-        wx.reLaunch({
-          url: '/pages/login'
-        })
-      }
+                console.log(wx.getStorageSync("jwt"))
+                // wx.reLaunch({
+                //   url: '/pages/login'
+                // })
+                wx.navigateBack({
+                  delta:1
+                })
+              }
+            })
+        }
+    }
     })
-  },
+  }
   
 })
