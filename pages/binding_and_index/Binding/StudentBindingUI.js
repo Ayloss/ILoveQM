@@ -88,7 +88,7 @@ Page({
       var IPPort = app.globalData.IPPort
       var self = this
       var jwt = wx.getStorageSync('jwt')
-      wx.request({
+     /* wx.request({
         url: IPPort + '/signin',
         data: {
           code: '',
@@ -102,7 +102,7 @@ Page({
         success: function (res) {
           wx.setStorageSync('jwt', res.data.jwt)
         }
-      })
+      })*/
       wx.request({
         url: IPPort + '/me',
         data: {

@@ -21,9 +21,10 @@ Page({
     site:'',
   },
 
-  call:function()          //签到
+
+  callRoll:function( d)          //签到
   {
-    var d={}
+   
     var self =this
     var jwt = wx.getStorageSync('jwt')
     wx.request({
@@ -34,14 +35,23 @@ Page({
       },
       data:d,
       success: function (res) {
+        console.log(res.data)
         if (res.data.status=="late")
         self.setData({
           callCondition: 2
         })
-        else
+        else if (res.data.status == "normal")
           self.setData({
             callCondition: 1
           })
+          else{   //否则认为签到失败
+          wx.showToast({
+            title: '签到失败',
+            icon: 'fail',
+            duration: 1000,
+            mask: true
+          })
+          }
       },
       fail: function () {
         wx.showToast({
@@ -52,6 +62,18 @@ Page({
         })
       }
     })  
+  },
+  call: function () {
+    var d = {}
+    var self=this
+    wx.getLocation({
+      success: function (res) {
+        console.log(res)
+        d.longitude = res.longitude,
+          d.latitude = res.latitude
+        self.callRoll(d)
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
