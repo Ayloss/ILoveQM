@@ -149,7 +149,7 @@ Page({
 
         console.log(wx.getStorageSync("jwt"))
         wx.reLaunch({
-          url: '/pages/login'
+          url: '/pages/binding_and_index/Teacher_MainUI/Teacher_MainUI'
         })
       }
     })

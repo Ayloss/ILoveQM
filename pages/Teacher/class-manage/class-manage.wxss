@@ -72,13 +72,14 @@
   font-size: 48rpx;
   /*padding-left: 30%;*/
   text-align: center;
+  display: block;
 }
 
 /*班级Icon*/
 
 .classIcon {
   width: 100%;
-  height: 70%;
+  height: 100%;
 }
 
 
