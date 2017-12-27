@@ -197,15 +197,16 @@ Page({
 
   onClickCourse: function (e) {
     var cid = e.currentTarget.id
+    var courseId = e.currentTarget.dataset.courseId
     console.log(cid)
     for (var i = 0; i < this.data.courseInfo.length; ++i)
       if (this.data.courseInfo[i].id == cid)
         var cname = this.data.courseInfo[i].courseName
     var data = {
       //studentID: this.data.ID,
-      studentID: 2757,
+      studentID: wx.getStorage('id'),
       classID: cid,                    //id
-      courseID: cid,
+      courseID: courseId,
       courseName: cname,           //这四个靠前面传过来
     }
     wx.navigateTo({
