@@ -21,7 +21,7 @@
     <image src='/resources/img/background.png' class='topBoardView'></image>
 
     <block wx:for="{{courseInfo}}">
-      <view class="blueButton" id="{{item.id}}" bindtap='onClickCourse'>
+      <view class="blueButton" id="{{item.id}}" data-course-id="{{item.courseId}}" bindtap='onClickCourse'>
         <text class="FONT11"> {{item.courseName}}</text>
         <text class="FONT51"> 老师：{{item.courseTeacher}}</text>
       </view>
