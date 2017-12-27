@@ -146,6 +146,10 @@ Page({
         wx.setStorageSync("type", "")
         wx.setStorageSync("name", "")
         wx.setStorageSync("id", "")
+        var pages = page[page.length-2]
+        pages.setData({
+          userType:''
+        })
 
         console.log(wx.getStorageSync("jwt"))
         wx.reLaunch({
