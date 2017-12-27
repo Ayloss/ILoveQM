@@ -9,7 +9,8 @@ Page({
     userName: "",
     teacherID: "",
     phoneNum: "", 
-    school: ""
+    school: "",
+    usertype:"",
   },
 
   /**
@@ -18,17 +19,25 @@ Page({
   onLoad: function (options) {
     var getIPPort = app.globalData.IPPort;
     var self = this;
+    var usertype = wx.getStorageSync('type')
+    this.setData({
+      usertype:usertype
+    })
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: getIPPort+'/me',
       //header: { 'Content-Type': wx.getStorage('jwt') },
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success:function(result){
         //console.log(result)
         self.setData({
           userName:result.data.name,
           school: result.data.school.name,
           teacherID: result.data.number,
-          phoneNum: result.data.number,
+          phoneNum: result.data.phone,
         })
       }
     })
@@ -85,6 +94,7 @@ Page({
   changPortrait: function () {
     console.log(2)
     var self = this
+    var jwt = wx.getStorageSync('jwt')
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -120,20 +130,26 @@ Page({
     var IPPort=app.globalData.IPPort
     var self=this
     var page=getCurrentPages()
-    var prvpage=page[page.length-2]
     wx.request({
       url: IPPort+'/me',
+      header:{
+        Authorization:"Bearer " + wx.getStorageSync("jwt")
+      },
       data:{
-        unionId:''
+        openId:null,
+        name:null,
+        "type":null
       },
       method:'PUT',
       success:function(){
-        wx.setStorageSync('jwt', '')
-        prvpage.setData({
-          jwt:''
-        })
-        wx.navigateBack({
-          delta:1
+        wx.setStorageSync('jwt', "")
+        wx.setStorageSync("type", "")
+        wx.setStorageSync("name", "")
+        wx.setStorageSync("id", "")
+
+        console.log(wx.getStorageSync("jwt"))
+        wx.reLaunch({
+          url: '/pages/login'
         })
       }
     })

@@ -6,12 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userName: "",
+    userName: wx.getStorageSync("name"),
     date:'',
-    ID: "",
-    userType: 'teacher',
+    ID: '',
+    userType: wx.getStorageSync("type"),
     courseList: [],
-    jwt: '',
+    jwt: wx.getStorageSync("jwt"),
     courseInfo: []
   },
 
@@ -55,7 +55,11 @@ Page({
         url: getIPPort + '/me',
         //header: { 'Content-Type': wx.getStorage('jwt') },
         method: 'GET',
+        header: {
+          Authorization: 'Bearer ' + jwt
+        },
         success: function (result) {
+          console.log(result)
           //console.log(result)
           self.setData({
             userName: result.data.name,
@@ -65,6 +69,9 @@ Page({
             wx.request({
               url: getIPPort + '/course',
               method: 'GET',
+              header: {
+                Authorization: 'Bearer ' + jwt
+              },
               success: function (res) {
                 //console.log(res)
                 self.setData({
@@ -76,12 +83,16 @@ Page({
               userType:'teacher'
             })
           }
-          else{
+          // 此处要再判断type类型而不能直接else，因为type会有null的情况
+          else if (result.data.type == 'student'){
             wx.request({
               url: app.globalData.IPPort + '/class',
               method: 'get',
+              header: {
+                Authorization: 'Bearer ' + jwt
+              },
               success: function (res) {
-                prepage.setData({
+                self.setData({
                   courseInfo: res.data
                 })
               },
@@ -162,9 +173,9 @@ Page({
   },
 
   onCheckInfo: function () {
-    wx.navigateTo({
-      url: './CheckTeacherInfoUI',
-    })
+      wx.navigateTo({
+        url: './CheckTeacherInfoUI',
+      })
   },
 
   onChooseTeacher: function () {

@@ -45,9 +45,13 @@ Page({
     })
 
     var self =this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({                    //请求小组
       url: app.globalData.IPPort +'/seminar/'+this.data.seminarID+'/group?gradeable=true',
       method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         self.setData({
           group: res.data
@@ -78,9 +82,13 @@ Page({
   submit:function()
   {
     var self=this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({                    
       url: app.globalData.IPPort + '/group/' + this.data.groupID + '/grade/presentation/'+this.data.studentID,
       method: 'put',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: { 'presentationGrade': this.data.presentationGrade },
       success: function (res) {
         wx.showToast({

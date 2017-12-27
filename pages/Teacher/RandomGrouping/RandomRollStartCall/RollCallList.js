@@ -23,9 +23,13 @@ Page({
     })
     var self = this
     var getIPPort = app.globalData.IPPort
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: getIPPort + '/class/' + self.data.classID,
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         self.setData({
           className: res.data.name,
@@ -36,6 +40,9 @@ Page({
     wx.request({
       url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance/present',
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         self.setData({
           attendStudnetList: res.data

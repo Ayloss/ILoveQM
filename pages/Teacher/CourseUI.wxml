@@ -10,12 +10,13 @@
     <text class="FONT2 groupType" wx:if="{{item.groupingMethod!='fixed'}}"> 随机分组</text>
   </view>
 
-  <view class="box4">
+  <!--<view class="box4">
     <!--灰色选择框-->
+    <!--
     <text class="FONT12"> 讨论课5</text>
     <text class="FONT2 seminarDate"> 11月6日至11月12日</text>
     <text class="FONT2 groupType"> 随机分组</text>
-  </view>
+  </view>-->
 
 
 </page>

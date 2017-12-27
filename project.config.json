@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 5,
 			"list": [
 				{
 					"id": 0,
@@ -51,6 +51,18 @@
 					"id": 4,
 					"name": "t",
 					"pathName": "pages/Student/Seminar/group/group",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "登录",
+					"pathName": "pages/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "courseUI",
+					"pathName": "pages/Student/CourseUI",
 					"query": ""
 				}
 			]

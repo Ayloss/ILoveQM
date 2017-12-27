@@ -26,11 +26,15 @@ Page({
     var getIPPort = app.globalData.IPPort;
     var courseID = this.data.course.id;
     var self = this;
+    var jwt = wx.getStorageSync('jwt')
     //console.log(courseID);
     //class信息
     wx.request({
       url: getIPPort + '/course/' + courseID + '/class',
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         self.setData({
           classs: res.data

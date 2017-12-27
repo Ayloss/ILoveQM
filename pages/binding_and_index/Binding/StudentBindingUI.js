@@ -8,7 +8,7 @@ Page({
   data: {
     studentID: '',
     name: "",
-    school: {},
+    school:{},
   },
 
   onInputID: function (e) {
@@ -87,27 +87,37 @@ Page({
     if (this.data.studentID != '' && this.data.name != '' && this.data.school != '') {
       var IPPort = app.globalData.IPPort
       var self = this
-      wx.request({
-        url: IPPort + '/signin',
-        data: {
-          code: '',
-          state: 'MiniProgram',
-          success_url: ''
-        },
-        method: 'GET',
-        success: function (res) {
-          wx.setStorageSync('jwt', res.data.jwt)
-        }
-      })
+      var jwt = wx.getStorageSync('jwt')
+      // wx.request({
+      //   url: IPPort + '/signin',
+      //   data: {
+      //     code: '',
+      //     state: 'MiniProgram',
+      //     success_url: ''
+      //   },
+      //   method: 'GET',
+      //   header: {
+      //     Authorization: 'Bearer ' + jwt
+      //   },
+      //   success: function (res) {
+      //     wx.setStorageSync('jwt', res.data.jwt)
+      //   }
+      // })
       wx.request({
         url: IPPort + '/me',
         data: {
           "number": self.data.studentID,
           "name": self.data.name,
-          "school": self.data.school
+          "school": self.data.school,
+          "type": "student"
         },
         method: 'PUT',
+        header: {
+          Authorization: 'Bearer ' + jwt
+        },
         success: function () {
+          wx.setStorageSync("type", "student")
+          wx.setStorageSync("name", self.data.name)
           //console.log(self.data.school)
           //console.log('bind success')
           var pages = getCurrentPages()
@@ -116,12 +126,15 @@ Page({
           //console.log(self.data.studentID)
           prepage.setData({
             ID: self.data.studentID,
-            userName: self.data.name
+            userName: self.data.name,
           })
           //修改主页里面的列表
           wx.request({
             url: app.globalData.IPPort + '/class',
             method: 'get',
+            header: {
+              Authorization: 'Bearer ' + jwt
+            },
             success: function (res) {
               prepage.setData({
                 courseInfo: res.data

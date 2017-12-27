@@ -8,7 +8,7 @@ Page({
   data: {
     teacherID: '',
     name: "",
-    school: {},
+    school:{},
   },
 
   onInputID: function (e) {
@@ -86,57 +86,57 @@ Page({
     if (this.data.studentID != '' && this.data.name != '' && this.data.school != '') {
       var IPPort = app.globalData.IPPort
       var self = this
+      var jwt = wx.getStorageSync('jwt')
+      
+      //wx.setStorageSync('jwt', res.data.jwt)
       wx.request({
-        url: IPPort + '/signin',
+        url: IPPort + '/me',
         data: {
-          code: '',
-          state: 'MiniProgram',
-          success_url: ''
+          "number": self.data.teacherID,
+          "name": self.data.name,
+          "school": self.data.school,
+          "type":"teacher"
         },
-        method: 'GET',
-        success: function (res) {
-          wx.setStorageSync('jwt', res.data.jwt)
+        method: 'PUT',
+        header: {
+          Authorization: 'Bearer ' + jwt
+        },
+        success: function () {
+          wx.setStorageSync("type", "teacher")
+          wx.setStorageSync("name", self.data.name)
+          //console.log(self.data.school)
+          //console.log('bind success')
+          var pages = getCurrentPages()
+          var prepage = pages[pages.length - 2]
+          //console.log(app.globalData.jwt)
+          console.log(self.data.teacherID)
+          prepage.setData({
+            ID: self.data.teacherID,
+            userName: self.data.name
+          })
+          //修改主页里面的列表
           wx.request({
-            url: IPPort + '/me',
-            data: {
-              "number": self.data.teacherID,
-              "name": self.data.name,
-              "school": self.data.school
+            url: IPPort + '/course',
+            method: 'GET',
+            //加header
+            header: {
+              Authorization: 'Bearer ' + jwt
             },
-            method: 'PUT',
-            success: function () {
-              //console.log(self.data.school)
-              //console.log('bind success')
-              var pages = getCurrentPages()
-              var prepage = pages[pages.length - 2]
-              //console.log(app.globalData.jwt)
-              console.log(self.data.teacherID)
+            success: function (res) {
+              //console.log(res)
               prepage.setData({
-                ID: self.data.teacherID,
-                userName: self.data.name
-              })
-              //修改主页里面的列表
-              wx.request({
-                url: IPPort + '/course',
-                method: 'GET',
-                //加header
-                success: function (res) {
-                  //console.log(res)
-                  prepage.setData({
-                    courseList: res.data
-                  })
-                }
-              })
-              //修改主页用户类型
-              prepage.setData({
-                userType: 'teacher',
-                jwt: wx.getStorageSync('jwt')
-              })
-              //console.log(pages)
-              wx.navigateBack({
-                delta: 1
+                courseList: res.data
               })
             }
+          })
+          //修改主页用户类型
+          prepage.setData({
+            userType: 'teacher',
+            jwt: wx.getStorageSync('jwt')
+          })
+          console.log(pages)
+          wx.navigateBack({
+            delta: 1
           })
         }
       })

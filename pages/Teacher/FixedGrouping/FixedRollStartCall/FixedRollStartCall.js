@@ -19,26 +19,32 @@ Page({
   onLoad: function (options) {
     var self = this;
     var getIPPort = app.globalData.IPPort;
+    var jwt = wx.getStorageSync('jwt')
     this.setData({
       classID:options.classID
     })
     wx.request({
       url: getIPPort + '/class' + '/' + self.data.classID,
-      method: 'GET',
+      method: 'GET', 
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
-        //console.log(res)
+        console.log(res.data.numStudent)
         self.setData({
+          studentNum: res.data.numStudent,
           seminar: JSON.parse(options.seminar),
-          className: res.data.name,
-          studentNum: res.data.numStudent
+          className: res.data.name
         })
         var status = ""
         wx.request({
           url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance',
           method:'GET',
+          header: {
+            Authorization: 'Bearer ' + jwt
+          },
           success:function(res){
             self.setData({
-              studentNum:res.data.numStudent,
               nowStudentNum:res.data.numPresent
             })
             status=res.data.status;
@@ -114,9 +120,13 @@ Page({
   onStartCall:function(){
     var self = this;
     var getIPPort = app.globalData.IPPort;
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method:'PUT',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data:{
         calling: self.data.seminar.id
       },
@@ -137,9 +147,13 @@ Page({
       success:function(res){
         if(res.confirm){
           var getIPPort = app.globalData.IPPort;
+          var jwt = wx.getStorageSync('jwt')
           wx.request({
             url: getIPPort + '/class' + '/' + thisApp.data.classID,
             method: 'PUT',
+            header: {
+              Authorization: 'Bearer ' + jwt
+            },
             data: {
               calling: "-1"
             },

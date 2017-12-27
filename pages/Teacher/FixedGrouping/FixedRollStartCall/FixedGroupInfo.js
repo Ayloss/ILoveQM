@@ -20,6 +20,7 @@ Page({
     //console.log(options)
     var self = this;
     var IPPort = app.globalData.IPPort;
+    var jwt = wx.getStorageSync('jwt')
     this.setData({
       classID: options.classID,
       seminar: JSON.parse(options.seminar)
@@ -27,6 +28,9 @@ Page({
     wx.request({
       url: IPPort + '/seminar' + '/' + self.data.seminar.id + '/group',
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: {
         classID: self.data.classID
       },
@@ -107,7 +111,7 @@ Page({
     var self = this;
     var IPPort = app.globalData.IPPort
     var groupListObj = self.data.groupList
-
+    var jwt = wx.getStorageSync('jwt')
     //console.log(index)
     //查成员！！！！！！！！！！！！
     wx.request({
@@ -117,6 +121,9 @@ Page({
         embedGrade: "false",
       },
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         self.setData({
           studentList: res.data.members
