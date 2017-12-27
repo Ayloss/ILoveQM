@@ -204,7 +204,7 @@ Page({
         var cname = this.data.courseInfo[i].courseName
     var data = {
       //studentID: this.data.ID,
-      studentID: wx.getStorage('id'),
+      studentID: wx.getStorageSync('id'),
       classID: cid,                    //id
       courseID: courseId,
       courseName: cname,           //这四个靠前面传过来
