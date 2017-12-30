@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -50,7 +50,7 @@
 				{
 					"id": 4,
 					"name": "t",
-					"pathName": "pages/Student/Seminar/group/group",
+					"pathName": "pages/binding_and_index/Teacher_MainUI/Teacher_MainUI",
 					"query": ""
 				},
 				{

@@ -40,6 +40,7 @@ Page({
         Authorization: 'Bearer ' + jwt
       },
       success: function (res) {
+        console.log(res.data)
         self.setData({
           seminarList: res.data
         })

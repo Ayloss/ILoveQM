@@ -104,6 +104,7 @@ Page({
           startTime: temp.startTime,
           endTime: temp.endTime,
           site: temp.site,
+          callCondition:temp.callCondition                 //获得当前签到状态
         })
       }
     })

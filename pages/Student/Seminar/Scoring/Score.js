@@ -33,6 +33,35 @@ Page({
     })
   },
 
+//是否已经提交打分，设置flag
+hasSubmit:function(){
+  var self=this
+  wx.request({                   
+    url: app.globalData.IPPort + '/seminar/' + this.data.seminarID + '/score/status',
+    method: 'get',
+    header: {
+      Authorization: 'Bearer ' + jwt
+    },
+    success: function (res) 
+    {
+      if(res.data.id==0)
+      { 
+        self.setData({
+          flag: false
+       })
+      }else{
+        self.setData({
+          flag: true
+        })
+      }
+    },
+    fail :function(res)
+    {
+
+    }
+  })
+
+},
   onLoad: function (options) {
     var temp = JSON.parse(options.str)
     console.log(temp)
@@ -56,6 +85,7 @@ Page({
         self.setData({
           group: res.data
         })
+        self.hasSubmit()         //是否已经提交打分
         for(var i=0;i<self.data.group.length;++i)
         {
           self.data.presentationGrade.push({ "id": self.data.group[i].id, 'name': self.data.group[i].name, "grade": 0})
