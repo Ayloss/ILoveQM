@@ -121,19 +121,31 @@ Page({
     var self = this;
     var getIPPort = app.globalData.IPPort;
     var jwt = wx.getStorageSync('jwt')
-    wx.request({
-      url: getIPPort + '/class' + '/' + self.data.classID,
-      method:'PUT',
-      header: {
-        Authorization: 'Bearer ' + jwt
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var speed = res.speed
+        var accuracy = res.accuracy
+        wx.request({
+          url: getIPPort + '/class' + '/' + self.data.classID,
+          method: 'PUT',
+          header: {
+            Authorization: 'Bearer ' + jwt
+          },
+          data: {
+            calling: self.data.seminar.id,
+            longitude: longitude,
+            latitude:latitude
       },
-      data:{
-        calling: self.data.seminar.id
-      },
-      success:function(res){
-        //console.log(res)
+          success: function (res) {
+            //console.log(res)
+          }
+        })
       }
     })
+    
     this.setData({
       CallInRollCondition: 1
     })

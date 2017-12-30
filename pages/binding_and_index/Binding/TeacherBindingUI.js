@@ -1,4 +1,4 @@
-// pages/binding & index/Binding/TeacherBindingUI.js
+// pages/binding & index/Binding/StudentBindingUI.js
 var app = getApp()
 Page({
 
@@ -6,14 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    teacherID: '',
+    telephone: '',
     name: "",
-    school:{},
+    school: {},
   },
 
-  onInputID: function (e) {
+  onInputPhone: function (e) {
     this.setData({
-      teacherID: e.detail.value
+      telephone: e.detail.value
     })
   },
   onInputName: function (e) {
@@ -23,9 +23,10 @@ Page({
   },
   onChooseSchool: function (e) {
     wx.navigateTo({
-      url: './ChooseSchool/ChooseSchool?userType=teacher',
+      url: './ChooseSchool/ChooseSchool?userType=student',
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -33,120 +34,72 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   onBinding: function () {
-    if (this.data.studentID != '' && this.data.name != '' && this.data.school != '') {
-      var IPPort = app.globalData.IPPort
-      var self = this
-      var jwt = wx.getStorageSync('jwt')
-      
-      //wx.setStorageSync('jwt', res.data.jwt)
-      wx.request({
-        url: IPPort + '/me',
-        data: {
-          "number": self.data.teacherID,
-          "name": self.data.name,
-          "school": self.data.school,
-          "type":"teacher"
-        },
-        method: 'PUT',
-        header: {
-          Authorization: 'Bearer ' + jwt
-        },
-        success: function () {
-          wx.setStorageSync("type", "teacher")
-          wx.setStorageSync("name", self.data.name)
-          //console.log(self.data.school)
-          //console.log('bind success')
-          var pages = getCurrentPages()
-          var prepage = pages[pages.length - 2]
-          //console.log(app.globalData.jwt)
-          console.log(self.data.teacherID)
-          prepage.setData({
-            ID: self.data.teacherID,
-            userName: self.data.name
-          })
-          //修改主页里面的列表
-          wx.request({
-            url: IPPort + '/course',
-            method: 'GET',
-            //加header
-            header: {
-              Authorization: 'Bearer ' + jwt
-            },
-            success: function (res) {
-              //console.log(res)
-              prepage.setData({
-                courseList: res.data
-              })
-            }
-          })
-          //修改主页用户类型
-          prepage.setData({
-            userType: 'teacher',
-            jwt: wx.getStorageSync('jwt')
-          })
-          console.log(pages)
-          wx.navigateBack({
-            delta: 1
-          })
-        }
-      })
-    }
-    else {
+    if (this.data.telephone === '' || this.data.name === '' || this.data.school === '') {
       wx.showModal({
         title: '请完整填写！',
-        //content: '',
         showCancel: false
       })
+      return
     }
+
+    var IPPort = app.globalData.IPPort
+    var self = this
+
+    // 发送请求进行绑定
+    wx.login({
+      success: function (res) {
+        wx.request({
+          url: IPPort + '/me',
+          data: {
+            "phone": self.data.telephone,
+            "name": self.data.name,
+            "school": self.data.school,
+            "type": "teacher",
+            "jsCode": res.code
+          },
+          method: 'PUT',
+          success: function (resp) {
+            switch (resp.statusCode) {
+              case 200:
+                console.log(resp);
+
+                wx.setStorageSync("id", resp.data.id)
+                wx.setStorageSync("type", "teacher")
+                wx.setStorageSync("name", resp.data.name)
+                wx.setStorageSync("jwt", resp.data.jwt)
+
+                wx.reLaunch({
+                  url: '/pages/binding_and_index/Teacher_MainUI/Teacher_MainUI',
+                })
+                break;
+              case 406:
+                wx.showModal({
+                  title: '请求openid出错',
+                  content: '请再次提交',
+                  showCancel: false
+                })
+                break
+              case 401:
+                wx.showModal({
+                  title: '绑定信息出错',
+                  content: '请确认你已经注册了该账号。或者确认姓名与学校填写的与注册的一致。',
+                  showCancel: false
+                })
+                break
+              default:
+                wx.showModal({
+                  title: '未知的错误',
+                  content: '出现了未知的错误',
+                  showCancel: false
+                })
+            }
+          }
+        })
+      }
+    })
+
   }
+
+
 })
