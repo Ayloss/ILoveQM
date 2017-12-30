@@ -6,6 +6,6 @@ App({
     userInfo: null,
     //IPPort:"http://120.77.173.98:8102",
     //jwt:''
-    IPPort: "http://localhost:8080"
+     IPPort: "http://localhost:8080"
   }
 })
