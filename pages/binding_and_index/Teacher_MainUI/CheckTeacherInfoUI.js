@@ -1,5 +1,5 @@
 // pages/binding & index/Teacher_MainUI/CheckTeacherInfoUI.js
-var app=getApp()
+var app = getApp()
 Page({
 
   /**
@@ -8,9 +8,9 @@ Page({
   data: {
     userName: "",
     teacherID: "",
-    phoneNum: "", 
+    phoneNum: "",
     school: "",
-    usertype:"",
+    usertype: "",
   },
 
   /**
@@ -21,20 +21,20 @@ Page({
     var self = this;
     var usertype = wx.getStorageSync('type')
     this.setData({
-      usertype:usertype
+      usertype: usertype
     })
     var jwt = wx.getStorageSync('jwt')
     wx.request({
-      url: getIPPort+'/me',
+      url: getIPPort + '/me',
       //header: { 'Content-Type': wx.getStorage('jwt') },
       method: 'GET',
       header: {
         Authorization: 'Bearer ' + jwt
       },
-      success:function(result){
+      success: function (result) {
         //console.log(result)
         self.setData({
-          userName:result.data.name,
+          userName: result.data.name,
           school: result.data.school.name,
           teacherID: result.data.number,
           phoneNum: result.data.phone,
@@ -43,54 +43,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
   changPortrait: function () {
     console.log(2)
     var self = this
@@ -126,48 +78,81 @@ Page({
     })
   },
 
-  onUnBind:function(){
-    var IPPort=app.globalData.IPPort
-    var self=this
-    var page=getCurrentPages()
+  onUnBind: function () {
+    var IPPort = app.globalData.IPPort
+    var self = this
+    var page = getCurrentPages()
     wx.showModal({
       title: '提示',
       content: '是否解绑账号？',
       success: function (res) {
-        if(res.confirm){
-            wx.request({
-              url: IPPort+'/me',
-              header:{
-                Authorization:"Bearer " + wx.getStorageSync("jwt")
-              },
-              data:{
-                openId:null,
-                name:null,
-                "type":null
-              },
-              method:'PUT',
-              success:function(){
-                //wx.setStorageSync('jwt', "")
-                wx.setStorageSync("type", "")
-                wx.setStorageSync("name", "")
-                wx.setStorageSync("id", "")
-                var pages = page[page.length-2]
-                pages.setData({
-                  userType:''
-                })
+        if (res.confirm) {
 
-                console.log(wx.getStorageSync("jwt"))
-                // wx.reLaunch({
-                //   url: '/pages/login'
-                // })
-                wx.navigateBack({
-                  delta:1
-                })
-              }
-            })
+          wx.login({
+            success:function(res) {
+              wx.request({
+                url: IPPort + '/me/unbind',
+                header: {
+                  Authorization: "Bearer " + wx.getStorageSync("jwt")
+                },
+                data: {
+                  "jsCode":res.code
+                },
+                method: 'PUT',
+                success: function (resp) {
+
+                  switch(resp.statusCode) {
+                    case 204:
+                      wx.setStorageSync('jwt', "")
+                      wx.setStorageSync("type", "")
+                      wx.setStorageSync("name", "")
+                      wx.setStorageSync("id", "")
+                      wx.reLaunch({
+                        url: '/pages/binding_and_index/Teacher_MainUI/Teacher_MainUI',
+                      })
+                      break
+                    case 403:
+                      wx.showModal({
+                        title: '信息提交异常',
+                        content: '您可能尝试搞乱我们的系统.请不要这么做，不然大家OOAD都会0分.',
+                        showCancel:false
+                      })
+                      break
+                    case 406:
+                      wx.showModal({
+                        title: '获取openid异常',
+                        content: '请重新提交',
+                        showCancel: false
+                      })
+                      break
+                    default:
+                      wx.showModal({
+                        title: '未知的错误',
+                        content: '出现了未知的错误',
+                        showCancel: false
+                      })
+                  }
+                  
+                  // var pages = page[page.length - 2]
+                  // pages.setData({
+                  //   userType: ''
+                  // })
+
+                  // console.log(wx.getStorageSync("jwt"))
+                  // // wx.reLaunch({
+                  // //   url: '/pages/login'
+                  // // })
+                  // wx.navigateBack({
+                  //   delta: 1
+                  // })
+                }
+              })
+            }
+          })
+         
         }
-    }
+      }
     })
   }
-  
+
 })
