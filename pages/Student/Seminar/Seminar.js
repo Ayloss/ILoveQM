@@ -9,7 +9,7 @@ Page({
     courseID: 1,
     courseName: '652',      
     seminarID:1,
-    seminarNumber:1,
+    seminarName:"1",
 
 
     seminarData:''
@@ -59,7 +59,7 @@ Page({
     classID:  temp.classID,
     courseID: temp.courseID,
     courseName: temp.courseName, 
-    seminarNumber: temp.seminarNumber
+    seminarName: temp.seminarName
   })
   this.getData()
   },

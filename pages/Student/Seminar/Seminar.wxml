@@ -1,7 +1,7 @@
 <page>
   <view class="topView">
     <span class="title"> {{courseName}}</span>
-    <span class="titleSmall"> 讨论课{{seminarNumber}}</span>
+    <span class="titleSmall"> {{seminarName}}</span>
   </view>
   <view class="ScoreBoxBlue" bindtap="score">
     <span class="ButtonTextRight">打分</span>
