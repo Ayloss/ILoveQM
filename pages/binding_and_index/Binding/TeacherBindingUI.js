@@ -65,7 +65,7 @@ Page({
                 console.log(resp);
 
                 wx.setStorageSync("id", resp.data.id)
-                wx.setStorageSync("type", "teacher")
+                wx.setStorageSync("type", "student")
                 wx.setStorageSync("name", resp.data.name)
                 wx.setStorageSync("jwt", resp.data.jwt)
 
@@ -82,8 +82,22 @@ Page({
                 break
               case 401:
                 wx.showModal({
-                  title: '绑定信息出错',
-                  content: '请确认你已经注册了该账号。或者确认姓名与学校填写的与注册的一致。',
+                  title: '账号不存在',
+                  content: '请确认你已经注册了该账号',
+                  showCancel: false
+                })
+                break
+              case 403:
+                wx.showModal({
+                  title: '绑定信息错误',
+                  content: '请确认填写的姓名和学校以及所选的角色与你注册的账号一致',
+                  showCancel: false
+                })
+                break
+              case 409:
+                wx.showModal({
+                  title: '该账号已经被绑定',
+                  content: '请更换其他账号',
                   showCancel: false
                 })
                 break
