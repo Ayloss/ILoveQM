@@ -18,7 +18,8 @@ Page({
   },
 
   score:function(e){
-    
+    if (this.data.flag==false) return
+
     var temp=e.target.dataset
     for (var i = 0; i < this.data.presentationGrade.length;++i)
       if (this.data.presentationGrade[i].id==temp.group)
