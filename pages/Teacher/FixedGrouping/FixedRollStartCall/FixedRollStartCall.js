@@ -48,23 +48,24 @@ Page({
               nowStudentNum:res.data.numPresent
             })
             status=res.data.status;
+            if (status == "calling") {
+              self.setData({
+                CallInRollCondition: 1
+              })
+            }
+            if (status == "notstart") {
+              self.setData({
+                CallInRollCondition: 0
+              })
+            }
+            if (status == "end") {
+              self.setData({
+                CallInRollCondition: 2
+              })
+            }
           }
         })
-        if(status=="calling"){
-          self.setData({
-            CallInRollCondition:1
-          })
-        }
-        if (status == "notstart") {
-          self.setData({
-            CallInRollCondition: 0
-          })
-        }
-        if (status == "end") {
-          self.setData({
-            CallInRollCondition: 2
-          })
-        }
+        
       }
     })
   },
@@ -141,13 +142,12 @@ Page({
       },
           success: function (res) {
             //console.log(res)
+            self.setData({
+              CallInRollCondition: 1
+            })
           }
         })
       }
-    })
-    
-    this.setData({
-      CallInRollCondition: 1
     })
   },
 
