@@ -90,7 +90,7 @@ hasSubmit:function(){
         self.hasSubmit()         //是否已经提交打分
         for(var i=0;i<self.data.group.length;++i)
         {
-          self.data.presentationGrade.push({ "id": self.data.group[i].id, 'name': self.data.group[i].name, "grade": 0})
+          self.data.presentationGrade.push({ "id": self.data.group[i].id, 'name': self.data.group[i].name, "grade": self.data.group[i].grade.grade})
         }
         var temp = self.data.presentationGrade
         self.setData({
