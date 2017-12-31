@@ -53,7 +53,7 @@
 
   <block>
     <view>
-      <span class="WhiteText">选题:{{groupDetail.topics[0].name}}</span>
+      <span class="WhiteText">选题:{{topic}}</span>
     </view>
   </block>
 

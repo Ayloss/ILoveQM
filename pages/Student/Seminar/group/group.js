@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {//前三个可用来控制界面的显示
-    topic:'',         
+    topic:'',           //小组所选的话题
     hasLeaderJud:1,     //0表示没有队长，1表示有
     
     seminarID:1,
@@ -101,12 +101,17 @@ Page({
         },
         success: function (res) {
           //设置数据和三种状态
+          console.log(res.data)
           self.setData({
-            groupDetail: res.data
+            groupDetail: res.data,
           })
+         
+
+
           if (self.getHsonLength(self.data.groupDetail.topics) > 0)
             self.setData({
-              areTopicsSelected: true
+              areTopicsSelected: true,
+              topic: res.data.topics[0].name
             })
             else
             self.setData({
