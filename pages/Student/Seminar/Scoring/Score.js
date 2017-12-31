@@ -36,6 +36,7 @@ Page({
 //是否已经提交打分，设置flag
 hasSubmit:function(){
   var self=this
+  var jwt = wx.getStorageSync('jwt')
   wx.request({                   
     url: app.globalData.IPPort + '/seminar/' + this.data.seminarID + '/score/status',
     method: 'get',
