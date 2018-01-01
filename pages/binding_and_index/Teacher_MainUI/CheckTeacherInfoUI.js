@@ -26,7 +26,7 @@ Page({
     var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: getIPPort + '/me',
-      //header: { 'Content-Type': wx.getStorage('jwt') },
+      // header: { 'Content-Type': wx.getStorage('jwt') },
       method: 'GET',
       header: {
         Authorization: 'Bearer ' + jwt
@@ -61,6 +61,9 @@ Page({
           name: 'file',
           formData: {
             'user': 'test'
+          },
+          header:{
+            Authorization:"Bearer " + jwt
           },
           success: function (res) {
             console.log(res.data)
