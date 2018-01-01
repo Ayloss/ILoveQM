@@ -19,11 +19,10 @@ Page({
   onLoad: function (options) {//这里需要判断当前签到清空进行跳转
     var self = this;
     var getIPPort = app.globalData.IPPort;
-    //console.log(options.classID)
-    this.setData({
-      classID: options.classID,
-    })
     var jwt = wx.getStorageSync('jwt')
+    this.setData({
+      classID: options.classID
+    })
     wx.request({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method: 'GET',
@@ -31,11 +30,11 @@ Page({
         Authorization: 'Bearer ' + jwt
       },
       success: function (res) {
-        //console.log(res)
+        console.log(res.data.numStudent)
         self.setData({
+          studentNum: res.data.numStudent,
           seminar: JSON.parse(options.seminar),
-          className: res.data.name,
-          studentNum: res.data.numStudent
+          className: res.data.name
         })
         var status = ""
         wx.request({
@@ -46,7 +45,6 @@ Page({
           },
           success: function (res) {
             self.setData({
-              studentNum: res.data.numStudent,
               nowStudentNum: res.data.numPresent
             })
             status = res.data.status;
@@ -67,7 +65,7 @@ Page({
             }
           }
         })
-        
+
       }
     })
   },
