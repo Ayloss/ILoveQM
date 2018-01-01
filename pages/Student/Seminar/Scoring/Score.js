@@ -64,6 +64,40 @@ hasSubmit:function(){
   })
 
 },
+  
+  //打分状态，判断是否到了打分时间
+  scoreTime:function()
+  {
+    var self = this
+    var jwt = wx.getStorageSync('jwt')
+
+    wx.request({                    //请求打分状态
+      url: app.globalData.IPPort +'/class/'+ this.data.classID+'/seminar/' + this.data.seminarID + '/score/time',
+      method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      success: function (res) {
+        if(res.statusCode==404)
+        {
+          wx.showModal({
+            title: '提示',
+            content: '签到还未结束',
+            showCancel: false,
+            complete: function () {
+              wx.navigateBack();
+            }
+          })
+        }
+      },
+      fail: function () {
+      }
+    }) 
+
+  },
+
+
+
   onLoad: function (options) {
     var temp = JSON.parse(options.str)
     console.log(temp)
@@ -77,6 +111,7 @@ hasSubmit:function(){
 
     var self =this
     var jwt = wx.getStorageSync('jwt')
+    this.scoreTime()
     wx.request({                    //请求小组
       url: app.globalData.IPPort +'/seminar/'+this.data.seminarID+'/group?gradeable=true',
       method: 'get',
@@ -94,7 +129,6 @@ hasSubmit:function(){
               wx.navigateBack();
             }
           })
-          
         }
         self.setData({
           group: res.data
