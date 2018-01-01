@@ -23,9 +23,6 @@ Page({
   onLoad: function (options) {
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
-    this.setData({
-      avatarUrl: 'http://120.77.173.98:8102/avatar/ghg'
-    })
     //console.log("当前时间戳为：" + timestamp);
 
     //获取当前时间  
@@ -68,6 +65,7 @@ Page({
           self.setData({
             userName: result.data.name,
             ID: result.data.number,
+            avatarUrl: app.globalData.IPPort + "/avatar/" + result.data.avatar
           })
 
           if (result.data.type == 'teacher') {

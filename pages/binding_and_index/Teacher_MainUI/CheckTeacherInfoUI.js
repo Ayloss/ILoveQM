@@ -22,8 +22,7 @@ Page({
     var self = this;
     var usertype = wx.getStorageSync('type')
     this.setData({
-      usertype: usertype,
-      avatarUrl: 'http://120.77.173.98:8102/avatar/ghg'
+      usertype: usertype
     })
     var jwt = wx.getStorageSync('jwt')
     wx.request({
@@ -40,6 +39,7 @@ Page({
           school: result.data.school.name,
           teacherID: result.data.number,
           phoneNum: result.data.phone,
+          avatarUrl: app.globalData.IPPort + "/avatar/" + result.data.avatar
         })
       }
     })
@@ -57,25 +57,44 @@ Page({
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         self.data.photoPath = res.tempFilePaths
         console.log(self.data.photoPath)
-        wx.uploadFile({
-          url: app.globalData.IPPort + '/upload/avatar',
-          filePath: self.data.photoPath[0],
-          name: 'file',
-          formData: {
-            'user': 'test'
-          },
-          header:{
-            Authorization:"Bearer " + jwt
-          },
-          success: function (res) {
-            console.log(res.data)
-          },
-          fail: function () {
-            wx.showToast({
-              title: '失败',
-              icon: 'fail',
-              duration: 1000,
-              mask: true
+        // 设置上传中
+        wx.showLoading({
+          title: '上传中...',
+          mask:true,
+          success: function () {
+            wx.uploadFile({
+              url: app.globalData.IPPort + '/upload/avatar',
+              filePath: self.data.photoPath[0],
+              name: 'file',
+              formData: {
+                'user': 'test'
+              },
+              header: {
+                Authorization: "Bearer " + jwt
+              },
+              success: function (res) {
+                var avatar = JSON.parse(res.data)
+                // 成功后修改头像
+                self.setData({
+                  avatarUrl:app.globalData.IPPort + "/avatar/" + avatar.url
+                })
+                // 修改前主页面的头像
+                var pages = getCurrentPages()
+                var prevpage = pages[pages.length-2]
+                prevpage.setData({
+                  avatarUrl: app.globalData.IPPort + "/avatar/" + avatar.url
+                })
+
+                wx.hideLoading()
+              },
+              fail: function () {
+                wx.showToast({
+                  title: '失败',
+                  icon: 'fail',
+                  duration: 1000,
+                  mask: true
+                })
+              }
             })
           }
         })
@@ -94,19 +113,19 @@ Page({
         if (res.confirm) {
 
           wx.login({
-            success:function(res) {
+            success: function (res) {
               wx.request({
                 url: IPPort + '/me/unbind',
                 header: {
                   Authorization: "Bearer " + wx.getStorageSync("jwt")
                 },
                 data: {
-                  "jsCode":res.code
+                  "jsCode": res.code
                 },
                 method: 'PUT',
                 success: function (resp) {
 
-                  switch(resp.statusCode) {
+                  switch (resp.statusCode) {
                     case 204:
                       wx.setStorageSync('jwt', "")
                       wx.setStorageSync("type", "")
@@ -120,7 +139,7 @@ Page({
                       wx.showModal({
                         title: '信息提交异常',
                         content: '您可能尝试搞乱我们的系统.请不要这么做，不然大家OOAD都会0分.',
-                        showCancel:false
+                        showCancel: false
                       })
                       break
                     case 406:
@@ -137,7 +156,7 @@ Page({
                         showCancel: false
                       })
                   }
-                  
+
                   // var pages = page[page.length - 2]
                   // pages.setData({
                   //   userType: ''
@@ -154,7 +173,7 @@ Page({
               })
             }
           })
-         
+
         }
       }
     })
