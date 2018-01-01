@@ -11,6 +11,7 @@ Page({
     phoneNum: "",
     school: "",
     usertype: "",
+    avatarUrl: ""
   },
 
   /**
@@ -21,7 +22,8 @@ Page({
     var self = this;
     var usertype = wx.getStorageSync('type')
     this.setData({
-      usertype: usertype
+      usertype: usertype,
+      avatarUrl: 'http://120.77.173.98:8102/avatar/ghg'
     })
     var jwt = wx.getStorageSync('jwt')
     wx.request({

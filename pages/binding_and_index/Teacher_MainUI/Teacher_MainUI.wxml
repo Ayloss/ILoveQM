@@ -1,7 +1,7 @@
 <page>
   <!--这里是老师mainUI-->
   <block wx:if="{{jwt!='' && userType=='teacher'}}">
-    <image src='http://120.77.173.98:8102/avatar/ghg' class='topHead' bindtap='onCheckInfo'></image>
+    <image src="{{avatarUrl}}" class='topHead' bindtap='onCheckInfo'></image>
     <text class='topName' bindtap='onCheckInfo'>姓名：{{userName}}</text>
     <text class='topID' bindtap='onCheckInfo'>教工号：{{ID}}</text>
     <image src='/resources/img/background.png' class='topBoardView'></image>
@@ -15,7 +15,7 @@
   </block>
   <!--这里是学生mainUI-->
   <block wx:if="{{jwt!='' && userType=='student'}}">
-    <image src='http://120.77.173.98:8102/avatar/ghg' class='topHead' bindtap='onCheckInfo'></image>
+    <image src="{{avatarUrl}}" class='topHead' bindtap='onCheckInfo'></image>
     <text class='topName' bindtap='onCheckInfo'>姓名：{{userName}}</text>
     <text class='topID' bindtap='onCheckInfo'>学号：{{ID}}</text>
     <image src='/resources/img/background.png' class='topBoardView'></image>
