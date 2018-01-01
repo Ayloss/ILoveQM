@@ -102,7 +102,45 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var self = this;
+    var IPPort = app.globalData.IPPort;
+    wx.showLoading({
+      title: '加载中',
+    })
+    var jwt = wx.getStorageSync('jwt')
+    wx.request({
+      url: IPPort + '/seminar' + '/' + self.data.seminar.id + '/group',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      method: 'GET',
+      data: {
+        classID: self.data.classID,
+        gradeable: false
+      },
+      success: function (res) {
+        self.setData({
+          groupList: res.data
+        })
+        // console.log(self.data.groupList)
+      }
+    })
 
+    wx.request({
+      url: IPPort + '/seminar' + '/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance/late',
+      method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      data: {
+        classID: self.data.classID
+      },
+      success: function (res) {
+        self.setData({
+          lateStudentList: res.data
+        })
+      }
+    })
   },
 
   /**

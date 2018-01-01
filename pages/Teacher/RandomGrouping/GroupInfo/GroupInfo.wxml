@@ -38,7 +38,7 @@
   
   <!--迟到学生上面那个蓝色的bar-->
   <view class='studentNoCallBarView'>
-    <span>未签到学生</span>
+    <span>迟到学生</span>
   </view>
 
   <!--未签到学生，要增加新学生复制一个view，修改名字-->
