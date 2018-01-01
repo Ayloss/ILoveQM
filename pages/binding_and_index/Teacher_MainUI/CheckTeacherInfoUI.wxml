@@ -1,6 +1,6 @@
 <!--pages/binding & index/Student_MainUI/CheckStudentInfoUI.wxml-->
 <page>
-  <image src='http://120.77.173.98:8102/avatar/ghg' class='topHead' bindtap="changPortrait"></image>
+  <image src="{{avatarUrl}}" class='topHead' bindtap="changPortrait"></image>
   <text class='topClickHead'  bindtap="changPortrait">点击头像修改</text>
   <text class='topName'>姓名：{{userName}}</text>
   <text wx:if="{{usertype=='teacher'}}" class='topID'>教工号：{{teacherID}}</text>

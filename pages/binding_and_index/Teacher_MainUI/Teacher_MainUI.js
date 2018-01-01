@@ -12,7 +12,8 @@ Page({
     userType: wx.getStorageSync("type"),
     courseList: [],
     jwt: wx.getStorageSync("jwt"),
-    courseInfo: []
+    courseInfo: [],
+    avatarUrl:""
   },
 
 
@@ -22,6 +23,9 @@ Page({
   onLoad: function (options) {
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
+    this.setData({
+      avatarUrl: 'http://120.77.173.98:8102/avatar/ghg'
+    })
     //console.log("当前时间戳为：" + timestamp);
 
     //获取当前时间  
