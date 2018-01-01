@@ -86,7 +86,15 @@ hasSubmit:function(){
       success: function (res) {
         if(res.statusCode==404)
         {
-          wx.navigateBack();
+          wx.showModal({
+            title: '您当前还未选题',
+            content: '请选题之后再进行打分',
+            showCancel:false,
+            complete:function() {
+              wx.navigateBack();
+            }
+          })
+          
         }
         self.setData({
           group: res.data
