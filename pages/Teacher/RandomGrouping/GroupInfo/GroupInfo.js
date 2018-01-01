@@ -34,7 +34,8 @@ Page({
       },
       method: 'GET',
       data: {
-        classID: self.data.classID
+        classID: self.data.classID,
+        gradeable: false
       },
       success: function (res) {
         self.setData({
@@ -116,6 +117,8 @@ Page({
     var groupID = e.currentTarget.dataset.groupObj.id
     var index = e.currentTarget.dataset.index
     var students = this.data.studentList
+    var lateStudentList = this.data.lateStudentList
+    var studentRemove = e.currentTarget.dataset.stuObj
     var self = this;
     var IPPort = app.globalData.IPPort;
     var jwt = wx.getStorageSync('jwt')
@@ -129,9 +132,11 @@ Page({
         Authorization: 'Bearer ' + jwt
       },
       success:function(){
+        lateStudentList[lateStudentList.length] = studentRemove
         students.splice(index,1)
         self.setData({
-          studentList: students
+          studentList: students,
+          lateStudentList: lateStudentList
         })
       }
     })
