@@ -111,7 +111,25 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var getIPPort = app.globalData.IPPort;
+    var self = this
+    var jwt = wx.getStorageSync('jwt')
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance',
+      method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      success: function (res) {
+        self.setData({
+          nowStudentNum: res.data.numPresent
+        })
+        wx.hideLoading()
+      }
+    })
   },
 
   /**
