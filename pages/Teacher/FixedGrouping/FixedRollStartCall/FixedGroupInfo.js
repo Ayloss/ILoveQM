@@ -32,7 +32,8 @@ Page({
         Authorization: 'Bearer ' + jwt
       },
       data: {
-        classID: self.data.classID
+        classID: self.data.classID,
+        gradeable: false
       },
       success: function (res) {
         self.setData({
