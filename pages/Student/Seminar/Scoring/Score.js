@@ -84,6 +84,10 @@ hasSubmit:function(){
         Authorization: 'Bearer ' + jwt
       },
       success: function (res) {
+        if(res.statusCode==404)
+        {
+          wx.navigateBack();
+        }
         self.setData({
           group: res.data
         })
