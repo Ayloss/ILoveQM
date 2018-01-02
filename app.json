@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login",
     "pages/Teacher/class-manage/class-manage",
     "pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall",
     "pages/Teacher/RandomGrouping/RandomRollStartCall/RollCallList",
@@ -22,8 +23,7 @@
     "pages/Student/Seminar/chooseTopic/chooseTopic",
     "pages/Student/Seminar/CourseInfo",
     "pages/Student/Seminar/group/group",
-    "pages/Student/studentInfo/studentInfo",
-    "pages/login"
+    "pages/Student/studentInfo/studentInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
