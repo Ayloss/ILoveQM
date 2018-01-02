@@ -79,6 +79,7 @@ Page({
     var IPPort=app.globalData.IPPort
     var self=this
     var schoolID=-1
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: IPPort+'/school',
       data:{
@@ -87,8 +88,11 @@ Page({
         city: self.data.city,
       },
       method:'POST',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success:function(res){
-        schoolID:res.data.id
+        schoolID=res.data.id
       }
     })
     //跳转

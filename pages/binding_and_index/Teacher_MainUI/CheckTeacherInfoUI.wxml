@@ -1,13 +1,15 @@
 <!--pages/binding & index/Student_MainUI/CheckStudentInfoUI.wxml-->
 <page>
-  <image src='http://120.77.173.98:8102/avatar/ghg' class='topHead' bindtap="changPortrait"></image>
+  <image src="{{avatarUrl}}" class='topHead' bindtap="changPortrait"></image>
   <text class='topClickHead'  bindtap="changPortrait">点击头像修改</text>
   <text class='topName'>姓名：{{userName}}</text>
-  <text class='topID'>教工号：{{teacherID}}</text>
+  <text wx:if="{{usertype=='teacher'}}" class='topID'>教工号：{{teacherID}}</text>
+  <text wx:if="{{usertype=='student'}}" class='topID'>学号：{{teacherID}}</text>
   <image src='/resources/img/background.png' class='topBoardView'></image>
   <view class='mainView'>
     <text class='phone'>手机号：{{phoneNum}}</text>
-    <text class='ID'>教工号：{{teacherID}}</text>
+    <text wx:if="{{usertype=='teacher'}}" class='ID'>教工号：{{teacherID}}</text>
+    <text wx:if="{{usertype=='student'}}" class='ID'>学号：{{teacherID}}</text>
     <text class='school'>学校：{{school}}</text>
     <text class='name'>姓名：{{userName}}</text>
     <button class='confirmButton' bindtap='onUnBind'>解绑</button>

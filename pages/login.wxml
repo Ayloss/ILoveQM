@@ -1,0 +1,6 @@
+<!--pages/login.wxml-->
+<text wx:if="{{loginError === false}}">loading....</text>
+<block wx:if="{{loginError === true}}">
+<text>登录出现异常</text>
+<button bindtap='reLogin'>重新登录</button>
+</block>

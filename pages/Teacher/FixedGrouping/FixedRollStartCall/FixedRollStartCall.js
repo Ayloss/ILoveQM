@@ -19,46 +19,53 @@ Page({
   onLoad: function (options) {
     var self = this;
     var getIPPort = app.globalData.IPPort;
+    var jwt = wx.getStorageSync('jwt')
     this.setData({
       classID:options.classID
     })
     wx.request({
       url: getIPPort + '/class' + '/' + self.data.classID,
-      method: 'GET',
+      method: 'GET', 
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
-        //console.log(res)
+        console.log(res.data.numStudent)
         self.setData({
+          studentNum: res.data.numStudent,
           seminar: JSON.parse(options.seminar),
-          className: res.data.name,
-          studentNum: res.data.numStudent
+          className: res.data.name
         })
         var status = ""
         wx.request({
           url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance',
           method:'GET',
+          header: {
+            Authorization: 'Bearer ' + jwt
+          },
           success:function(res){
             self.setData({
-              studentNum:res.data.numStudent,
               nowStudentNum:res.data.numPresent
             })
             status=res.data.status;
+            if (status == "calling") {
+              self.setData({
+                CallInRollCondition: 1
+              })
+            }
+            if (status == "notstart") {
+              self.setData({
+                CallInRollCondition: 0
+              })
+            }
+            if (status == "end") {
+              self.setData({
+                CallInRollCondition: 2
+              })
+            }
           }
         })
-        if(status=="calling"){
-          self.setData({
-            CallInRollCondition:1
-          })
-        }
-        if (status == "notstart") {
-          self.setData({
-            CallInRollCondition: 0
-          })
-        }
-        if (status == "end") {
-          self.setData({
-            CallInRollCondition: 2
-          })
-        }
+        
       }
     })
   },
@@ -101,7 +108,25 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var getIPPort = app.globalData.IPPort;
+    var self = this
+    var jwt = wx.getStorageSync('jwt')
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance',
+      method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      success: function (res) {
+        self.setData({
+          nowStudentNum: res.data.numPresent
+        })
+        wx.hideLoading()
+      }
+    })
   },
 
   /**
@@ -114,18 +139,33 @@ Page({
   onStartCall:function(){
     var self = this;
     var getIPPort = app.globalData.IPPort;
-    wx.request({
-      url: getIPPort + '/class' + '/' + self.data.classID,
-      method:'PUT',
-      data:{
-        calling: self.data.seminar.id
+    var jwt = wx.getStorageSync('jwt')
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var speed = res.speed
+        var accuracy = res.accuracy
+        wx.request({
+          url: getIPPort + '/class' + '/' + self.data.classID,
+          method: 'PUT',
+          header: {
+            Authorization: 'Bearer ' + jwt
+          },
+          data: {
+            calling: self.data.seminar.id,
+            longitude: longitude,
+            latitude:latitude
       },
-      success:function(res){
-        //console.log(res)
+          success: function (res) {
+            //console.log(res)
+            self.setData({
+              CallInRollCondition: 1
+            })
+          }
+        })
       }
-    })
-    this.setData({
-      CallInRollCondition: 1
     })
   },
 
@@ -137,9 +177,13 @@ Page({
       success:function(res){
         if(res.confirm){
           var getIPPort = app.globalData.IPPort;
+          var jwt = wx.getStorageSync('jwt')
           wx.request({
             url: getIPPort + '/class' + '/' + thisApp.data.classID,
             method: 'PUT',
+            header: {
+              Authorization: 'Bearer ' + jwt
+            },
             data: {
               calling: "-1"
             },

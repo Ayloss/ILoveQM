@@ -32,10 +32,15 @@ Page({
      courseName: temp.courseName,           //这四个靠前面传过来
   })
     var self = this;
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/course/' + this.data.courseID +'/seminar?embedGrade=true',
       method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
+        console.log(res.data)
         self.setData({
           seminarList: res.data
         })
@@ -58,13 +63,15 @@ Page({
 //跳到讨论课主页，传入讨论课id
   enterSeminar:function(event)
   {
-    var snumber
+    var sname
     for (var i = 0; i < this.data.seminarList.length; i++) 
-      if (event.target.id == this.data.seminarList[i].id)
-        snumber = this.data.seminarList[i].number
+      if (event.currentTarget.id == this.data.seminarList[i].id)
+        sname = this.data.seminarList[i].name
+    console.log("snumber:" + sname)
+    console.log("snumber:" + sname)
     var data = {
       'studentID': this.data.studentID, 'classID':this.data.classID,   
-      'courseID': this.data.courseID, 'courseName': this.data.courseName, 'seminarID': event.currentTarget.id, 'seminarNumber': snumber}
+      'courseID': this.data.courseID, 'courseName': this.data.courseName, 'seminarID': event.currentTarget.id, 'seminarName': sname}
     wx.navigateTo({
       url: 'Seminar/Seminar?str=' + JSON.stringify(data),
     })

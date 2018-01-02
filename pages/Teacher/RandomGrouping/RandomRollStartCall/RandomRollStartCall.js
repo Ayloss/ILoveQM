@@ -19,47 +19,53 @@ Page({
   onLoad: function (options) {//这里需要判断当前签到清空进行跳转
     var self = this;
     var getIPPort = app.globalData.IPPort;
-    //console.log(options.classID)
+    var jwt = wx.getStorageSync('jwt')
     this.setData({
-      classID: options.classID,
+      classID: options.classID
     })
     wx.request({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
-        //console.log(res)
+        console.log(res.data.numStudent)
         self.setData({
+          studentNum: res.data.numStudent,
           seminar: JSON.parse(options.seminar),
-          className: res.data.name,
-          studentNum: res.data.numStudent
+          className: res.data.name
         })
         var status = ""
         wx.request({
           url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance',
           method: 'GET',
+          header: {
+            Authorization: 'Bearer ' + jwt
+          },
           success: function (res) {
             self.setData({
-              studentNum: res.data.numStudent,
               nowStudentNum: res.data.numPresent
             })
             status = res.data.status;
+            if (status == "calling") {
+              self.setData({
+                CallInRollCondition: 1
+              })
+            }
+            if (status == "notstart") {
+              self.setData({
+                CallInRollCondition: 0
+              })
+            }
+            if (status == "end") {
+              self.setData({
+                CallInRollCondition: 2
+              })
+            }
           }
         })
-        if (status == "calling") {
-          self.setData({
-            CallInRollCondition: 1
-          })
-        }
-        if (status == "notstart") {
-          self.setData({
-            CallInRollCondition: 0
-          })
-        }
-        if (status == "end") {
-          self.setData({
-            CallInRollCondition: 2
-          })
-        }
+
       }
     })
   },
@@ -103,7 +109,25 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var getIPPort = app.globalData.IPPort;
+    var self = this
+    var jwt = wx.getStorageSync('jwt')
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: getIPPort + '/seminar/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance',
+      method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      success: function (res) {
+        self.setData({
+          nowStudentNum: res.data.numPresent
+        })
+        wx.hideLoading()
+      }
+    })
   },
 
   /**
@@ -116,11 +140,15 @@ Page({
   onStartCall:function(){
     var self = this;
     var getIPPort = app.globalData.IPPort;
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: getIPPort + '/class' + '/' + self.data.classID,
       method: 'PUT',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: {
-        calling: "1"
+        calling: self.data.seminar.id
       },
       success: function (res) {
         //console.log(res)
@@ -133,6 +161,7 @@ Page({
 
   onEndCall:function(){
     const thisApp = this
+    var jwt = wx.getStorageSync('jwt')
     wx.showModal({
       title: '提示',
       content: '是否结束签到',
@@ -142,6 +171,9 @@ Page({
           wx.request({
             url: getIPPort + '/class' + '/' + thisApp.data.classID,
             method: 'PUT',
+            header: {
+              Authorization: 'Bearer ' + jwt
+            },
             data: {
               calling: "-1"
             },

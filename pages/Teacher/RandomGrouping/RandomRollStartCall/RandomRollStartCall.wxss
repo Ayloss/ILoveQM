@@ -31,7 +31,7 @@ page {
   margin-top: 90rpx;
   width: 400rpx;
   height: 100rpx;
-  font-size: 80rpx;
+  font-size: 60rpx;
   float: right;
 }
 

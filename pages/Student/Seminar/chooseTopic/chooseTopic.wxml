@@ -23,7 +23,7 @@
               <image src='/resources/img/chooseschool.png' id="{{item.id}}" class="nineIcon" catchtap="detail"></image>
     </view>
 
-    <view wx:if="{{item.groupLeft==0}}" class="greyTopicView">
+    <view wx:if="{{item.groupLeft<=0}}" class="greyTopicView">
               <span class="topic">话题{{match[index]}}</span>
               <view class="hrVertical"> </view>
               <span class="topicName">{{item.name}}</span>

@@ -18,7 +18,8 @@ Page({
   },
 
   score:function(e){
-    
+    if (this.data.flag==false) return
+
     var temp=e.target.dataset
     for (var i = 0; i < this.data.presentationGrade.length;++i)
       if (this.data.presentationGrade[i].id==temp.group)
@@ -33,6 +34,70 @@ Page({
     })
   },
 
+//是否已经提交打分，设置flag
+hasSubmit:function(){
+  var self=this
+  var jwt = wx.getStorageSync('jwt')
+  wx.request({                   
+    url: app.globalData.IPPort + '/seminar/' + this.data.seminarID + '/score/status',
+    method: 'get',
+    header: {
+      Authorization: 'Bearer ' + jwt
+    },
+    success: function (res) 
+    {
+      if(res.data.id==0)
+      { 
+        self.setData({
+          flag: false
+       })
+      }else{
+        self.setData({
+          flag: true
+        })
+      }
+    },
+    fail :function(res)
+    {
+
+    }
+  })
+
+},
+  
+  //打分状态，判断是否到了打分时间
+  scoreTime:function()
+  {
+    var self = this
+    var jwt = wx.getStorageSync('jwt')
+
+    wx.request({                    //请求打分状态
+      url: app.globalData.IPPort +'/class/'+ this.data.classID+'/seminar/' + this.data.seminarID + '/score/time',
+      method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      success: function (res) {
+        if(res.statusCode==404)
+        {
+          wx.showModal({
+            title: '提示',
+            content: '签到还未结束',
+            showCancel: false,
+            complete: function () {
+              wx.navigateBack();
+            }
+          })
+        }
+      },
+      fail: function () {
+      }
+    }) 
+
+  },
+
+
+
   onLoad: function (options) {
     var temp = JSON.parse(options.str)
     console.log(temp)
@@ -45,16 +110,33 @@ Page({
     })
 
     var self =this
+    var jwt = wx.getStorageSync('jwt')
+    this.scoreTime()
     wx.request({                    //请求小组
       url: app.globalData.IPPort +'/seminar/'+this.data.seminarID+'/group?gradeable=true',
       method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
+        if(res.statusCode==404)
+        {
+          wx.showModal({
+            title: '您当前还未选题',
+            content: '请选题之后再进行打分',
+            showCancel:false,
+            complete:function() {
+              wx.navigateBack();
+            }
+          })
+        }
         self.setData({
           group: res.data
         })
+        self.hasSubmit()         //是否已经提交打分
         for(var i=0;i<self.data.group.length;++i)
         {
-          self.data.presentationGrade.push({ "id": self.data.group[i].id, 'name': self.data.group[i].name, "grade": 0})
+          self.data.presentationGrade.push({ "id": self.data.group[i].id, 'name': self.data.group[i].name, "grade": self.data.group[i].grade.grade})
         }
         var temp = self.data.presentationGrade
         self.setData({
@@ -78,9 +160,13 @@ Page({
   submit:function()
   {
     var self=this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({                    
       url: app.globalData.IPPort + '/group/' + this.data.groupID + '/grade/presentation/'+this.data.studentID,
       method: 'put',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: { 'presentationGrade': this.data.presentationGrade },
       success: function (res) {
         wx.showToast({

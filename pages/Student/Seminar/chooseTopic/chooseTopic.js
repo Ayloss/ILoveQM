@@ -23,9 +23,13 @@ Page({
   //获得当前seminar下所有topics信息
   getTopics:function(){
     var self = this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/seminar/' + this.data.seminarID +'/topic',
       method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
           self.setData({
           topics:res.data
@@ -67,9 +71,13 @@ Page({
   },
   modalBindaconfirm: function () {
     var self=this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/group/' + this.data.groupID + '/topic',
       method: 'post',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: { "id": this.data.mytopicID },
       success: function (res) {
               var pages = getCurrentPages();

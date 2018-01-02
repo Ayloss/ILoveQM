@@ -25,6 +25,7 @@ Page({
     this.setData({
       userType: options.userType
     })
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: 'http://apis.map.qq.com/ws/district/v1/list',
       method: 'GET',
@@ -117,6 +118,7 @@ Page({
   onChooseProvince: function (e) {
     var self = this
     var IPPort = app.globalData.IPPort
+    var jwt = wx.getStorageSync('jwt')
     this.setData({
       provincechoose: e.currentTarget.dataset.provinceObj
     })
@@ -156,7 +158,7 @@ Page({
       },
       method: 'GET',
       success: function (res) {
-        //console.log(res.data)
+        console.log(res.data)
         self.setData({
           school: res.data
         })

@@ -28,9 +28,13 @@ Page({
   },
   getData:function(){
     var self = this;
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/me' ,
       method: 'get',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         var temp=res.data
         self.setData({
@@ -111,9 +115,13 @@ Page({
 
   changPortrait:function(){
     var self=this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/upload/avatar',
       method: 'put',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: { "avatar": "/avatar/3486.png" },
       success: function (res) {
         self.setData({
@@ -133,9 +141,13 @@ Page({
   },
 
   release:function(){
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/me',
       method: 'put',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: { "phone": this.data.phone },
       success: function (res) {
        wx.redirectTo({
@@ -157,6 +169,7 @@ Page({
   changPortrait: function () {
     console.log(2)
     var self = this
+    var jwt = wx.getStorageSync('jwt')
     wx.chooseImage({
       count: 1, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有

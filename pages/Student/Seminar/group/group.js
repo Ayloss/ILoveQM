@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {//前三个可用来控制界面的显示
-    topic:'',         
+    topic:'',           //小组所选的话题
     hasLeaderJud:1,     //0表示没有队长，1表示有
     
     seminarID:1,
@@ -23,31 +23,16 @@ Page({
 
   becomeLeader:function(){    //成为队长
     var self=this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/group/' + this.data.groupDetail.id + '/assign',
       method: 'put',
-      data: { 'id': this.data.studentID },
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
-        var me = {}
-        var myi
-        for (var i = 0; i < self.data.groupDetail.members.length; ++i)
-          if (self.data.groupDetail.members[i].id == self.data.studentID) {
-            myi = i
-            console.log(self.data.groupDetail.members[i].ide)
-            me.id = self.data.groupDetail.members[i].id
-            me.name = self.data.groupDetail.members[i].name
-          }
-        self.data.groupDetail.members.splice(myi, 1)
-        self.data.groupDetail.leader.id = me.id
-        self.data.groupDetail.leader.name = me.name
-
-        var temp = self.data.groupDetail
-        self.setData({
-          isLeader: true,            //是否是Leader
-          hasLeader: true,            //是否有Leader
-          groupDetail: temp
-        })
-       
+        self.getGroupDetail()
+        
       },
       fail: function () {
         wx.showToast({
@@ -66,20 +51,15 @@ Page({
   
   resign:function(){    //辞职
     var self= this
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/group/' + this.data.groupDetail.id + '/resign',
       method: 'put',
-      data:{'id':this.data.studentID},
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
-        var me = self.data.groupDetail.leader
-        self.data.groupDetail.leader = {}
-        self.data.groupDetail.members.push(me)    //把Leader加到members里
-        var temp = self.data.groupDetail
-        self.setData({
-          isLeader: false,            //是否是Leader
-          hasLeader: false,            //是否有Leader
-          groupDetail: temp
-        })
+        self.getGroupDetail()
       },
       fail: function () {
         wx.showToast({
@@ -112,20 +92,50 @@ Page({
 
     getGroupDetail:function(){
       var self=this
+      var jwt = wx.getStorageSync('jwt')
       wx.request({
         url: app.globalData.IPPort + '/seminar/' + this.data.seminarID +'/group/my',
         method: 'get',
+        header: {
+          Authorization: 'Bearer ' + jwt
+        },
         success: function (res) {
+          //设置数据和三种状态
+          console.log(res.data)
           self.setData({
-            groupDetail: res.data
+            groupDetail: res.data,
           })
-          if (self.getHsonLength(self.data.groupDetail.leader)>0)
+         
+
+
+          if (self.getHsonLength(self.data.groupDetail.topics) > 0)
             self.setData({
-              hasLeader: true
+              areTopicsSelected: true,
+              topic: res.data.topics[0].name
             })
             else
             self.setData({
-              hasLeader: false
+              areTopicsSelected: false
+            })
+          if (self.getHsonLength(self.data.groupDetail.leader)>0)
+            {
+              self.setData({
+              hasLeader: true
+              })
+              var id = wx.getStorageSync('id')
+              if (id == self.data.groupDetail.leader.id)
+                    self.setData({
+                      isLeader: true
+                    })
+              else 
+                    self.setData({
+                      isLeader: false
+                    })
+            }
+            else
+            self.setData({
+              hasLeader: false,
+              isLeader:false
             })
         },
         fail: function () {

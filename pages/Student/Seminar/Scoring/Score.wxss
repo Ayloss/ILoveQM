@@ -17,7 +17,8 @@ page{
 }
 /*打分部分的边缘长度*/
 .scoremargin{
-	margin:10%;
+	margin:5%;
+  margin-left: 2%;
 }
 /* “提交”按钮 */
 .btnsubmit{
@@ -35,6 +36,9 @@ page{
    width: 3rem;
    display: inline-block;
 }
+.middlediv{
+	text-align: center;
+}
 .greyword{
   height: 3rem;
   width: 14rem;
@@ -49,9 +53,9 @@ page{
 }
 .text{
   height: 1.5rem;
-  width: 1.5rem;
+  width: wrap-content;
   display: inline-block;
-  margin-left: 10%;
+  margin-left: 5%;
 }
 .heart{
   line-height: 0.5rem;

@@ -6,16 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userName: "",
-    date:'',
-    ID: "",
-    userType: 'teacher',
+    userName: wx.getStorageSync("name"),
+    date: '',
+    ID: '',
+    userType: wx.getStorageSync("type"),
     courseList: [],
-    jwt: '',
-    courseInfo: []
+    jwt: wx.getStorageSync("jwt"),
+    courseInfo: [],
+    avatarUrl:""
   },
 
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -38,33 +39,44 @@ Page({
     //分  
     var m = date.getMinutes();
     //秒  
-    var s = date.getSeconds();  
+    var s = date.getSeconds();
 
 
     this.data.date = date.toDateString()
-    //console.log(date.toDateString())
+
     var getIPPort = app.globalData.IPPort;
     var self = this;
     var jwt = wx.getStorageSync('jwt')
     this.setData({
-      date:date.getTime(),
+      date: date.getTime(),
       jwt: jwt
     })
+
+
     if (jwt != '') {
       wx.request({
         url: getIPPort + '/me',
-        //header: { 'Content-Type': wx.getStorage('jwt') },
         method: 'GET',
+        header: {
+          Authorization: 'Bearer ' + jwt
+        },
         success: function (result) {
-          //console.log(result)
+          console.log(result)
           self.setData({
             userName: result.data.name,
             ID: result.data.number,
+            avatarUrl: app.globalData.IPPort + "/avatar/" + result.data.avatar
           })
-          if (result.data.type=='teacher'){
+
+          if (result.data.type == 'teacher') {
+
+            // 请求获取教师的课程信息
             wx.request({
               url: getIPPort + '/course',
               method: 'GET',
+              header: {
+                Authorization: 'Bearer ' + jwt
+              },
               success: function (res) {
                 //console.log(res)
                 self.setData({
@@ -73,15 +85,21 @@ Page({
               }
             })
             self.setData({
-              userType:'teacher'
+              userType: 'teacher'
             })
           }
-          else{
+          // 此处要再判断type类型而不能直接else，因为type会有null的情况
+          else if (result.data.type == 'student') {
+
+            // 请求获取学生的班级信息
             wx.request({
               url: app.globalData.IPPort + '/class',
               method: 'get',
+              header: {
+                Authorization: 'Bearer ' + jwt
+              },
               success: function (res) {
-                prepage.setData({
+                self.setData({
                   courseInfo: res.data
                 })
               },
@@ -94,63 +112,19 @@ Page({
                 })
               }
             })
+            // 请求结束
             self.setData({
               userType: 'student'
+            })
+          } else {
+            self.setData({
+              useType: null
             })
           }
         }
       });
-      
+
     }
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   },
 
@@ -182,15 +156,16 @@ Page({
 
   onClickCourse: function (e) {
     var cid = e.currentTarget.id
+    var courseId = e.currentTarget.dataset.courseId
     console.log(cid)
     for (var i = 0; i < this.data.courseInfo.length; ++i)
       if (this.data.courseInfo[i].id == cid)
         var cname = this.data.courseInfo[i].courseName
     var data = {
       //studentID: this.data.ID,
-      studentID: 2757,
+      studentID: wx.getStorageSync('id'),
       classID: cid,                    //id
-      courseID: cid,
+      courseID: courseId,
       courseName: cname,           //这四个靠前面传过来
     }
     wx.navigateTo({

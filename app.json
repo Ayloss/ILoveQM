@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login",
     "pages/Teacher/class-manage/class-manage",
     "pages/Teacher/RandomGrouping/RandomRollStartCall/RandomRollStartCall",
     "pages/Teacher/RandomGrouping/RandomRollStartCall/RollCallList",

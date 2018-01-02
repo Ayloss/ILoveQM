@@ -26,11 +26,16 @@ Page({
       classID: options.classID,
       seminar: JSON.parse(options.seminar)
     })
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: IPPort + '/seminar' + '/' + self.data.seminar.id + '/group',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       method: 'GET',
       data: {
-        classID: self.data.classID
+        classID: self.data.classID,
+        gradeable: false
       },
       success: function (res) {
         self.setData({
@@ -43,6 +48,9 @@ Page({
     wx.request({
       url: IPPort + '/seminar' + '/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance/late',
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       data: {
         classID: self.data.classID
       },
@@ -94,7 +102,45 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var self = this;
+    var IPPort = app.globalData.IPPort;
+    wx.showLoading({
+      title: '加载中',
+    })
+    var jwt = wx.getStorageSync('jwt')
+    wx.request({
+      url: IPPort + '/seminar' + '/' + self.data.seminar.id + '/group',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      method: 'GET',
+      data: {
+        classID: self.data.classID,
+        gradeable: false
+      },
+      success: function (res) {
+        self.setData({
+          groupList: res.data
+        })
+        // console.log(self.data.groupList)
+      }
+    })
 
+    wx.request({
+      url: IPPort + '/seminar' + '/' + self.data.seminar.id + '/class/' + self.data.classID + '/attendance/late',
+      method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      data: {
+        classID: self.data.classID
+      },
+      success: function (res) {
+        self.setData({
+          lateStudentList: res.data
+        })
+      }
+    })
   },
 
   /**
@@ -109,18 +155,26 @@ Page({
     var groupID = e.currentTarget.dataset.groupObj.id
     var index = e.currentTarget.dataset.index
     var students = this.data.studentList
+    var lateStudentList = this.data.lateStudentList
+    var studentRemove = e.currentTarget.dataset.stuObj
     var self = this;
     var IPPort = app.globalData.IPPort;
+    var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: IPPort + '/group/' + groupID + '/remove',
       data: {
         id: removeStuID,
       },
       method: 'PUT',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success:function(){
+        lateStudentList[lateStudentList.length] = studentRemove
         students.splice(index,1)
         self.setData({
-          studentList: students
+          studentList: students,
+          lateStudentList: lateStudentList
         })
       }
     })
@@ -138,6 +192,7 @@ Page({
       lateStudentsName[i] = lateStudents[i].name
     }
     //console.log(lateStudents)
+    var jwt = wx.getStorageSync('jwt')
     wx.showActionSheet({
       itemList: lateStudentsName,
       success: function (res) {
@@ -146,7 +201,10 @@ Page({
           data: {
             id: lateStudents[res.tapIndex].id
           },
-          method: 'PUT'
+          method: 'PUT',
+          header: {
+            Authorization: 'Bearer ' + jwt
+          },
         })
         students[students.length] = lateStudents[res.tapIndex]
         lateStudents.splice(res.tapIndex,1)
@@ -180,6 +238,7 @@ Page({
     var self = this;
     var IPPort = app.globalData.IPPort
     var groupListObj = self.data.groupList
+    var jwt = wx.getStorageSync('jwt')
 
     //console.log(index)
     //查成员！！！！！！！！！！！！
@@ -190,6 +249,9 @@ Page({
         embedGrade: "false",
       },
       method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
       success: function (res) {
         self.setData({
           studentList: res.data.members
