@@ -26,7 +26,7 @@ Page({
             code: res.code
           },
           success: function (resp) {
-
+            console.log(resp)
             switch(resp.statusCode) {
               case 200:
                 var data = resp.data
@@ -51,8 +51,11 @@ Page({
                 break
               // 其他错误，需要重新登录
               default:
-                this.setData({ loginError: true })
+                self.setData({ loginError: true })
             }
+          },
+          fail:function(resp) {
+            console.log(resp)
           }
         })
       }

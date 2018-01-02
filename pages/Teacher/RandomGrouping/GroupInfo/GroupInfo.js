@@ -119,6 +119,7 @@ Page({
         gradeable: false
       },
       success: function (res) {
+        wx.hideLoading()
         self.setData({
           groupList: res.data
         })

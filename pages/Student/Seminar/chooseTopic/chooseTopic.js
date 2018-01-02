@@ -40,6 +40,7 @@ Page({
           var temp = self.data.topics
           self.setData({topics:temp})
           console.log(self.data.topics)
+          wx.hideLoading()
       },
     })
     
@@ -57,15 +58,15 @@ Page({
 
   //通过topicID和groupID选话题
   chooseTopic: function (e) {
-      
+    console.log(e)
     var self=this
     for (var i = 0; i < this.data.topics.length; i++)//设置是否显示细节的标签
-      if (this.data.topics[i].id == e.target.id)
+      if (this.data.topics[i].id == e.currentTarget.id)
         this.setData({
           mytopic: self.data.match[i] + self.data.topics[i].name
         })  
     this.setData({
-      mytopicID: e.target.id,
+      mytopicID: e.currentTarget.id,
       modalHidden: !this.data.modalHidden
     })
   },
@@ -100,9 +101,9 @@ Page({
   }  ,
 
   detail:function(e){
-    console.log(e.target.id)
+    console.log(e.currentTarget.id)
     for (var i = 0; i < this.data.topics.length; i++) {
-      if (this.data.topics[i].id == e.target.id)
+      if (this.data.topics[i].id == e.currentTarget.id)
         if (this.data.topics[i].detailJud==0)
           {
           this.data.topics[i].detailJud =1
@@ -145,14 +146,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.getTopics()
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    
   },
 
   /**
