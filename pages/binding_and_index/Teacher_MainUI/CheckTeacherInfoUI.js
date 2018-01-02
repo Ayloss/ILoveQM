@@ -131,6 +131,10 @@ Page({
                       wx.setStorageSync("type", "")
                       wx.setStorageSync("name", "")
                       wx.setStorageSync("id", "")
+                      var pages = page[page.length - 2]
+                      pages.setData({
+                        userType: ''
+                      })
                       wx.reLaunch({
                         url: '/pages/binding_and_index/Teacher_MainUI/Teacher_MainUI',
                       })
@@ -156,11 +160,6 @@ Page({
                         showCancel: false
                       })
                   }
-
-                  // var pages = page[page.length - 2]
-                  // pages.setData({
-                  //   userType: ''
-                  // })
 
                   // console.log(wx.getStorageSync("jwt"))
                   // // wx.reLaunch({

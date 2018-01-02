@@ -139,6 +139,7 @@ Page({
         self.setData({
           lateStudentList: res.data
         })
+        wx.hideLoading()
       }
     })
   },

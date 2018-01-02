@@ -137,6 +137,7 @@ Page({
               hasLeader: false,
               isLeader:false
             })
+            wx.hideLoading()
         },
         fail: function () {
           wx.showToast({
@@ -191,7 +192,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.getGroupDetail()
   },
 
   /**
