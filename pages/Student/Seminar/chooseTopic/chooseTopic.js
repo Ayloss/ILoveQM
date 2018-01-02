@@ -5,45 +5,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    modalHidden: true, 
+    modalHidden: true,
 
-    seminarID:1,
-    groupID:1,
-    topics:[],
+    seminarID: 1,
+    groupID: 1,
+    topics: [],
 
-    mytopicID:'',
-    mytopic:'',
-    match:["A",'B','C','D','E']
+    mytopicID: '',
+    mytopic: '',
+    match: ["A", 'B', 'C', 'D', 'E']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  
+
   //获得当前seminar下所有topics信息
-  getTopics:function(){
+  getTopics: function () {
     var self = this
     var jwt = wx.getStorageSync('jwt')
     wx.request({
-      url: app.globalData.IPPort + '/seminar/' + this.data.seminarID +'/topic',
+      url: app.globalData.IPPort + '/seminar/' + this.data.seminarID + '/topic',
       method: 'get',
       header: {
         Authorization: 'Bearer ' + jwt
       },
       success: function (res) {
-          self.setData({
-          topics:res.data
-          })
-          
-          for (var i = 0; i < self.data.topics.length; i++)//设置是否显示细节的标签
-            self.data.topics[i].detailJud = 0
-          var temp = self.data.topics
-          self.setData({topics:temp})
-          console.log(self.data.topics)
-          wx.hideLoading()
+        self.setData({
+          topics: res.data
+        })
+
+        for (var i = 0; i < self.data.topics.length; i++)//设置是否显示细节的标签
+          self.data.topics[i].detailJud = 0
+        var temp = self.data.topics
+        self.setData({ topics: temp })
+        console.log(self.data.topics)
+        wx.hideLoading()
       },
     })
-    
+
   },
 
   onLoad: function (options) {
@@ -59,19 +59,19 @@ Page({
   //通过topicID和groupID选话题
   chooseTopic: function (e) {
     console.log(e)
-    var self=this
+    var self = this
     for (var i = 0; i < this.data.topics.length; i++)//设置是否显示细节的标签
       if (this.data.topics[i].id == e.currentTarget.id)
         this.setData({
           mytopic: self.data.match[i] + self.data.topics[i].name
-        })  
+        })
     this.setData({
       mytopicID: e.currentTarget.id,
       modalHidden: !this.data.modalHidden
     })
   },
   modalBindaconfirm: function () {
-    var self=this
+    var self = this
     var jwt = wx.getStorageSync('jwt')
     wx.request({
       url: app.globalData.IPPort + '/group/' + this.data.groupID + '/topic',
@@ -81,13 +81,31 @@ Page({
       },
       data: { "id": this.data.mytopicID },
       success: function (res) {
-              var pages = getCurrentPages();
-              var prevPage = pages[pages.length - 2];  //上一个页面
-              prevPage.setData({
-                topic: self.data.mytopic,
-                areTopicsSelected:true
-              })
-              wx.navigateBack(); 
+        console.log(res)
+        switch (res.statusCode) {
+          case 201:
+            var pages = getCurrentPages();
+            var prevPage = pages[pages.length - 2];  //上一个页面
+            prevPage.setData({
+              topic: self.data.mytopic,
+              areTopicsSelected: true
+            })
+            wx.navigateBack();
+            break
+          case 409:
+            wx.showModal({
+              title: '选题已满',
+              content: '请选择其他题目',
+              showCancel:false
+            })
+            break
+          default:
+            wx.showModal({
+              title: '未知错误',
+              content: '凉了呀',
+              showCancel: false
+            })
+        }
       },
     })
     this.setData({
@@ -98,18 +116,17 @@ Page({
     this.setData({
       modalHidden: !this.data.modalHidden,
     })
-  }  ,
+  },
 
-  detail:function(e){
+  detail: function (e) {
     console.log(e.currentTarget.id)
     for (var i = 0; i < this.data.topics.length; i++) {
       if (this.data.topics[i].id == e.currentTarget.id)
-        if (this.data.topics[i].detailJud==0)
-          {
-          this.data.topics[i].detailJud =1
-          }else{
-          this.data.topics[i].detailJud =0
-          }
+        if (this.data.topics[i].detailJud == 0) {
+          this.data.topics[i].detailJud = 1
+        } else {
+          this.data.topics[i].detailJud = 0
+        }
       var temp = this.data.topics
       this.setData({ topics: temp })
     }
@@ -157,7 +174,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
