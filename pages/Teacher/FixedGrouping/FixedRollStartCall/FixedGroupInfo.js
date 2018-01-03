@@ -78,7 +78,31 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    var self = this;
+    var IPPort = app.globalData.IPPort;
+    var jwt = wx.getStorageSync('jwt')
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: IPPort + '/seminar' + '/' + self.data.seminar.id + '/group',
+      method: 'GET',
+      header: {
+        Authorization: 'Bearer ' + jwt
+      },
+      data: {
+        classID: self.data.classID,
+        gradeable: false
+      },
+      success: function (res) {
+        self.setData({
+          groupList: res.data
+        })
+        wx.hideLoading()
+        //console.log(self.data.groupList)
+      }
+    })
+    wx.stopPullDownRefresh()
   },
 
   /**
